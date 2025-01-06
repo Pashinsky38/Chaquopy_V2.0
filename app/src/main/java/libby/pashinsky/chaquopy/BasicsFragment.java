@@ -1,4 +1,4 @@
-package michal.shefer.chaquipy;
+package libby.pashinsky.chaquopy;
 
 import android.content.Context;
 import android.os.Bundle;
@@ -11,8 +11,7 @@ import androidx.fragment.app.Fragment;
 import com.chaquo.python.PyObject;
 import com.chaquo.python.Python;
 import com.chaquo.python.android.AndroidPlatform;
-
-import michal.shefer.chaquipy.databinding.FragmentBasicsBinding;
+import libby.pashinsky.chaquopy.databinding.FragmentBasicsBinding;
 
 public class BasicsFragment extends Fragment {
 

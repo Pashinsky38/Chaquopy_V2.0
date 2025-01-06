@@ -1,4 +1,4 @@
-package michal.shefer.chaquipy;
+package libby.pashinsky.chaquopy;
 
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
@@ -6,8 +6,6 @@ import android.app.PendingIntent;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
-import android.os.Build;
-
 import androidx.core.app.NotificationCompat;
 
 public class NotificationReceiver extends BroadcastReceiver {
@@ -40,10 +38,8 @@ public class NotificationReceiver extends BroadcastReceiver {
 
     // Create the notification channel for Android Oreo and above
     private void createNotificationChannel(Context context) {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            NotificationChannel channel = new NotificationChannel(CHANNEL_ID, CHANNEL_NAME, NotificationManager.IMPORTANCE_DEFAULT);
-            NotificationManager notificationManager = context.getSystemService(NotificationManager.class);
-            notificationManager.createNotificationChannel(channel);
-        }
+        NotificationChannel channel = new NotificationChannel(CHANNEL_ID, CHANNEL_NAME, NotificationManager.IMPORTANCE_DEFAULT);
+        NotificationManager notificationManager = context.getSystemService(NotificationManager.class);
+        notificationManager.createNotificationChannel(channel);
     }
 }

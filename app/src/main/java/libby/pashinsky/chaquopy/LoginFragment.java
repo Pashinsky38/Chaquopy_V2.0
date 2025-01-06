@@ -1,4 +1,4 @@
-package michal.shefer.chaquipy;
+package libby.pashinsky.chaquopy;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -9,7 +9,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import michal.shefer.chaquipy.databinding.FragmentLoginBinding;
+import libby.pashinsky.chaquopy.databinding.FragmentLoginBinding;
 
 public class LoginFragment extends Fragment {
 

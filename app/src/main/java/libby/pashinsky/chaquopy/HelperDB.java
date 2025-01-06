@@ -1,4 +1,4 @@
-package michal.shefer.chaquipy;
+package libby.pashinsky.chaquopy;
 
 import android.annotation.SuppressLint;
 import android.content.Context;

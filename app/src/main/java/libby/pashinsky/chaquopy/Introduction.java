@@ -1,4 +1,4 @@
-package michal.shefer.chaquipy;
+package libby.pashinsky.chaquopy;
 
 import android.os.Bundle;
 import android.view.View;
@@ -10,7 +10,7 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 import androidx.fragment.app.FragmentTransaction;
-import michal.shefer.chaquipy.databinding.ActivityIntroductionBinding;
+import libby.pashinsky.chaquopy.databinding.ActivityIntroductionBinding;
 
 public class Introduction extends AppCompatActivity {
 
@@ -46,9 +46,7 @@ public class Introduction extends AppCompatActivity {
         });
 
         // Set click listener for the "Next" button using NavigationHelper
-        nextButton.setOnClickListener(v -> {
-            navigateToBasicsFragment();
-        });
+        nextButton.setOnClickListener(v -> navigateToBasicsFragment());
     }
 
     @Override

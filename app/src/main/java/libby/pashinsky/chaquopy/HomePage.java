@@ -1,4 +1,4 @@
-package michal.shefer.chaquipy;
+package libby.pashinsky.chaquopy;
 
 import android.Manifest;
 import android.app.AlarmManager;
@@ -6,17 +6,15 @@ import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
-import android.os.Build;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
 import androidx.annotation.NonNull;
-import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
-import michal.shefer.chaquipy.databinding.HomePageBinding;
+import libby.pashinsky.chaquopy.databinding.HomePageBinding;
 import java.util.Calendar;
 
 public class HomePage extends AppCompatActivity {
@@ -24,12 +22,11 @@ public class HomePage extends AppCompatActivity {
     // Request code for notification permission
     private static final int NOTIFICATION_PERMISSION_REQUEST_CODE = 123;
 
-    @RequiresApi(api = Build.VERSION_CODES.TIRAMISU)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         // Inflate the layout using View Binding
-        michal.shefer.chaquipy.databinding.HomePageBinding binding = HomePageBinding.inflate(getLayoutInflater());
+        libby.pashinsky.chaquopy.databinding.HomePageBinding binding = HomePageBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
         // Set click listener for the "Go to Login" button

@@ -1,4 +1,4 @@
-package michal.shefer.chaquipy;
+package libby.pashinsky.chaquopy;
 
 import android.content.Context;
 import android.speech.tts.TextToSpeech;

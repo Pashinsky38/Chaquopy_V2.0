@@ -4,11 +4,11 @@ plugins {
 }
 
 android {
-    namespace = "michal.shefer.chaquipy"
+    namespace = "libby.pashinsky.chaquopy"
     compileSdk = 34
 
     defaultConfig {
-        applicationId = "michal.shefer.chaquipy"
+        applicationId = "libby.pashinsky.chaquopy"
         minSdk = 33
         targetSdk = 34
         versionCode = 1
