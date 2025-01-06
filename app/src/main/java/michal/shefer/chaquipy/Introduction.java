@@ -32,7 +32,6 @@ public class Introduction extends AppCompatActivity {
             return insets;
         });
 
-        TextView titleTextView = binding.textView;
         TextView descriptionTextView = binding.textView2;
         Button ttsButton = binding.ttsButton;
         Button nextButton = binding.introductionToBasics;
