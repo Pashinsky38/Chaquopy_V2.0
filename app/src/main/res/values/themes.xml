@@ -1,0 +1,5 @@
+<resources>
+    <style name="Base.Theme.Chaquipy" parent="Theme.Material3.DayNight.NoActionBar">
+    </style>
+    <style name="Theme.Chaquipy" parent="Base.Theme.Chaquipy" />
+</resources>

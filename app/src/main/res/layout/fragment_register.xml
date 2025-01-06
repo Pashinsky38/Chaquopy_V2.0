@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".RegisterFragment">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:background="@drawable/day">
+
+        <!-- EditText for entering name -->
+        <EditText
+            android:id="@+id/newName"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="50dp"
+            android:ems="10"
+            android:hint="Please enter your name..."
+            android:inputType="textPersonName"
+            tools:ignore="HardcodedText" />
+
+        <!-- EditText for entering email -->
+        <EditText
+            android:id="@+id/newEmail"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="20dp"
+            android:ems="10"
+            android:hint="Please enter your email..."
+            android:inputType="textEmailAddress"
+            tools:ignore="HardcodedText" />
+
+        <!-- EditText for entering password -->
+        <EditText
+            android:id="@+id/newPassword"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="20dp"
+            android:ems="10"
+            android:hint="Please enter your password..."
+            android:inputType="textPassword"
+            tools:ignore="HardcodedText" />
+
+        <!-- EditText for re-entering password -->
+        <EditText
+            android:id="@+id/newRe_EnterPassword"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="20dp"
+            android:ems="10"
+            android:hint="Please re-enter your password..."
+            android:inputType="textPassword"
+            tools:ignore="HardcodedText" />
+
+        <!-- EditText for entering phone number -->
+        <EditText
+            android:id="@+id/newPhoneNumber"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="20dp"
+            android:ems="10"
+            android:hint="Please enter your phone number..."
+            android:inputType="phone"
+            tools:ignore="HardcodedText" />
+
+        <!-- Button for signing up -->
+        <Button
+            android:id="@+id/newSignUpButton"
+            android:layout_width="230dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="200dp"
+            android:text="Sign up"
+            tools:ignore="HardcodedText" />
+
+        <!-- Button for going back to Login -->
+        <Button
+            android:id="@+id/newLoginButton"
+            android:layout_width="230dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="10dp"
+            android:text="Already registered? Log in"
+            tools:ignore="HardcodedText" />
+    </LinearLayout>
+
+</FrameLayout>
