@@ -10,18 +10,31 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
+
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
+
 import libby.pashinsky.chaquopy.databinding.HomePageBinding;
+
 import java.util.Calendar;
 
+/**
+ * The main activity of the application, representing the home page.
+ * Handles navigation to other fragments and schedules a daily notification.
+ */
 public class HomePage extends AppCompatActivity {
 
     // Request code for notification permission
     private static final int NOTIFICATION_PERMISSION_REQUEST_CODE = 123;
 
+    /**
+     * Called when the activity is starting.
+     * Initializes the UI, sets up navigation, and schedules a daily notification.
+     *
+     * @param savedInstanceState If the activity is being re-initialized after previously being shut down then this Bundle contains the data it most recently supplied in {@link #onSaveInstanceState}.
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -43,7 +56,12 @@ public class HomePage extends AppCompatActivity {
         }
     }
 
-    // Inflate the menu
+    /**
+     * Initialize the contents of the Activity's standard options menu.
+     *
+     * @param menu The options menu in which you place your items.
+     * @return You must return true for the menu to be displayed; if you return false it will not be shown.
+     */
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         menu.clear();
@@ -51,7 +69,12 @@ public class HomePage extends AppCompatActivity {
         return true;
     }
 
-    // Handle options menu item selection
+    /**
+     * This hook is called whenever an item in your options menu is selected.
+     *
+     * @param item The menu item that was selected.
+     * @return boolean Return false to allow normal menu processing to proceed, true to consume it here.
+     */
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
@@ -73,7 +96,10 @@ public class HomePage extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    // Schedule a repeating alarm to trigger a notification at a specific time
+    /**
+     * Schedules a repeating alarm to trigger a notification at a specific time.
+     * The notification is scheduled to be delivered daily at noon.
+     */
     private void scheduleAlarm() {
         // Get the AlarmManager system service
         AlarmManager alarmManager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
@@ -98,7 +124,15 @@ public class HomePage extends AppCompatActivity {
         alarmManager.setRepeating(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(), AlarmManager.INTERVAL_DAY, pendingIntent);
     }
 
-    // Handle permission request result
+    /**
+     * Callback for the result of the permission request.
+     * If the permission is granted, schedules the alarm.
+     * If the permission is denied, displays a message to the user.
+     *
+     * @param requestCode  The request code passed in {@link #requestPermissions}.
+     * @param permissions  The requested permissions. Never null.
+     * @param grantResults The grant results for the corresponding permissions which is either {@link PackageManager#PERMISSION_GRANTED} or {@link PackageManager#PERMISSION_DENIED}. Never null.
+     */
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
         // Call the super method to handle other permission requests

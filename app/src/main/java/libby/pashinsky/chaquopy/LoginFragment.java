@@ -6,20 +6,40 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
+
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+
 import libby.pashinsky.chaquopy.databinding.FragmentLoginBinding;
 
+/**
+ * A fragment representing the login screen.
+ * Allows users to enter their credentials and log in to the application.
+ */
 public class LoginFragment extends Fragment {
 
     private FragmentLoginBinding binding; // View binding for the fragment
     private HelperDB dbHelper; // Database helper for user authentication
 
+    /**
+     * Required empty public constructor.
+     */
     public LoginFragment() {
         // Required empty public constructor
     }
 
+    /**
+     * Called to have the fragment instantiate its user interface view.
+     * This is optional, and non-graphical fragments can return null (which is the default implementation).
+     * This will be called between {@link #onCreate} and {@link #onActivityCreated}.
+     *
+     * @param inflater The LayoutInflater object that can be used to inflate any views in the fragment.
+     * @param container If non-null, this is the parent view that the fragment's UI should be attached to.
+     *                  The fragment should not add the view itself, but this can be used to generate the LayoutParams of the view.
+     * @param savedInstanceState If non-null, this fragment is being re-constructed from a previous saved state as given here.
+     * @return Return the View for the fragment's UI, or null.
+     */
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -56,12 +76,22 @@ public class LoginFragment extends Fragment {
         return view;
     }
 
-    // Check if the user is registered in the database
+    /**
+     * Checks if the user is registered in the database.
+     *
+     * @param email The user's email address.
+     * @param password The user's password.
+     * @return True if the user is registered, false otherwise.
+     */
     private boolean isUserRegistered(String email, String password) {
         String storedPassword = dbHelper.getPasswordByEmail(email);
         return password.equals(storedPassword);
     }
 
+    /**
+     * Navigates to the Introduction activity.
+     * Starts the Introduction activity using an Intent.
+     */
     private void navigateToIntroduction() {
         Intent intent = new Intent(requireActivity(), Introduction.class);
         startActivity(intent);

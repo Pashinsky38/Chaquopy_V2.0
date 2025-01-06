@@ -4,19 +4,31 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 import androidx.fragment.app.FragmentTransaction;
+
 import libby.pashinsky.chaquopy.databinding.ActivityIntroductionBinding;
 
+/**
+ * The introduction activity of the application.
+ * Provides an introductory screen with a description and a button to proceed to the basics fragment.
+ */
 public class Introduction extends AppCompatActivity {
 
     private ActivityIntroductionBinding binding;
     private TextToSpeechHelper textToSpeechHelper;
 
+    /**
+     * Called when the activity is starting.
+     * Initializes the UI, sets up edge-to-edge display, and handles button clicks.
+     *
+     * @param savedInstanceState If the activity is being re-initialized after previously being shut down then this Bundle contains the data it most recently supplied in {@link #onSaveInstanceState}.
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -49,6 +61,10 @@ public class Introduction extends AppCompatActivity {
         nextButton.setOnClickListener(v -> navigateToBasicsFragment());
     }
 
+    /**
+     * Perform any final cleanup before an activity is destroyed.
+     * This can happen either because the activity is finishing (someone called {@link #finish} on it, or because the system is temporarily destroying this instance of the activity to save space.
+     */
     @Override
     protected void onDestroy() {
         super.onDestroy();
@@ -58,6 +74,11 @@ public class Introduction extends AppCompatActivity {
         }
     }
 
+    /**
+     * Navigates to the BasicsFragment.
+     * Replaces the current fragment with the BasicsFragment and adds it to the back stack.
+     * Hides the introduction elements (title, description, TTS button, and "Next" button).
+     */
     private void navigateToBasicsFragment() {
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
         transaction.replace(R.id.fragment_basics, new BasicsFragment());
