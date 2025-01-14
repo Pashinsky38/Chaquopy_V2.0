@@ -63,9 +63,13 @@ public class RegisterFragment extends Fragment {
                 return;
             }
 
+            // Create a UserDetails object, now named newUser
+            UserDetails newUser = new UserDetails(name, email, password, phoneNumber);
+
             // Insert user data into the database
             HelperDB helperDB = new HelperDB(getActivity());
-            boolean isInserted = helperDB.insertUser(name, email, password, phoneNumber);
+            //Now we use the newUser object to get the data
+            boolean isInserted = helperDB.insertUser(newUser.getName(), newUser.getEmail(), newUser.getPassword(), newUser.getPhoneNumber());
             if (isInserted) {
                 Toast.makeText(getActivity(), "Registered successfully", Toast.LENGTH_SHORT).show();
                 NavigationHelper.navigateToLoginFromRegister(getActivity().getSupportFragmentManager());
