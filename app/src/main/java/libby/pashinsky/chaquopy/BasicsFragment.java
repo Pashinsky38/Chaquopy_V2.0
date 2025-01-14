@@ -74,7 +74,7 @@ public class BasicsFragment extends Fragment {
 
         // Execute Python code using Chaquopy
         Python py = Python.getInstance();
-        PyObject pyObject = py.getModule("test"); // "test" is the Python file name
+        PyObject pyObject = py.getModule("pythonRunner"); // "pythonRunner" is the Python file name
         PyObject result = pyObject.callAttr("main", pythonCode); // Call a function named "main" in the Python file
 
         // Display the result in the TextView using View Binding
