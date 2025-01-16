@@ -58,7 +58,11 @@ public class Introduction extends AppCompatActivity {
         });
 
         // Set click listener for the "Next" button using NavigationHelper
-        nextButton.setOnClickListener(v -> navigateToBasicsFragment());
+        nextButton.setOnClickListener(v -> {
+            // Stop Text-to-Speech before navigating
+            textToSpeechHelper.stop();
+            navigateToBasicsFragment();
+        });
     }
 
     /**

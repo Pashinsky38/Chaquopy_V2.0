@@ -116,7 +116,7 @@ public class HomePage extends AppCompatActivity {
         calendar.set(Calendar.SECOND, 0); // Set the second to 0
 
         // If the scheduled time has already passed for today, schedule it for tomorrow
-        if (calendar.before(Calendar.getInstance())) {
+        if (calendar.getTimeInMillis() <= System.currentTimeMillis()) {
             calendar.add(Calendar.DAY_OF_YEAR, 1);
         }
 
