@@ -71,7 +71,7 @@ public class VariablesFragment extends Fragment {
             FrameLayout practiceContainer = requireActivity().findViewById(R.id.fragment_basics_practice);
             practiceContainer.setVisibility(View.VISIBLE);
 
-            // Hide fragment_container_view
+            // Hide fragment_variables
             FrameLayout variablesContainer = requireActivity().findViewById(R.id.fragment_variables);
             variablesContainer.setVisibility(View.GONE);
         });
