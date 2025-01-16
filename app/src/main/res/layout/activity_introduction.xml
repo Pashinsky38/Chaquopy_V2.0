@@ -52,4 +52,19 @@
         android:layout_height="match_parent"
         android:layout_gravity="center" />
 
+    <!-- FrameLayout for VariablesFragment -->
+    <FrameLayout
+        android:id="@+id/fragment_variables"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="center"
+        android:visibility="gone"/>
+
+    <!-- FrameLayout for BasicsPracticeFragment -->
+    <FrameLayout
+        android:id="@+id/fragment_basics_practice"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="center"
+        android:visibility="gone"/>
 </FrameLayout>

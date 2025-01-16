@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".VariablesFragment">
+
+    <ScrollView
+        android:id="@+id/scrollViewVariables"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="16dp">
+
+            <TextView
+                android:id="@+id/variables_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingBottom="16dp"
+                android:text="Variables in Python"
+                android:textSize="24sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:ignore="HardcodedText" />
+
+            <TextView
+                android:id="@+id/variables_explanation"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:paddingBottom="16dp"
+                android:text="Variables are used to store data. You can think of them as containers that hold values. To create a variable, you choose a name and assign a value to it using the '=' operator."
+                android:textSize="16sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/variables_title"
+                tools:ignore="HardcodedText" />
+
+            <TextView
+                android:id="@+id/variables_example"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingBottom="24dp"
+                android:text="name = 'Alice'\nage = 30\nprint(name)\nprint(age)"
+                android:textSize="18sp"
+                android:textStyle="italic"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/variables_explanation"
+                tools:ignore="HardcodedText" />
+
+            <TextView
+                android:id="@+id/variables_rules"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:paddingBottom="16dp"
+                android:text="Variable names must start with a letter or an underscore, and can contain letters, numbers, and underscores. They are case-sensitive."
+                android:textSize="16sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/variables_example"
+                tools:ignore="HardcodedText" />
+
+            <TextView
+                android:id="@+id/variables_rules_example"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingBottom="24dp"
+                android:text="valid_name = 10\n_another_valid_name = 'Hello'\nmyVariable123 = True\n\n# Invalid:\n# 123variable = 5 (starts with a number)\n# my-variable = 'test' (contains a hyphen)"
+                android:textSize="18sp"
+                android:textStyle="italic"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/variables_rules"
+                tools:ignore="HardcodedText" />
+
+            <EditText
+                android:id="@+id/code_editor_variables"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:hint="Enter Python code here"
+                android:inputType="textMultiLine"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/variables_rules_example"
+                tools:ignore="Autofill,HardcodedText" />
+
+            <Button
+                android:id="@+id/run_code_button_variables"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Run Code"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/code_editor_variables"
+                tools:ignore="HardcodedText" />
+
+            <TextView
+                android:id="@+id/output_text_variables"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/run_code_button_variables" />
+
+            <Button
+                android:id="@+id/goToPracticeButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Go to Practice"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/output_text_variables"
+                tools:ignore="HardcodedText" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+</androidx.constraintlayout.widget.ConstraintLayout>

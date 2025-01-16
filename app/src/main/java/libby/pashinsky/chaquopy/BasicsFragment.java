@@ -5,12 +5,17 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.FrameLayout;
+
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
+
 import com.chaquo.python.PyObject;
 import com.chaquo.python.Python;
 import com.chaquo.python.android.AndroidPlatform;
+
 import libby.pashinsky.chaquopy.databinding.FragmentBasicsBinding;
 
 /**
@@ -30,8 +35,8 @@ public class BasicsFragment extends Fragment {
     /**
      * Inflates the layout for this fragment.
      *
-     * @param inflater The LayoutInflater object that can be used to inflate any views in the fragment.
-     * @param container If non-null, this is the parent view that the fragment's UI should be attached to.
+     * @param inflater           The LayoutInflater object that can be used to inflate any views in the fragment.
+     * @param container          If non-null, this is the parent view that the fragment's UI should be attached to.
      * @param savedInstanceState If non-null, this fragment is being re-constructed from a previous saved state as given here.
      * @return The View for the fragment's UI, or null.
      */
@@ -47,7 +52,7 @@ public class BasicsFragment extends Fragment {
      * This gives subclasses a chance to initialize themselves once they know that their view hierarchy has been completely created.
      * The fragment's view hierarchy is not however attached to its parent at this point.
      *
-     * @param view The View returned by {@link #onCreateView}.
+     * @param view               The View returned by {@link #onCreateView}.
      * @param savedInstanceState If non-null, this fragment is being re-constructed from a previous saved state as given here.
      */
     @Override
@@ -62,6 +67,23 @@ public class BasicsFragment extends Fragment {
 
         // Set click listener for the Run button
         binding.runCodeButton.setOnClickListener(v -> runPythonCode());
+
+        // Set click listener for the Next button
+        binding.nextButton.setOnClickListener(v -> {
+            VariablesFragment variablesFragment = new VariablesFragment();
+            FragmentTransaction transaction = getParentFragmentManager().beginTransaction();
+            transaction.replace(R.id.fragment_variables, variablesFragment);
+            transaction.addToBackStack(null);
+            transaction.commit();
+
+            // Hide
+            FrameLayout variablesContainer = requireActivity().findViewById(R.id.fragment_variables);
+            variablesContainer.setVisibility(View.VISIBLE);
+
+            // Hide fragment_basics
+            FrameLayout basicsContainer = requireActivity().findViewById(R.id.fragment_basics);
+            basicsContainer.setVisibility(View.GONE);
+        });
     }
 
     /**

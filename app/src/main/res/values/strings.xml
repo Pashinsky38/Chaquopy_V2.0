@@ -13,5 +13,6 @@
     Dynamic typing: You don\'t need to specify data types when declaring variables, and they can change type dynamically.
 
     It\'s commonly used by developers, scientists, and analysts for tasks ranging from simple scripting to large-scale applications.</string>
-
+    <string name="all_answers_correct">All answers are correct!</string>
+    <string name="some_answers_incorrect">Some answers are incorrect.</string>
 </resources>
