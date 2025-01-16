@@ -29,10 +29,12 @@
                 android:text="Starting with the basics"
                 android:textSize="24sp"
                 android:textStyle="bold"
+                android:textDirection="ltr"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 tools:ignore="HardcodedText" />
 
+            <!-- Explanation how to print in Python -->
             <TextView
                 android:id="@+id/explanation"
                 android:layout_width="0dp"
@@ -40,11 +42,13 @@
                 android:paddingBottom="16dp"
                 android:text="In Python, you can display output using the 'print()' function. For example, to print 'Hello, World!', you would use the following code:"
                 android:textSize="16sp"
+                android:textDirection="ltr"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/Starting_with_basics"
                 tools:ignore="HardcodedText" />
 
+            <!-- Code example -->
             <TextView
                 android:id="@+id/code_example"
                 android:layout_width="wrap_content"
@@ -53,10 +57,12 @@
                 android:text="print('Hello, World!')"
                 android:textSize="18sp"
                 android:textStyle="italic"
+                android:textDirection="ltr"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/explanation"
                 tools:ignore="HardcodedText" />
 
+            <!-- Newline and concatenation -->
             <TextView
                 android:id="@+id/newline_and_concatenation"
                 android:layout_width="0dp"
@@ -64,11 +70,13 @@
                 android:paddingBottom="16dp"
                 android:text="To print text on a new line, you can use '\\n' inside the string. If you want to combine two strings, you can use the '+' operator like this:"
                 android:textSize="16sp"
+                android:textDirection="ltr"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/code_example"
                 tools:ignore="HardcodedText" />
 
+            <!-- Code example -->
             <TextView
                 android:id="@+id/code_example2"
                 android:layout_width="wrap_content"
@@ -77,44 +85,53 @@
                 android:text="print('Hello' + ', World!\\nWelcome to Python!')"
                 android:textSize="18sp"
                 android:textStyle="italic"
+                android:textDirection="ltr"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/newline_and_concatenation"
                 tools:ignore="HardcodedText" />
 
+            <!-- Code editor -->
             <EditText
                 android:id="@+id/code_editor"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:hint="Enter Python code here"
                 android:inputType="textMultiLine"
+                android:textDirection="ltr"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/code_example2"
                 tools:ignore="Autofill,HardcodedText" />
 
+            <!-- Run button -->
             <Button
                 android:id="@+id/run_code_button"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Run Code"
+                android:textDirection="ltr"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/code_editor"
                 tools:ignore="HardcodedText" />
 
+            <!-- Output text -->
             <TextView
                 android:id="@+id/output_text"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:textDirection="ltr"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/run_code_button" />
 
+            <!-- Next button -->
             <Button
                 android:id="@+id/next_button"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Next"
+                android:textDirection="ltr"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/output_text"

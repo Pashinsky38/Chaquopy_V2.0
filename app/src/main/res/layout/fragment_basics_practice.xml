@@ -45,7 +45,8 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/question1_code"
-            tools:ignore="Autofill,HardcodedText" />
+            tools:ignore="Autofill,HardcodedText"
+            android:textDirection="ltr"/>
 
         <!-- Question 2 -->
         <TextView
@@ -70,7 +71,8 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/question2_code"
-            tools:ignore="Autofill,HardcodedText" />
+            tools:ignore="Autofill,HardcodedText"
+            android:textDirection="ltr"/>
 
         <!-- Question 3 -->
         <TextView
@@ -95,7 +97,8 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/question3_code"
-            tools:ignore="Autofill,HardcodedText" />
+            tools:ignore="Autofill,HardcodedText"
+            android:textDirection="ltr"/>
 
         <Button
             android:id="@+id/check_answers_button"

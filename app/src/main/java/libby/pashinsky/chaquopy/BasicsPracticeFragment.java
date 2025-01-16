@@ -6,10 +6,13 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
+
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+
 import libby.pashinsky.chaquopy.databinding.FragmentBasicsPracticeBinding;
 
 public class BasicsPracticeFragment extends Fragment {
@@ -19,6 +22,10 @@ public class BasicsPracticeFragment extends Fragment {
     private Button showSolutionButton;
     private boolean allAnswersCorrect = false;
     private TextView resultsText;
+    private boolean solutionsShown = false;
+    private EditText question1Answer;
+    private EditText question2Answer;
+    private EditText question3Answer;
 
     public BasicsPracticeFragment() {
         // Required empty public constructor
@@ -38,15 +45,18 @@ public class BasicsPracticeFragment extends Fragment {
         Button checkAnswersButton = binding.checkAnswersButton;
         resultsText = binding.resultsText;
         showSolutionButton = binding.showSolutionButton;
+        question1Answer = binding.question1Answer;
+        question2Answer = binding.question2Answer;
+        question3Answer = binding.question3Answer;
 
         // Initially hide the "Show Solution" button
         showSolutionButton.setVisibility(View.GONE);
 
         checkAnswersButton.setOnClickListener(v -> {
             // Get user's answers
-            String answer1 = binding.question1Answer.getText().toString().trim();
-            String answer2 = binding.question2Answer.getText().toString().trim();
-            String answer3 = binding.question3Answer.getText().toString().trim();
+            String answer1 = question1Answer.getText().toString().trim();
+            String answer2 = question2Answer.getText().toString().trim();
+            String answer3 = question3Answer.getText().toString().trim();
 
             // Check answers
             boolean isCorrect1 = answer1.equals("Alice");
@@ -61,8 +71,16 @@ public class BasicsPracticeFragment extends Fragment {
                 if (countDownTimer != null) {
                     countDownTimer.cancel();
                 }
+                // Hide the "Show Solution" button if all answers are correct
+                showSolutionButton.setVisibility(View.GONE);
+                // Disable the EditTexts
+                disableEditTexts();
             } else {
                 resultsText.setText(getString(R.string.some_answers_incorrect));
+                // Show the "Show Solution" button if some answers are incorrect
+                if (!solutionsShown) {
+                    showSolutionButton.setVisibility(View.VISIBLE);
+                }
             }
         });
 
@@ -74,8 +92,10 @@ public class BasicsPracticeFragment extends Fragment {
                     "Question 2: My age is 25\n" +
                     "Question 3: 15";
             resultsText.setText(solution);
-            // Hide the "Show Solution" button after showing the solution
-            showSolutionButton.setVisibility(View.GONE);
+            // Set solutionsShown to true
+            solutionsShown = true;
+            // Keep the "Show Solution" button visible
+            showSolutionButton.setVisibility(View.VISIBLE);
         });
 
         // Start the countdown timer
@@ -89,12 +109,18 @@ public class BasicsPracticeFragment extends Fragment {
             }
 
             public void onFinish() {
-                // Show the "Show Solution" button if all answers are not correct
-                if (!allAnswersCorrect) {
+                // Show the "Show Solution" button if all answers are not correct and solutions haven't been shown
+                if (!allAnswersCorrect && !solutionsShown) {
                     showSolutionButton.setVisibility(View.VISIBLE);
                 }
             }
         }.start();
+    }
+
+    private void disableEditTexts() {
+        question1Answer.setEnabled(false);
+        question2Answer.setEnabled(false);
+        question3Answer.setEnabled(false);
     }
 
     @Override

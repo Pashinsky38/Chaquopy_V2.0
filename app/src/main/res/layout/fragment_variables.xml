@@ -54,7 +54,9 @@
                 android:textStyle="italic"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/variables_explanation"
-                tools:ignore="HardcodedText" />
+                tools:ignore="HardcodedText"
+                android:textDirection="ltr"
+                android:layoutDirection="ltr" />
 
             <TextView
                 android:id="@+id/variables_rules"
@@ -78,7 +80,9 @@
                 android:textStyle="italic"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/variables_rules"
-                tools:ignore="HardcodedText" />
+                tools:ignore="HardcodedText"
+                android:textDirection="ltr"
+                android:layoutDirection="ltr" />
 
             <EditText
                 android:id="@+id/code_editor_variables"
@@ -89,7 +93,8 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/variables_rules_example"
-                tools:ignore="Autofill,HardcodedText" />
+                tools:ignore="Autofill,HardcodedText"
+                android:textDirection="ltr" />
 
             <Button
                 android:id="@+id/run_code_button_variables"
