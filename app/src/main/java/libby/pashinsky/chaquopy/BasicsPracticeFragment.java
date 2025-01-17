@@ -15,6 +15,11 @@ import androidx.fragment.app.Fragment;
 
 import libby.pashinsky.chaquopy.databinding.FragmentBasicsPracticeBinding;
 
+/**
+ * A Fragment that provides a basic practice quiz with three questions.
+ * Users can input their answers, check them, and view the solutions.
+ * A countdown timer is implemented to show the solution button after a set time.
+ */
 public class BasicsPracticeFragment extends Fragment {
 
     private FragmentBasicsPracticeBinding binding;
@@ -27,10 +32,21 @@ public class BasicsPracticeFragment extends Fragment {
     private EditText question2Answer;
     private EditText question3Answer;
 
+    /**
+     * Required empty public constructor for the BasicsPracticeFragment.
+     */
     public BasicsPracticeFragment() {
         // Required empty public constructor
     }
 
+    /**
+     * Called to have the fragment instantiate its user interface view.
+     *
+     * @param inflater           The LayoutInflater object that can be used to inflate any views in the fragment.
+     * @param container          If non-null, this is the parent view that the fragment's UI should be attached to.
+     * @param savedInstanceState If non-null, this fragment is being re-constructed from a previous saved state.
+     * @return The View for the fragment's UI, or null.
+     */
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -38,6 +54,13 @@ public class BasicsPracticeFragment extends Fragment {
         return binding.getRoot();
     }
 
+    /**
+     * Called immediately after {@link #onCreateView(LayoutInflater, ViewGroup, Bundle)}
+     * has returned, but before any saved state has been restored in to the view.
+     *
+     * @param view               The View returned by {@link #onCreateView(LayoutInflater, ViewGroup, Bundle)}.
+     * @param savedInstanceState If non-null, this fragment is being re-constructed from a previous saved state.
+     */
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
@@ -52,6 +75,12 @@ public class BasicsPracticeFragment extends Fragment {
         // Initially hide the "Show Solution" button
         showSolutionButton.setVisibility(View.GONE);
 
+        /**
+         * Sets a click listener on the checkAnswersButton.
+         * When clicked, it retrieves the user's answers, checks them against the correct answers,
+         * and displays the results. If all answers are correct, it disables the EditTexts and stops the timer.
+         * If some answers are incorrect, it shows the "Show Solution" button.
+         */
         checkAnswersButton.setOnClickListener(v -> {
             // Get user's answers
             String answer1 = question1Answer.getText().toString().trim();
@@ -84,7 +113,10 @@ public class BasicsPracticeFragment extends Fragment {
             }
         });
 
-        // Set click listener for the "Show Solution" button
+        /**
+         * Sets a click listener on the showSolutionButton.
+         * When clicked, it displays the solutions to the questions and keeps the button visible.
+         */
         showSolutionButton.setOnClickListener(v -> {
             // Display the solutions
             String solution = "Solutions:\n" +
@@ -102,12 +134,23 @@ public class BasicsPracticeFragment extends Fragment {
         startCountdownTimer();
     }
 
+    /**
+     * Starts a countdown timer that, upon finishing, shows the "Show Solution" button
+     * if all answers are not correct and solutions haven't been shown.
+     */
     private void startCountdownTimer() {
         countDownTimer = new CountDownTimer(30000, 1000) {
+            /**
+             * Callback fired on regular interval.
+             * @param millisUntilFinished The amount of time until finished.
+             */
             public void onTick(long millisUntilFinished) {
                 // We don't need to do anything on each tick
             }
 
+            /**
+             * Callback fired when the time is up.
+             */
             public void onFinish() {
                 // Show the "Show Solution" button if all answers are not correct and solutions haven't been shown
                 if (!allAnswersCorrect && !solutionsShown) {
@@ -117,12 +160,19 @@ public class BasicsPracticeFragment extends Fragment {
         }.start();
     }
 
+    /**
+     * Disables the EditTexts for the question answers.
+     */
     private void disableEditTexts() {
         question1Answer.setEnabled(false);
         question2Answer.setEnabled(false);
         question3Answer.setEnabled(false);
     }
 
+    /**
+     * Called when the view hierarchy associated with the fragment is being removed.
+     * This is a good place to clean up references to the binding object and cancel the timer.
+     */
     @Override
     public void onDestroyView() {
         super.onDestroyView();
