@@ -88,7 +88,7 @@ public class BasicsPracticeFragment extends Fragment {
             String answer3 = question3Answer.getText().toString().trim();
 
             // Check answers
-            boolean isCorrect1 = answer1.equals("Alice");
+            boolean isCorrect1 = answer1.equals("Michal");
             boolean isCorrect2 = answer2.equals("My age is 25");
             boolean isCorrect3 = answer3.equals("15");
 
@@ -120,7 +120,7 @@ public class BasicsPracticeFragment extends Fragment {
         showSolutionButton.setOnClickListener(v -> {
             // Display the solutions
             String solution = "Solutions:\n" +
-                    "Question 1: Alice\n" +
+                    "Question 1: Michal\n" +
                     "Question 2: My age is 25\n" +
                     "Question 3: 15";
             resultsText.setText(solution);

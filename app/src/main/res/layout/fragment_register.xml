@@ -9,7 +9,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        android:background="@drawable/day">
+        android:background="@drawable/day_background">
 
         <!-- EditText for entering name -->
         <EditText
@@ -19,12 +19,16 @@
             android:layout_gravity="center"
             android:layout_marginTop="50dp"
             android:ems="10"
+            android:textColor="#FFFFFF"
+            android:textColorHint="#FFFFFF"
             android:hint="Please enter your name..."
             android:inputType="textPersonName"
             tools:ignore="HardcodedText" />
 
         <!-- EditText for entering email -->
         <EditText
+            android:textColor="#FFFFFF"
+            android:textColorHint="#FFFFFF"
             android:id="@+id/newEmail"
             android:layout_width="300dp"
             android:layout_height="wrap_content"
@@ -37,6 +41,8 @@
 
         <!-- EditText for entering password -->
         <EditText
+            android:textColor="#FFFFFF"
+            android:textColorHint="#FFFFFF"
             android:id="@+id/newPassword"
             android:layout_width="300dp"
             android:layout_height="wrap_content"
@@ -55,12 +61,16 @@
             android:layout_gravity="center"
             android:layout_marginTop="20dp"
             android:ems="10"
+            android:textColor="#FFFFFF"
+            android:textColorHint="#FFFFFF"
             android:hint="Please re-enter your password..."
             android:inputType="textPassword"
             tools:ignore="HardcodedText" />
 
         <!-- EditText for entering phone number -->
         <EditText
+            android:textColor="#FFFFFF"
+            android:textColorHint="#FFFFFF"
             android:id="@+id/newPhoneNumber"
             android:layout_width="300dp"
             android:layout_height="wrap_content"

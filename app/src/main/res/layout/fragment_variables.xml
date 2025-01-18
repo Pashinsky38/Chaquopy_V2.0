@@ -49,7 +49,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:paddingBottom="24dp"
-                android:text="name = 'Alice'\nage = 30\nprint(name)\nprint(age)"
+                android:text="name = 'Libby'\nage = 30\nprint(name)\nprint(age)"
                 android:textSize="18sp"
                 android:textStyle="italic"
                 app:layout_constraintStart_toStartOf="parent"
