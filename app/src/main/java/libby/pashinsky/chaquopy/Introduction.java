@@ -21,7 +21,6 @@ import libby.pashinsky.chaquopy.databinding.ActivityIntroductionBinding;
 public class Introduction extends AppCompatActivity {
 
     private ActivityIntroductionBinding binding;
-    private TextToSpeechHelper textToSpeechHelper;
 
     /**
      * Called when the activity is starting.
@@ -48,19 +47,16 @@ public class Introduction extends AppCompatActivity {
         Button ttsButton = binding.ttsButton;
         Button nextButton = binding.introductionToBasics;
 
-        // Initialize TextToSpeechHelper
-        textToSpeechHelper = new TextToSpeechHelper(this);
-
         // Set click listener for the TTS button
         ttsButton.setOnClickListener(v -> {
             String textToSpeak = descriptionTextView.getText().toString();
-            textToSpeechHelper.speak(textToSpeak);
+            TextToSpeechService.startService(this, textToSpeak);
         });
 
         // Set click listener for the "Next" button using NavigationHelper
         nextButton.setOnClickListener(v -> {
             // Stop Text-to-Speech before navigating
-            textToSpeechHelper.stop();
+            TextToSpeechService.stopSpeaking(this);
             navigateToBasicsFragment();
         });
     }
@@ -72,10 +68,6 @@ public class Introduction extends AppCompatActivity {
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        // Shutdown TextToSpeech when the activity is destroyed
-        if (textToSpeechHelper != null) {
-            textToSpeechHelper.shutdown();
-        }
     }
 
     /**
