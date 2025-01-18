@@ -15,12 +15,17 @@
 
         <!-- EditText for entering email -->
         <EditText
+            android:shadowColor="#000000"
+            android:shadowDx="1"
+            android:shadowDy="1"
+            android:shadowRadius="2"
             android:id="@+id/EnterEmail"
             android:layout_width="300dp"
             android:layout_height="wrap_content"
             android:textColor="#FFFFFF"
             android:layout_marginTop="150dp"
             android:ems="10"
+            android:textSize="20sp"
             android:textColorHint="#FFFFFF"
             android:hint="Enter the Email..."
             android:inputType="text"
@@ -28,18 +33,27 @@
 
         <!-- EditText for entering password -->
         <EditText
+            android:shadowColor="#000000"
+            android:shadowDx="1"
+            android:shadowDy="1"
+            android:shadowRadius="2"
             android:id="@+id/EnterPassword"
             android:layout_width="300dp"
             android:layout_height="wrap_content"
             android:textColorHint="#FFFFFF"
             android:textColor="#FFFFFF"
             android:ems="10"
+            android:textSize="20sp"
             android:hint="Enter the password..."
             android:inputType="textPassword"
             tools:ignore="HardcodedText" />
 
         <!-- Button for logging in -->
         <Button
+            android:shadowColor="#000000"
+            android:shadowDx="1"
+            android:shadowDy="1"
+            android:shadowRadius="2"
             android:id="@+id/buttonLogin"
             android:layout_width="150dp"
             android:layout_height="wrap_content"
@@ -49,6 +63,10 @@
 
         <!-- Button for signing up -->
         <Button
+            android:shadowColor="#000000"
+            android:shadowDx="1"
+            android:shadowDy="1"
+            android:shadowRadius="2"
             android:id="@+id/buttonSignUp"
             android:layout_width="150dp"
             android:layout_height="wrap_content"
@@ -58,6 +76,10 @@
 
         <!-- Button for going back to HomePage -->
         <Button
+            android:shadowColor="#000000"
+            android:shadowDx="1"
+            android:shadowDy="1"
+            android:shadowRadius="2"
             android:id="@+id/gotoHomePageButton"
             android:layout_width="150dp"
             android:layout_height="wrap_content"

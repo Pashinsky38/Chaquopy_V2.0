@@ -4,45 +4,66 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/background_start"
     android:orientation="vertical"
     tools:context=".Introduction">
 
     <!-- Title of the introduction -->
     <TextView
+        android:shadowColor="#000000"
+        android:shadowDx="1"
+        android:shadowDy="1"
+        android:shadowRadius="2"
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
-        android:layout_marginTop="100dp"
+        android:layout_marginTop="100sp"
         android:text="Introduction to Python"
+        android:textColor="#FFFF"
+        android:textSize="35sp"
         tools:ignore="HardcodedText" />
 
     <!-- Description of Python -->
     <TextView
+        android:shadowColor="#000000"
+        android:shadowDx="1"
+        android:shadowDy="1"
+        android:shadowRadius="2"
         android:id="@+id/textView2"
-        android:layout_width="356dp"
-        android:layout_height="388dp"
+        android:layout_width="300sp"
+        android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
-        android:layout_marginTop="10dp"
-        android:text="@string/python_description" />
+        android:layout_marginTop="10sp"
+        android:text="@string/python_description"
+        android:textSize="20sp"
+        android:textColor="#FFFF" />
 
 
     <Button
+        android:shadowColor="#000000"
+        android:shadowDx="1"
+        android:shadowDy="1"
+        android:shadowRadius="2"
         android:id="@+id/ttsButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
-        android:layout_marginTop="10dp"
         android:text="Text to Speech"
+        android:layout_marginTop="20sp"
         tools:ignore="HardcodedText" />
 
     <!-- Next button to BasicsFragment-->
     <Button
+        android:shadowColor="#000000"
+        android:shadowDx="1"
+        android:shadowDy="1"
+        android:shadowRadius="2"
         android:id="@+id/nextButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="120sp"
         android:text="Next"
         tools:ignore="HardcodedText" />
 
@@ -50,7 +71,7 @@
     <FrameLayout
         android:id="@+id/fragment_basics"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
+        android:layout_height="0sp"
         android:layout_weight="1"
         android:layout_gravity="center" />
 
@@ -58,7 +79,7 @@
     <FrameLayout
         android:id="@+id/fragment_variables"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
+        android:layout_height="0sp"
         android:layout_weight="1"
         android:layout_gravity="center"
         android:visibility="gone" />
@@ -67,7 +88,7 @@
     <FrameLayout
         android:id="@+id/fragment_basics_practice"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
+        android:layout_height="0sp"
         android:layout_weight="1"
         android:layout_gravity="center"
         android:visibility="gone" />

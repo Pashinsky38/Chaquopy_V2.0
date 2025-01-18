@@ -9,6 +9,10 @@
 
     <!-- "learning python" text -->
     <TextView
+        android:shadowColor="#000000"
+        android:shadowDx="1"
+        android:shadowDy="1"
+        android:shadowRadius="2"
         android:id="@+id/LearningPython"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -30,6 +34,10 @@
 
     <!-- "with Libby Pashinsky" text -->
     <TextView
+        android:shadowColor="#000000"
+        android:shadowDx="1"
+        android:shadowDy="1"
+        android:shadowRadius="2"
         android:id="@+id/WithLibbyPashinsky"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -42,6 +50,10 @@
 
     <!-- Start button -->
     <Button
+        android:shadowColor="#000000"
+        android:shadowDx="1"
+        android:shadowDy="1"
+        android:shadowRadius="2"
         android:id="@+id/LoginButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

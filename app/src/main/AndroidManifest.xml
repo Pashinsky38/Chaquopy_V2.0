@@ -26,6 +26,7 @@
         <!-- Introduction activity -->
         <activity
             android:name=".Introduction"
+            android:windowSoftInputMode="adjustPan"
             android:exported="false" />
         <!-- Notification receiver -->
         <receiver

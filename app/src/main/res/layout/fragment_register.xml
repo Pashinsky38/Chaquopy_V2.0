@@ -13,12 +13,17 @@
 
         <!-- EditText for entering name -->
         <EditText
+            android:shadowColor="#000000"
+            android:shadowDx="1"
+            android:shadowDy="1"
+            android:shadowRadius="2"
             android:id="@+id/newName"
             android:layout_width="300dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_marginTop="50dp"
             android:ems="10"
+            android:textSize="20sp"
             android:textColor="#FFFFFF"
             android:textColorHint="#FFFFFF"
             android:hint="Please enter your name..."
@@ -27,6 +32,10 @@
 
         <!-- EditText for entering email -->
         <EditText
+            android:shadowColor="#000000"
+            android:shadowDx="1"
+            android:shadowDy="1"
+            android:shadowRadius="2"
             android:textColor="#FFFFFF"
             android:textColorHint="#FFFFFF"
             android:id="@+id/newEmail"
@@ -35,12 +44,17 @@
             android:layout_gravity="center"
             android:layout_marginTop="20dp"
             android:ems="10"
+            android:textSize="20sp"
             android:hint="Please enter your email..."
             android:inputType="textEmailAddress"
             tools:ignore="HardcodedText" />
 
         <!-- EditText for entering password -->
         <EditText
+            android:shadowColor="#000000"
+            android:shadowDx="1"
+            android:shadowDy="1"
+            android:shadowRadius="2"
             android:textColor="#FFFFFF"
             android:textColorHint="#FFFFFF"
             android:id="@+id/newPassword"
@@ -49,18 +63,24 @@
             android:layout_gravity="center"
             android:layout_marginTop="20dp"
             android:ems="10"
+            android:textSize="20sp"
             android:hint="Please enter your password..."
             android:inputType="textPassword"
             tools:ignore="HardcodedText" />
 
         <!-- EditText for re-entering password -->
         <EditText
+            android:shadowColor="#000000"
+            android:shadowDx="1"
+            android:shadowDy="1"
+            android:shadowRadius="2"
             android:id="@+id/newRe_EnterPassword"
             android:layout_width="300dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_marginTop="20dp"
             android:ems="10"
+            android:textSize="20sp"
             android:textColor="#FFFFFF"
             android:textColorHint="#FFFFFF"
             android:hint="Please re-enter your password..."
@@ -69,6 +89,10 @@
 
         <!-- EditText for entering phone number -->
         <EditText
+            android:shadowColor="#000000"
+            android:shadowDx="1"
+            android:shadowDy="1"
+            android:shadowRadius="2"
             android:textColor="#FFFFFF"
             android:textColorHint="#FFFFFF"
             android:id="@+id/newPhoneNumber"
@@ -77,12 +101,17 @@
             android:layout_gravity="center"
             android:layout_marginTop="20dp"
             android:ems="10"
+            android:textSize="20sp"
             android:hint="Please enter your phone number..."
             android:inputType="phone"
             tools:ignore="HardcodedText" />
 
         <!-- Button for signing up -->
         <Button
+            android:shadowColor="#000000"
+            android:shadowDx="1"
+            android:shadowDy="1"
+            android:shadowRadius="2"
             android:id="@+id/newSignUpButton"
             android:layout_width="230dp"
             android:layout_height="wrap_content"
@@ -93,6 +122,10 @@
 
         <!-- Button for going back to Login -->
         <Button
+            android:shadowColor="#000000"
+            android:shadowDx="1"
+            android:shadowDy="1"
+            android:shadowRadius="2"
             android:id="@+id/newLoginButton"
             android:layout_width="230dp"
             android:layout_height="wrap_content"

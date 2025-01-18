@@ -1,144 +1,168 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
+<FrameLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/background_start"
     tools:context="libby.pashinsky.chaquopy.BasicsFragment">
 
     <ScrollView
         android:id="@+id/scrollView"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
-        <androidx.constraintlayout.widget.ConstraintLayout
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:orientation="vertical"
             android:padding="16dp">
 
             <TextView
                 android:id="@+id/Starting_with_basics"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_margin="10sp"
                 android:paddingBottom="16dp"
+                android:shadowColor="#000000"
+                android:shadowDx="1"
+                android:shadowDy="1"
+                android:shadowRadius="2"
                 android:text="Starting with the basics"
+                android:textColor="#FFFF"
                 android:textSize="24sp"
                 android:textStyle="bold"
+                android:layoutDirection="ltr"
                 android:textDirection="ltr"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
                 tools:ignore="HardcodedText" />
 
-            <!-- Explanation how to print in Python -->
             <TextView
                 android:id="@+id/explanation"
-                android:layout_width="0dp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:paddingBottom="16dp"
+                android:layout_margin="10sp"
+                android:shadowColor="#000000"
+                android:shadowDx="1"
+                android:shadowDy="1"
+                android:shadowRadius="2"
                 android:text="In Python, you can display output using the 'print()' function. For example, to print 'Hello, World!', you would use the following code:"
-                android:textSize="16sp"
+                android:textColor="#FFFF"
+                android:textSize="20sp"
+                android:layoutDirection="ltr"
                 android:textDirection="ltr"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/Starting_with_basics"
                 tools:ignore="HardcodedText" />
 
-            <!-- Code example -->
             <TextView
-                android:id="@+id/code_example"
+                android:id="@+id/codeExample"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_margin="10sp"
                 android:paddingBottom="24dp"
+                android:shadowColor="#000000"
+                android:shadowDx="1"
+                android:shadowDy="1"
+                android:shadowRadius="2"
                 android:text="print('Hello, World!')"
-                android:textSize="18sp"
+                android:textColor="#FFFF"
+                android:textSize="20sp"
                 android:textStyle="italic"
+                android:layoutDirection="ltr"
                 android:textDirection="ltr"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/explanation"
                 tools:ignore="HardcodedText" />
 
-            <!-- Newline and concatenation -->
             <TextView
                 android:id="@+id/newline_and_concatenation"
-                android:layout_width="0dp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:paddingBottom="16dp"
+                android:layout_margin="10sp"
+                android:shadowColor="#000000"
+                android:shadowDx="1"
+                android:shadowDy="1"
+                android:shadowRadius="2"
                 android:text="To print text on a new line, you can use '\\n' inside the string. If you want to combine two strings, you can use the '+' operator like this:"
-                android:textSize="16sp"
+                android:textColor="#FFFF"
+                android:textSize="20sp"
+                android:layoutDirection="ltr"
                 android:textDirection="ltr"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/code_example"
                 tools:ignore="HardcodedText" />
 
-            <!-- Code example -->
             <TextView
-                android:id="@+id/code_example2"
+                android:id="@+id/codeExample2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_margin="10sp"
                 android:paddingBottom="24dp"
+                android:shadowColor="#000000"
+                android:shadowDx="1"
+                android:shadowDy="1"
+                android:shadowRadius="2"
                 android:text="print('Hello' + ', World!\\nWelcome to Python!')"
-                android:textSize="18sp"
+                android:textColor="#FFFF"
+                android:textSize="20sp"
                 android:textStyle="italic"
+                android:layoutDirection="ltr"
                 android:textDirection="ltr"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/newline_and_concatenation"
                 tools:ignore="HardcodedText" />
 
-            <!-- Code editor -->
             <EditText
-                android:id="@+id/code_editor"
-                android:layout_width="0dp"
+                android:id="@+id/codeEditor"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_margin="10sp"
                 android:hint="Enter Python code here"
                 android:inputType="textMultiLine"
+                android:shadowColor="#000000"
+                android:shadowDx="1"
+                android:shadowDy="1"
+                android:shadowRadius="2"
+                android:textColor="#FFFF"
+                android:textColorHint="#FFFF"
+                android:textSize="20sp"
+                android:layoutDirection="ltr"
                 android:textDirection="ltr"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/code_example2"
                 tools:ignore="Autofill,HardcodedText" />
 
-            <!-- Run button -->
             <Button
-                android:id="@+id/run_code_button"
+                android:id="@+id/runCodeButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_margin="10sp"
+                android:shadowColor="#000000"
+                android:shadowDx="1"
+                android:shadowDy="1"
+                android:shadowRadius="2"
                 android:text="Run Code"
-                android:textDirection="ltr"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/code_editor"
                 tools:ignore="HardcodedText" />
 
-            <!-- Output text -->
             <TextView
                 android:id="@+id/output_text"
-                android:layout_width="0dp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_margin="10sp"
+                android:shadowColor="#000000"
+                android:shadowDx="1"
+                android:shadowDy="1"
+                android:shadowRadius="2"
+                android:textColor="#FFFF"
+                android:layoutDirection="ltr"
                 android:textDirection="ltr"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/run_code_button" />
+                android:textSize="20sp" />
 
-            <!-- Next button -->
             <Button
-                android:id="@+id/next_button"
+                android:id="@+id/nextButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="100sp"
+                android:layout_margin="10sp"
+                android:shadowColor="#000000"
+                android:shadowDx="1"
+                android:shadowDy="1"
+                android:shadowRadius="2"
                 android:text="Next"
-                android:textDirection="ltr"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/output_text"
                 tools:ignore="HardcodedText" />
 
-        </androidx.constraintlayout.widget.ConstraintLayout>
-
+        </LinearLayout>
     </ScrollView>
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+</FrameLayout>
