@@ -2,8 +2,6 @@ package libby.pashinsky.chaquopy;
 
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
-import android.widget.TextView;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -43,18 +41,14 @@ public class Introduction extends AppCompatActivity {
             return insets;
         });
 
-        TextView descriptionTextView = binding.textView2;
-        Button ttsButton = binding.ttsButton;
-        Button nextButton = binding.introductionToBasics;
-
         // Set click listener for the TTS button
-        ttsButton.setOnClickListener(v -> {
-            String textToSpeak = descriptionTextView.getText().toString();
+        binding.ttsButton.setOnClickListener(v -> {
+            String textToSpeak = binding.textView2.getText().toString();
             TextToSpeechService.startService(this, textToSpeak);
         });
 
         // Set click listener for the "Next" button using NavigationHelper
-        nextButton.setOnClickListener(v -> {
+        binding.nextButton.setOnClickListener(v -> {
             // Stop Text-to-Speech before navigating
             TextToSpeechService.stopSpeaking(this);
             navigateToBasicsFragment();
@@ -84,6 +78,6 @@ public class Introduction extends AppCompatActivity {
         binding.textView.setVisibility(View.GONE);
         binding.textView2.setVisibility(View.GONE);
         binding.ttsButton.setVisibility(View.GONE);
-        binding.introductionToBasics.setVisibility(View.GONE);
+        binding.nextButton.setVisibility(View.GONE);
     }
 }
