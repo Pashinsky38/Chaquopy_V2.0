@@ -19,7 +19,7 @@
 
             <TextView
                 android:id="@+id/variables_title"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:paddingBottom="16dp"
                 android:text="Variables in Python"
@@ -52,7 +52,7 @@
 
             <TextView
                 android:id="@+id/variables_example"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:paddingBottom="24dp"
                 android:text="name = 'Libby'\nage = 30\nprint(name)\nprint(age)"
@@ -85,7 +85,7 @@
 
             <TextView
                 android:id="@+id/variables_rules_example"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:paddingBottom="24dp"
                 android:text="valid_name = 10\n_another_valid_name = 'Hello'\nmyVariable123 = True\n\n# Invalid:\n# 123variable = 5 (starts with a number)\n# my-variable = 'test' (contains a hyphen)"

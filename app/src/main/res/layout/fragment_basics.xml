@@ -20,7 +20,7 @@
 
             <TextView
                 android:id="@+id/Starting_with_basics"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="10sp"
                 android:paddingBottom="16dp"
@@ -54,7 +54,7 @@
 
             <TextView
                 android:id="@+id/codeExample"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="10sp"
                 android:paddingBottom="24dp"
@@ -88,7 +88,7 @@
 
             <TextView
                 android:id="@+id/codeExample2"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="10sp"
                 android:paddingBottom="24dp"
