@@ -5,4 +5,5 @@
     <string name="python_description">Python is a high-level, general-purpose programming language known for its simplicity and readability. It\'s widely used in web development, data analysis, AI, scientific computing, and automation.  Python\'s clear syntax and extensive libraries make it easy to learn and use. It runs on Windows, macOS, and Linux, and uses dynamic typing. It is used for simple scripting to large-scale applications.</string>
     <string name="all_answers_correct">All answers are correct!</string>
     <string name="some_answers_incorrect">Some answers are incorrect.</string>
+    <string name="title_activity_progress">Progress</string>
 </resources>

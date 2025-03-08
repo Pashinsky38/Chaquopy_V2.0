@@ -9,6 +9,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 
 import libby.pashinsky.chaquopy.databinding.FragmentRegisterBinding;
 
@@ -72,14 +73,24 @@ public class RegisterFragment extends Fragment {
             boolean isInserted = helperDB.insertUser(newUser.getName(), newUser.getEmail(), newUser.getPassword(), newUser.getPhoneNumber());
             if (isInserted) {
                 Toast.makeText(getActivity(), "Registered successfully", Toast.LENGTH_SHORT).show();
-                NavigationHelper.navigateToLoginFromRegister(getActivity().getSupportFragmentManager());
+                navigateToLoginFragment();
             } else {
                 Toast.makeText(getActivity(), "Failed to register user", Toast.LENGTH_SHORT).show();
             }
         });
 
-        binding.newLoginButton.setOnClickListener(v -> NavigationHelper.navigateToLoginFromRegister(getActivity().getSupportFragmentManager()));
+        binding.newLoginButton.setOnClickListener(v -> navigateToLoginFragment());
 
         return view;
+    }
+    /**
+     * Navigates to the LoginFragment.
+     * Replaces the current fragment in the fragment_register container with the LoginFragment.
+     */
+    private void navigateToLoginFragment() {
+        FragmentTransaction transaction = getParentFragmentManager().beginTransaction();
+        transaction.replace(R.id.fragment_register, new LoginFragment());
+        transaction.addToBackStack(null); // Add to back stack for navigation history
+        transaction.commit();
     }
 }

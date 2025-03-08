@@ -75,11 +75,11 @@ public class BasicsPracticeFragment extends Fragment {
         // Initially hide the "Show Solution" button
         showSolutionButton.setVisibility(View.GONE);
 
-        /**
-         * Sets a click listener on the checkAnswersButton.
-         * When clicked, it retrieves the user's answers, checks them against the correct answers,
-         * and displays the results. If all answers are correct, it disables the EditTexts and stops the timer.
-         * If some answers are incorrect, it shows the "Show Solution" button.
+        /*
+          Sets a click listener on the checkAnswersButton.
+          When clicked, it retrieves the user's answers, checks them against the correct answers,
+          and displays the results. If all answers are correct, it disables the EditTexts and stops the timer.
+          If some answers are incorrect, it shows the "Show Solution" button.
          */
         checkAnswersButton.setOnClickListener(v -> {
             // Get user's answers
@@ -113,9 +113,9 @@ public class BasicsPracticeFragment extends Fragment {
             }
         });
 
-        /**
-         * Sets a click listener on the showSolutionButton.
-         * When clicked, it displays the solutions to the questions and keeps the button visible.
+        /*
+          Sets a click listener on the showSolutionButton.
+          When clicked, it displays the solutions to the questions and keeps the button visible.
          */
         showSolutionButton.setOnClickListener(v -> {
             // Display the solutions
@@ -171,7 +171,7 @@ public class BasicsPracticeFragment extends Fragment {
 
     /**
      * Called when the view hierarchy associated with the fragment is being removed.
-     * This is a good place to clean up references to the binding object and cancel the timer.
+     * This is a good place to cancel the timer.
      */
     @Override
     public void onDestroyView() {

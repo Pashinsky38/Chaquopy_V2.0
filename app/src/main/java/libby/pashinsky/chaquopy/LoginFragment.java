@@ -10,6 +10,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 
 import libby.pashinsky.chaquopy.databinding.FragmentLoginBinding;
 
@@ -69,9 +70,9 @@ public class LoginFragment extends Fragment {
         });
 
         // Set click listener for the sign up button
-        binding.buttonSignUp.setOnClickListener(v -> NavigationHelper.navigateToRegisterFragment(getActivity().getSupportFragmentManager()));
+        binding.buttonSignUp.setOnClickListener(v -> navigateToRegisterFragment());
         // Set click listener for the skip button
-        binding.gotoHomePageButton.setOnClickListener(v -> NavigationHelper.navigateToHomePage(getActivity()));
+        binding.gotoHomePageButton.setOnClickListener(v -> navigateToHomePage());
 
         return view;
     }
@@ -94,6 +95,26 @@ public class LoginFragment extends Fragment {
      */
     private void navigateToIntroduction() {
         Intent intent = new Intent(requireActivity(), Introduction.class);
+        startActivity(intent);
+    }
+
+    /**
+     * Navigates to the RegisterFragment.
+     * Replaces the current fragment in the fragment_register container with the RegisterFragment.
+     */
+    private void navigateToRegisterFragment() {
+        FragmentTransaction transaction = getParentFragmentManager().beginTransaction();
+        transaction.replace(R.id.fragment_register, new RegisterFragment());
+        transaction.addToBackStack(null); // Add to back stack for navigation history
+        transaction.commit();
+    }
+
+    /**
+     * Navigates to the HomePage activity.
+     * Starts the HomePage activity using an Intent.
+     */
+    private void navigateToHomePage() {
+        Intent intent = new Intent(requireActivity(), HomePage.class);
         startActivity(intent);
     }
 }

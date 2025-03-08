@@ -15,6 +15,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
+import androidx.fragment.app.FragmentTransaction;
 
 import libby.pashinsky.chaquopy.databinding.HomePageBinding;
 
@@ -43,8 +44,7 @@ public class HomePage extends AppCompatActivity {
         setContentView(binding.getRoot());
 
         // Set click listener for the "Go to Login" button
-        binding.LoginButton.setOnClickListener(view ->
-                NavigationHelper.navigateToLoginFragment(getSupportFragmentManager()));
+        binding.LoginButton.setOnClickListener(view -> navigateToLoginFragment());
 
         // Check if the POST_NOTIFICATIONS permission is granted
         if (ContextCompat.checkSelfPermission(this, Manifest.permission.POST_NOTIFICATIONS) != PackageManager.PERMISSION_GRANTED) {
@@ -84,16 +84,38 @@ public class HomePage extends AppCompatActivity {
             Toast.makeText(this, "You are already on HomePage", Toast.LENGTH_SHORT).show();
             return true;
         } else if (id == R.id.menuLogin) {
-            NavigationHelper.navigateToLoginFragment(getSupportFragmentManager());
+            navigateToLoginFragment();
             return true;
         } else if (id == R.id.menuRegister) {
-            NavigationHelper.navigateToRegisterFragment(getSupportFragmentManager());
+            navigateToRegisterFragment();
             return true;
         } else if (id == R.id.menuCloseApp) {
             finishAffinity();
             return true;
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    /**
+     * Navigates to the LoginFragment.
+     * Replaces the current fragment in the fragment_login container with the LoginFragment.
+     */
+    private void navigateToLoginFragment() {
+        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+        transaction.replace(R.id.fragment_login, new LoginFragment());
+        transaction.addToBackStack(null); // Add to back stack for navigation history
+        transaction.commit();
+    }
+
+    /**
+     * Navigates to the RegisterFragment.
+     * Replaces the current fragment in the fragment_register container with the RegisterFragment.
+     */
+    private void navigateToRegisterFragment() {
+        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+        transaction.replace(R.id.fragment_register, new RegisterFragment());
+        transaction.addToBackStack(null); // Add to back stack for navigation history
+        transaction.commit();
     }
 
     /**

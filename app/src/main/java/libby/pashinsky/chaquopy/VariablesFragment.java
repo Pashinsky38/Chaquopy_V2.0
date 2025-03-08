@@ -6,7 +6,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.FrameLayout;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -69,44 +68,32 @@ public class VariablesFragment extends Fragment {
             Python.start(new AndroidPlatform(context));
         }
 
-        /**
-         * Sets a click listener on the runCodeButtonVariables.
-         * When clicked, it calls the {@link #runPythonCode()} method to execute the Python code.
+        /*
+          Sets a click listener on the runCodeButtonVariables.
+          When clicked, it calls the {@link #runPythonCode()} method to execute the Python code.
          */
         binding.runCodeButtonVariables.setOnClickListener(v -> runPythonCode());
 
         // Find the button in the layout
         Button goToPracticeButton = binding.goToPracticeButton;
 
-        /**
-         * Sets a click listener on the goToPracticeButton.
-         * When clicked, it navigates to the {@link BasicsPracticeFragment},
-         * making it visible and hiding the current fragment.
+        /*
+          Sets a click listener on the goToPracticeButton.
+          When clicked, it navigates to the {@link BasicsPracticeFragment}.
          */
-        goToPracticeButton.setOnClickListener(v -> {
-            // Create a new instance of BasicsPracticeFragment
-            BasicsPracticeFragment basicsPracticeFragment = new BasicsPracticeFragment();
+        goToPracticeButton.setOnClickListener(v -> navigateToBasicsPracticeFragment());
+    }
 
-            // Get the FragmentManager
-            FragmentTransaction transaction = getParentFragmentManager().beginTransaction();
-
-            // Replace the current fragment with BasicsPracticeFragment
-            transaction.replace(R.id.fragment_basics_practice, basicsPracticeFragment);
-
-            // Add the transaction to the back stack (optional, but recommended for navigation)
-            transaction.addToBackStack(null);
-
-            // Commit the transaction
-            transaction.commit();
-
-            // Make fragment_basics_practice visible
-            FrameLayout practiceContainer = requireActivity().findViewById(R.id.fragment_basics_practice);
-            practiceContainer.setVisibility(View.VISIBLE);
-
-            // Hide fragment_variables
-            FrameLayout variablesContainer = requireActivity().findViewById(R.id.fragment_variables);
-            variablesContainer.setVisibility(View.GONE);
-        });
+    /**
+     * Navigates to the BasicsPracticeFragment.
+     * Replaces the current fragment with BasicsPracticeFragment and adds it to the back stack.
+     */
+    public void navigateToBasicsPracticeFragment() {
+        BasicsPracticeFragment basicsPracticeFragment = new BasicsPracticeFragment();
+        FragmentTransaction transaction = getParentFragmentManager().beginTransaction();
+        transaction.replace(R.id.fragment_basics_practice, basicsPracticeFragment);
+        transaction.addToBackStack("BasicsPracticeFragment");
+        transaction.commit();
     }
 
     /**
@@ -124,15 +111,5 @@ public class VariablesFragment extends Fragment {
 
         // Display the result in the TextView using View Binding
         binding.outputTextVariables.setText(result.toString());
-    }
-
-    /**
-     * Called when the view hierarchy associated with the fragment is being removed.
-     * This is a good place to clean up references to the binding object.
-     */
-    @Override
-    public void onDestroyView() {
-        super.onDestroyView();
-        binding = null;
     }
 }

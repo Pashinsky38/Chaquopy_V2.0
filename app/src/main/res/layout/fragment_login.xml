@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!-- Root layout for the LoginFragment -->
 <FrameLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
@@ -7,6 +8,7 @@
     android:background="@drawable/night_background"
     tools:context=".LoginFragment">
 
+    <!-- LinearLayout to arrange content vertically -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -87,5 +89,4 @@
             android:text="Go back"
             tools:ignore="HardcodedText" />
     </LinearLayout>
-
 </FrameLayout>

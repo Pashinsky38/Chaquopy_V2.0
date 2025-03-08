@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<!-- Root layout for the Introduction activity -->
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
     android:layout_width="match_parent"
@@ -18,7 +19,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
-        android:layout_marginTop="100sp"
+        android:layout_marginTop="50sp"
         android:text="Introduction to Python"
         android:textColor="#FFFF"
         android:textSize="35sp"
@@ -34,12 +35,12 @@
         android:layout_width="300sp"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
-        android:layout_marginTop="10sp"
+        android:layout_marginTop="160sp"
         android:text="@string/python_description"
         android:textSize="20sp"
         android:textColor="#FFFF" />
 
-
+    <!-- Text to Speech Button -->
     <Button
         android:shadowColor="#000000"
         android:shadowDx="1"
@@ -50,7 +51,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
         android:text="Text to Speech"
-        android:layout_marginTop="20sp"
+        android:layout_marginTop="500sp"
         tools:ignore="HardcodedText" />
 
     <!-- Next button to BasicsFragment-->
@@ -63,7 +64,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
-        android:layout_marginTop="120sp"
+        android:layout_marginTop="600sp"
         android:text="Next"
         tools:ignore="HardcodedText" />
 
@@ -71,25 +72,21 @@
     <FrameLayout
         android:id="@+id/fragment_basics"
         android:layout_width="match_parent"
-        android:layout_height="0sp"
-        android:layout_weight="1"
+        android:layout_height="match_parent"
         android:layout_gravity="center" />
 
     <!-- FrameLayout for VariablesFragment -->
     <FrameLayout
         android:id="@+id/fragment_variables"
         android:layout_width="match_parent"
-        android:layout_height="0sp"
-        android:layout_weight="1"
-        android:layout_gravity="center"
-        android:visibility="gone" />
+        android:layout_height="match_parent"
+        android:layout_gravity="center" />
 
     <!-- FrameLayout for BasicsPracticeFragment -->
     <FrameLayout
         android:id="@+id/fragment_basics_practice"
         android:layout_width="match_parent"
-        android:layout_height="0sp"
-        android:layout_weight="1"
-        android:layout_gravity="center"
-        android:visibility="gone" />
-</LinearLayout>
+        android:layout_height="match_parent"
+        android:layout_gravity="center" />
+
+</FrameLayout>

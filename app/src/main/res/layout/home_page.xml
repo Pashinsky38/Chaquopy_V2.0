@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!-- Root layout for the HomePage activity -->
 <FrameLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
@@ -63,15 +64,14 @@
         android:textSize="20sp"
         tools:ignore="HardcodedText" />
 
-
-    <!-- Login fragment container -->
+    <!-- FrameLayout for LoginFragment -->
     <FrameLayout
         android:id="@+id/fragment_login"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_gravity="center" />
 
-    <!-- Register fragment container -->
+    <!-- FrameLayout for RegisterFragment -->
     <FrameLayout
         android:id="@+id/fragment_register"
         android:layout_width="match_parent"

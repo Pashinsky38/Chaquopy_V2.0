@@ -5,7 +5,6 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.FrameLayout;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -69,21 +68,7 @@ public class BasicsFragment extends Fragment {
         binding.runCodeButton.setOnClickListener(v -> runPythonCode());
 
         // Set click listener for the Next button
-        binding.nextButton.setOnClickListener(v -> {
-            VariablesFragment variablesFragment = new VariablesFragment();
-            FragmentTransaction transaction = getParentFragmentManager().beginTransaction();
-            transaction.replace(R.id.fragment_variables, variablesFragment);
-            transaction.addToBackStack(null);
-            transaction.commit();
-
-            // Hide
-            FrameLayout variablesContainer = requireActivity().findViewById(R.id.fragment_variables);
-            variablesContainer.setVisibility(View.VISIBLE);
-
-            // Hide fragment_basics
-            FrameLayout basicsContainer = requireActivity().findViewById(R.id.fragment_basics);
-            basicsContainer.setVisibility(View.GONE);
-        });
+        binding.nextButton.setOnClickListener(v -> navigateToVariablesFragment());
     }
 
     /**
@@ -104,15 +89,14 @@ public class BasicsFragment extends Fragment {
     }
 
     /**
-     * Called when the view previously created by {@link #onCreateView} has been detached from the fragment.
-     * The next time the fragment needs to be displayed, a new view will be created.
-     * This is called after the fragment's view and before {@link #onDestroy()}.
-     * It is called *regardless* of whether {@link #onCreateView} returned a non-null view.
-     * Internally it is called after the view's state has been saved but before it has been removed from its parent.
+     * Navigates to the VariablesFragment.
+     * Replaces the current fragment.
      */
-    @Override
-    public void onDestroyView() {
-        super.onDestroyView();
-        binding = null; // To avoid memory leaks
+    private void navigateToVariablesFragment() {
+        VariablesFragment variablesFragment = new VariablesFragment();
+        FragmentTransaction transaction = getParentFragmentManager().beginTransaction();
+        transaction.replace(R.id.fragment_variables, variablesFragment);
+        transaction.addToBackStack("VariablesFragment"); // Add a tag
+        transaction.commit();
     }
 }

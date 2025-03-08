@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
-
     <!-- Permission to post notifications -->
     <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
 
@@ -26,8 +25,8 @@
         <!-- Introduction activity -->
         <activity
             android:name=".Introduction"
-            android:windowSoftInputMode="adjustPan"
-            android:exported="false" />
+            android:exported="false"
+            android:windowSoftInputMode="adjustPan" />
         <!-- Notification receiver -->
         <receiver
             android:name=".NotificationReceiver"

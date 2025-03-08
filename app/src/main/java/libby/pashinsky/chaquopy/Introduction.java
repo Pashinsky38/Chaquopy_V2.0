@@ -1,7 +1,6 @@
 package libby.pashinsky.chaquopy;
 
 import android.os.Bundle;
-import android.view.View;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -47,21 +46,12 @@ public class Introduction extends AppCompatActivity {
             TextToSpeechService.startService(this, textToSpeak);
         });
 
-        // Set click listener for the "Next" button using NavigationHelper
+        // Set click listener for the "Next" button
         binding.nextButton.setOnClickListener(v -> {
             // Stop Text-to-Speech before navigating
             TextToSpeechService.stopSpeaking(this);
             navigateToBasicsFragment();
         });
-    }
-
-    /**
-     * Perform any final cleanup before an activity is destroyed.
-     * This can happen either because the activity is finishing (someone called {@link #finish} on it, or because the system is temporarily destroying this instance of the activity to save space.
-     */
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
     }
 
     /**
@@ -75,9 +65,5 @@ public class Introduction extends AppCompatActivity {
         transaction.addToBackStack(null);
         transaction.commit();
 
-        binding.textView.setVisibility(View.GONE);
-        binding.textView2.setVisibility(View.GONE);
-        binding.ttsButton.setVisibility(View.GONE);
-        binding.nextButton.setVisibility(View.GONE);
     }
 }

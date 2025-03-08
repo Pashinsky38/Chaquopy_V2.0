@@ -1,0 +1,154 @@
+@startuml
+class libby.pashinsky.chaquopy.Introduction {
+- ActivityIntroductionBinding binding
+# void onCreate(Bundle)
+- void navigateToBasicsFragment()
+}
+
+
+class libby.pashinsky.chaquopy.LoginFragment {
+- FragmentLoginBinding binding
+- HelperDB dbHelper
++ View onCreateView(LayoutInflater,ViewGroup,Bundle)
+- boolean isUserRegistered(String,String)
+- void navigateToIntroduction()
+- void navigateToRegisterFragment()
+- void navigateToHomePage()
+}
+
+
+class libby.pashinsky.chaquopy.BasicsFragment {
+- FragmentBasicsBinding binding
++ View onCreateView(LayoutInflater,ViewGroup,Bundle)
++ void onViewCreated(View,Bundle)
+- void runPythonCode()
+- void navigateToVariablesFragment()
+}
+
+
+class libby.pashinsky.chaquopy.UserDetails {
+- String name
+- String email
+- String password
+- String phoneNumber
++ String toString()
++ String getName()
++ void setName(String)
++ String getEmail()
++ void setEmail(String)
++ String getPassword()
++ void setPassword(String)
++ String getPhoneNumber()
++ void setPhoneNumber(String)
+}
+
+
+class libby.pashinsky.chaquopy.NotificationReceiver {
+- {static} String CHANNEL_ID
+- {static} String CHANNEL_NAME
+- {static} int NOTIFICATION_ID
++ void onReceive(Context,Intent)
+- void createNotificationChannel(Context)
+}
+
+
+class libby.pashinsky.chaquopy.HomePage {
+- {static} int NOTIFICATION_PERMISSION_REQUEST_CODE
+# void onCreate(Bundle)
++ boolean onCreateOptionsMenu(Menu)
++ boolean onOptionsItemSelected(MenuItem)
+- void navigateToLoginFragment()
+- void navigateToRegisterFragment()
+- void scheduleAlarm()
++ void onRequestPermissionsResult(int,String[],int[])
+}
+
+
+class michal.shefer.chaquipy.ExampleUnitTest {
++ void addition_isCorrect()
+}
+
+class libby.pashinsky.chaquopy.RegisterFragment {
+- FragmentRegisterBinding binding
++ View onCreateView(LayoutInflater,ViewGroup,Bundle)
+- void navigateToLoginFragment()
+}
+
+
+class michal.shefer.chaquipy.ExampleInstrumentedTest {
++ void useAppContext()
+}
+
+class libby.pashinsky.chaquopy.TextToSpeechService {
+- TextToSpeech tts
+- boolean isInitialized
+- Queue<String> speechQueue
++ void onCreate()
++ int onStartCommand(Intent,int,int)
++ IBinder onBind(Intent)
++ void onInit(int)
+- void speak(String)
+- void processSpeechQueue()
+- void stopSpeaking()
++ void onDestroy()
++ {static} void startService(Context,String)
++ {static} void stopSpeaking(Context)
+}
+
+
+class libby.pashinsky.chaquopy.VariablesFragment {
+- FragmentVariablesBinding binding
++ View onCreateView(LayoutInflater,ViewGroup,Bundle)
++ void onViewCreated(View,Bundle)
++ void navigateToBasicsPracticeFragment()
+- void runPythonCode()
+}
+
+
+class libby.pashinsky.chaquopy.BasicsPracticeFragment {
+- FragmentBasicsPracticeBinding binding
+- CountDownTimer countDownTimer
+- Button showSolutionButton
+- boolean allAnswersCorrect
+- TextView resultsText
+- boolean solutionsShown
+- EditText question1Answer
+- EditText question2Answer
+- EditText question3Answer
++ View onCreateView(LayoutInflater,ViewGroup,Bundle)
++ void onViewCreated(View,Bundle)
+- void startCountdownTimer()
+- void disableEditTexts()
++ void onDestroyView()
+}
+
+
+class libby.pashinsky.chaquopy.HelperDB {
+- {static} String DATABASE_NAME
+- {static} int DATABASE_VERSION
++ {static} String USERS_TABLE
++ {static} String USER_NAME
++ {static} String USER_EMAIL
++ {static} String USER_PWD
++ {static} String USER_PHONE
++ void onCreate(SQLiteDatabase)
++ void onUpgrade(SQLiteDatabase,int,int)
++ boolean insertUser(String,String,String,String)
++ String getPasswordByEmail(String)
+}
+
+
+
+
+androidx.appcompat.app.AppCompatActivity <|-- libby.pashinsky.chaquopy.Introduction
+androidx.fragment.app.Fragment <|-- libby.pashinsky.chaquopy.LoginFragment
+androidx.fragment.app.Fragment <|-- libby.pashinsky.chaquopy.BasicsFragment
+android.content.BroadcastReceiver <|-- libby.pashinsky.chaquopy.NotificationReceiver
+androidx.appcompat.app.AppCompatActivity <|-- libby.pashinsky.chaquopy.HomePage
+androidx.fragment.app.Fragment <|-- libby.pashinsky.chaquopy.RegisterFragment
+libby.pashinsky.chaquopy.OnInitListener <|.. libby.pashinsky.chaquopy.TextToSpeechService
+android.app.Service <|-- libby.pashinsky.chaquopy.TextToSpeechService
+androidx.fragment.app.Fragment <|-- libby.pashinsky.chaquopy.VariablesFragment
+androidx.fragment.app.Fragment <|-- libby.pashinsky.chaquopy.BasicsPracticeFragment
+android.database.sqlite.SQLiteOpenHelper <|-- libby.pashinsky.chaquopy.HelperDB
+@enduml

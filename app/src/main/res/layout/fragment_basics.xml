@@ -1,23 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!-- Root layout for the BasicsFragment -->
 <FrameLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/background_start"
-    tools:context="libby.pashinsky.chaquopy.BasicsFragment">
+    tools:context=".BasicsFragment">
 
+    <!-- ScrollView allows the content to be scrollable if it exceeds the screen height -->
     <ScrollView
         android:id="@+id/scrollView"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
+        <!-- LinearLayout to arrange content vertically -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
             android:padding="16dp">
 
+            <!-- Title TextView: "Starting with the basics" -->
             <TextView
                 android:id="@+id/Starting_with_basics"
                 android:layout_width="match_parent"
@@ -36,6 +40,7 @@
                 android:textDirection="ltr"
                 tools:ignore="HardcodedText" />
 
+            <!-- Explanation TextView: Describes the use of the print() function in Python -->
             <TextView
                 android:id="@+id/explanation"
                 android:layout_width="match_parent"
@@ -52,6 +57,7 @@
                 android:textDirection="ltr"
                 tools:ignore="HardcodedText" />
 
+            <!-- Code Example TextView: Shows an example of the print() function -->
             <TextView
                 android:id="@+id/codeExample"
                 android:layout_width="match_parent"
@@ -70,6 +76,7 @@
                 android:textDirection="ltr"
                 tools:ignore="HardcodedText" />
 
+            <!-- Newline and Concatenation TextView: Explains how to use \n and + in Python -->
             <TextView
                 android:id="@+id/newline_and_concatenation"
                 android:layout_width="match_parent"
@@ -86,6 +93,7 @@
                 android:textDirection="ltr"
                 tools:ignore="HardcodedText" />
 
+            <!-- Code Example 2 TextView: Shows an example of \n and + in Python -->
             <TextView
                 android:id="@+id/codeExample2"
                 android:layout_width="match_parent"
@@ -104,6 +112,7 @@
                 android:textDirection="ltr"
                 tools:ignore="HardcodedText" />
 
+            <!-- EditText for user to enter Python code -->
             <EditText
                 android:id="@+id/codeEditor"
                 android:layout_width="match_parent"
@@ -122,6 +131,7 @@
                 android:textDirection="ltr"
                 tools:ignore="Autofill,HardcodedText" />
 
+            <!-- Button to run the code entered in the EditText -->
             <Button
                 android:id="@+id/runCodeButton"
                 android:layout_width="wrap_content"
@@ -135,6 +145,7 @@
                 android:text="Run Code"
                 tools:ignore="HardcodedText" />
 
+            <!-- TextView to display the output of the Python code -->
             <TextView
                 android:id="@+id/output_text"
                 android:layout_width="match_parent"
@@ -149,6 +160,7 @@
                 android:textDirection="ltr"
                 android:textSize="20sp" />
 
+            <!-- Button to navigate to VariablesFragment -->
             <Button
                 android:id="@+id/nextButton"
                 android:layout_width="wrap_content"

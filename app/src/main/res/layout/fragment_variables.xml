@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!-- Root layout for the VariablesFragment -->
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -6,17 +7,20 @@
     android:background="@drawable/background_start"
     tools:context=".VariablesFragment">
 
+    <!-- ScrollView allows the content to be scrollable if it exceeds the screen height -->
     <ScrollView
         android:id="@+id/scrollViewVariables"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
+        <!-- LinearLayout to arrange content vertically -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
             android:padding="16dp">
 
+            <!-- Title of the variables section -->
             <TextView
                 android:id="@+id/variables_title"
                 android:layout_width="match_parent"
@@ -34,6 +38,7 @@
                 android:textDirection="ltr"
                 tools:ignore="HardcodedText" />
 
+            <!-- Explanation of variables -->
             <TextView
                 android:id="@+id/variables_explanation"
                 android:layout_width="match_parent"
@@ -50,6 +55,7 @@
                 android:textDirection="ltr"
                 tools:ignore="HardcodedText" />
 
+            <!-- Example of variables -->
             <TextView
                 android:id="@+id/variables_example"
                 android:layout_width="match_parent"
@@ -67,6 +73,7 @@
                 android:textDirection="ltr"
                 tools:ignore="HardcodedText" />
 
+            <!-- Rules for variable names -->
             <TextView
                 android:id="@+id/variables_rules"
                 android:layout_width="match_parent"
@@ -83,6 +90,7 @@
                 android:textDirection="ltr"
                 tools:ignore="HardcodedText" />
 
+            <!-- Example of valid and invalid variable names -->
             <TextView
                 android:id="@+id/variables_rules_example"
                 android:layout_width="match_parent"
@@ -100,6 +108,7 @@
                 android:textDirection="ltr"
                 tools:ignore="HardcodedText" />
 
+            <!-- EditText for entering Python code -->
             <EditText
                 android:id="@+id/code_editor_variables"
                 android:layout_width="match_parent"
@@ -116,6 +125,7 @@
                 android:textDirection="ltr"
                 tools:ignore="Autofill,HardcodedText" />
 
+            <!-- Button to run the entered code -->
             <Button
                 android:id="@+id/run_code_button_variables"
                 android:layout_width="wrap_content"
@@ -128,6 +138,7 @@
                 android:shadowRadius="2"
                 tools:ignore="HardcodedText" />
 
+            <!-- TextView to display the output of the code -->
             <TextView
                 android:id="@+id/output_text_variables"
                 android:layout_width="match_parent"
@@ -140,6 +151,7 @@
                 android:layoutDirection="ltr"
                 android:textDirection="ltr"/>
 
+            <!-- Button to go to BasicsPracticeFragment -->
             <Button
                 android:id="@+id/goToPracticeButton"
                 android:layout_width="wrap_content"
