@@ -1,0 +1,280 @@
+@startuml
+class libby.pashinsky.chaquopy.Introduction {
+- ActivityIntroductionBinding binding
+# void onCreate(Bundle)
+- void navigateToBasicsFragment()
+}
+
+
+class libby.pashinsky.chaquopy.databinding.FragmentBasicsBinding {
+- FrameLayout rootView
++ TextView StartingWithBasics
++ EditText codeEditor
++ TextView codeExample
++ TextView codeExample2
++ TextView explanation
++ TextView newlineAndConcatenation
++ Button nextButton
++ TextView outputText
++ Button runCodeButton
++ ScrollView scrollView
++ FrameLayout getRoot()
++ {static} FragmentBasicsBinding inflate(LayoutInflater)
++ {static} FragmentBasicsBinding inflate(LayoutInflater,ViewGroup,boolean)
++ {static} FragmentBasicsBinding bind(View)
+}
+
+
+class libby.pashinsky.chaquopy.LoginFragment {
+- FragmentLoginBinding binding
+- HelperDB dbHelper
++ View onCreateView(LayoutInflater,ViewGroup,Bundle)
+- boolean isUserRegistered(String,String)
+- void navigateToIntroduction()
+- void navigateToRegisterFragment()
+- void navigateToHomePage()
+}
+
+
+class libby.pashinsky.chaquopy.databinding.HomePageBinding {
+- FrameLayout rootView
++ TextView LearningPython
++ Button LoginButton
++ ImageView PythonIcon
++ TextView WithLibbyPashinsky
++ FrameLayout fragmentLogin
++ FrameLayout fragmentRegister
++ FrameLayout getRoot()
++ {static} HomePageBinding inflate(LayoutInflater)
++ {static} HomePageBinding inflate(LayoutInflater,ViewGroup,boolean)
++ {static} HomePageBinding bind(View)
+}
+
+
+class libby.pashinsky.chaquopy.databinding.FragmentBasicsPracticeBinding {
+- FrameLayout rootView
++ Button checkAnswersButton
++ TextView practiceTitle
++ EditText question1Answer
++ TextView question1Code
++ EditText question2Answer
++ TextView question2Code
++ EditText question3Answer
++ TextView question3Code
++ TextView resultsText
++ Button showSolutionButton
++ FrameLayout getRoot()
++ {static} FragmentBasicsPracticeBinding inflate(LayoutInflater)
++ {static} FragmentBasicsPracticeBinding inflate(LayoutInflater,ViewGroup,boolean)
++ {static} FragmentBasicsPracticeBinding bind(View)
+}
+
+
+class libby.pashinsky.chaquopy.databinding.FragmentRegisterBinding {
+- FrameLayout rootView
++ EditText newEmail
++ Button newLoginButton
++ EditText newName
++ EditText newPassword
++ EditText newPhoneNumber
++ EditText newReEnterPassword
++ Button newSignUpButton
++ FrameLayout getRoot()
++ {static} FragmentRegisterBinding inflate(LayoutInflater)
++ {static} FragmentRegisterBinding inflate(LayoutInflater,ViewGroup,boolean)
++ {static} FragmentRegisterBinding bind(View)
+}
+
+
+class libby.pashinsky.chaquopy.BasicsFragment {
+- FragmentBasicsBinding binding
++ View onCreateView(LayoutInflater,ViewGroup,Bundle)
++ void onViewCreated(View,Bundle)
+- void runPythonCode()
+- void navigateToVariablesFragment()
+}
+
+
+class libby.pashinsky.chaquopy.UserDetails {
+- String name
+- String email
+- String password
+- String phoneNumber
++ String toString()
++ String getName()
++ void setName(String)
++ String getEmail()
++ void setEmail(String)
++ String getPassword()
++ void setPassword(String)
++ String getPhoneNumber()
++ void setPhoneNumber(String)
+}
+
+
+class libby.pashinsky.chaquopy.NotificationReceiver {
+- {static} String CHANNEL_ID
+- {static} String CHANNEL_NAME
+- {static} int NOTIFICATION_ID
++ void onReceive(Context,Intent)
+- void createNotificationChannel(Context)
+}
+
+
+class libby.pashinsky.chaquopy.HomePage {
+- {static} int NOTIFICATION_PERMISSION_REQUEST_CODE
+# void onCreate(Bundle)
++ boolean onCreateOptionsMenu(Menu)
++ boolean onOptionsItemSelected(MenuItem)
+- void navigateToLoginFragment()
+- void navigateToRegisterFragment()
+- void scheduleAlarm()
++ void onRequestPermissionsResult(int,String[],int[])
+}
+
+
+class michal.shefer.chaquipy.ExampleUnitTest {
++ void addition_isCorrect()
+}
+
+class libby.pashinsky.chaquopy.databinding.FragmentVariablesBinding {
+- FrameLayout rootView
++ EditText codeEditorVariables
++ Button goToPracticeButton
++ TextView outputTextVariables
++ Button runCodeButtonVariables
++ ScrollView scrollViewVariables
++ TextView variablesExample
++ TextView variablesExplanation
++ TextView variablesRules
++ TextView variablesRulesExample
++ TextView variablesTitle
++ FrameLayout getRoot()
++ {static} FragmentVariablesBinding inflate(LayoutInflater)
++ {static} FragmentVariablesBinding inflate(LayoutInflater,ViewGroup,boolean)
++ {static} FragmentVariablesBinding bind(View)
+}
+
+
+class libby.pashinsky.chaquopy.RegisterFragment {
+- FragmentRegisterBinding binding
++ View onCreateView(LayoutInflater,ViewGroup,Bundle)
+- void navigateToLoginFragment()
+}
+
+
+class michal.shefer.chaquipy.ExampleInstrumentedTest {
++ void useAppContext()
+}
+
+class libby.pashinsky.chaquopy.databinding.ActivityIntroductionBinding {
+- FrameLayout rootView
++ FrameLayout fragmentBasics
++ FrameLayout fragmentBasicsPractice
++ FrameLayout fragmentVariables
++ FrameLayout main
++ Button nextButton
++ TextView textView
++ TextView textView2
++ Button ttsButton
++ FrameLayout getRoot()
++ {static} ActivityIntroductionBinding inflate(LayoutInflater)
++ {static} ActivityIntroductionBinding inflate(LayoutInflater,ViewGroup,boolean)
++ {static} ActivityIntroductionBinding bind(View)
+}
+
+
+class libby.pashinsky.chaquopy.TextToSpeechService {
+- TextToSpeech tts
+- boolean isInitialized
+- Queue<String> speechQueue
++ void onCreate()
++ int onStartCommand(Intent,int,int)
++ IBinder onBind(Intent)
++ void onInit(int)
+- void speak(String)
+- void processSpeechQueue()
+- void stopSpeaking()
++ void onDestroy()
++ {static} void startService(Context,String)
++ {static} void stopSpeaking(Context)
+}
+
+
+class libby.pashinsky.chaquopy.VariablesFragment {
+- FragmentVariablesBinding binding
++ View onCreateView(LayoutInflater,ViewGroup,Bundle)
++ void onViewCreated(View,Bundle)
++ void navigateToBasicsPracticeFragment()
+- void runPythonCode()
+}
+
+
+class libby.pashinsky.chaquopy.databinding.FragmentLoginBinding {
+- FrameLayout rootView
++ EditText EnterEmail
++ EditText EnterPassword
++ Button buttonLogin
++ Button buttonSignUp
++ Button gotoHomePageButton
++ FrameLayout getRoot()
++ {static} FragmentLoginBinding inflate(LayoutInflater)
++ {static} FragmentLoginBinding inflate(LayoutInflater,ViewGroup,boolean)
++ {static} FragmentLoginBinding bind(View)
+}
+
+
+class libby.pashinsky.chaquopy.BasicsPracticeFragment {
+- FragmentBasicsPracticeBinding binding
+- CountDownTimer countDownTimer
+- Button showSolutionButton
+- boolean allAnswersCorrect
+- TextView resultsText
+- boolean solutionsShown
+- EditText question1Answer
+- EditText question2Answer
+- EditText question3Answer
++ View onCreateView(LayoutInflater,ViewGroup,Bundle)
++ void onViewCreated(View,Bundle)
+- void startCountdownTimer()
+- void disableEditTexts()
++ void onDestroyView()
+}
+
+
+class libby.pashinsky.chaquopy.HelperDB {
+- {static} String DATABASE_NAME
+- {static} int DATABASE_VERSION
++ {static} String USERS_TABLE
++ {static} String USER_NAME
++ {static} String USER_EMAIL
++ {static} String USER_PWD
++ {static} String USER_PHONE
++ void onCreate(SQLiteDatabase)
++ void onUpgrade(SQLiteDatabase,int,int)
++ boolean insertUser(String,String,String,String)
++ String getPasswordByEmail(String)
+}
+
+
+
+
+androidx.appcompat.app.AppCompatActivity <|-- libby.pashinsky.chaquopy.Introduction
+androidx.viewbinding.ViewBinding <|.. libby.pashinsky.chaquopy.databinding.FragmentBasicsBinding
+androidx.fragment.app.Fragment <|-- libby.pashinsky.chaquopy.LoginFragment
+androidx.viewbinding.ViewBinding <|.. libby.pashinsky.chaquopy.databinding.HomePageBinding
+androidx.viewbinding.ViewBinding <|.. libby.pashinsky.chaquopy.databinding.FragmentBasicsPracticeBinding
+androidx.viewbinding.ViewBinding <|.. libby.pashinsky.chaquopy.databinding.FragmentRegisterBinding
+androidx.fragment.app.Fragment <|-- libby.pashinsky.chaquopy.BasicsFragment
+android.content.BroadcastReceiver <|-- libby.pashinsky.chaquopy.NotificationReceiver
+androidx.appcompat.app.AppCompatActivity <|-- libby.pashinsky.chaquopy.HomePage
+androidx.viewbinding.ViewBinding <|.. libby.pashinsky.chaquopy.databinding.FragmentVariablesBinding
+androidx.fragment.app.Fragment <|-- libby.pashinsky.chaquopy.RegisterFragment
+androidx.viewbinding.ViewBinding <|.. libby.pashinsky.chaquopy.databinding.ActivityIntroductionBinding
+libby.pashinsky.chaquopy.OnInitListener <|.. libby.pashinsky.chaquopy.TextToSpeechService
+android.app.Service <|-- libby.pashinsky.chaquopy.TextToSpeechService
+androidx.fragment.app.Fragment <|-- libby.pashinsky.chaquopy.VariablesFragment
+androidx.viewbinding.ViewBinding <|.. libby.pashinsky.chaquopy.databinding.FragmentLoginBinding
+androidx.fragment.app.Fragment <|-- libby.pashinsky.chaquopy.BasicsPracticeFragment
+android.database.sqlite.SQLiteOpenHelper <|-- libby.pashinsky.chaquopy.HelperDB
+@enduml
