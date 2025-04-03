@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/background_start"
-    android:padding="16dp"
+    android:padding="16sp"
     tools:context=".BasicsPracticeFragment">
 
     <!-- ScrollView to allow scrolling if content exceeds screen height -->
@@ -35,13 +35,29 @@
                 android:shadowRadius="2"
                 tools:ignore="HardcodedText" />
 
+            <!-- Instruction TextView: Tells the user to type the output precisely -->
+            <TextView
+                android:id="@+id/instruction_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5sp"
+                android:layout_marginEnd="10sp"
+                android:text="Type the output precisely as it would appear in the console."
+                android:textColor="#FFFF"
+                android:textSize="16sp"
+                android:shadowColor="#000000"
+                android:shadowDx="1"
+                android:shadowDy="1"
+                android:shadowRadius="2"
+                tools:ignore="HardcodedText" />
+
             <!-- Question 1 Section -->
             <!-- Code snippet for Question 1 -->
             <TextView
                 android:id="@+id/question1_code"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
+                android:layout_marginTop="16sp"
                 android:text="name = 'Michal'\nprint(name)"
                 android:textColor="#FFFF"
                 android:textSize="20sp"
@@ -56,7 +72,7 @@
                 android:id="@+id/question1_answer"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
+                android:layout_marginTop="8sp"
                 android:hint="Enter the output here"
                 android:inputType="text"
                 android:textColor="#FFFF"
@@ -75,7 +91,7 @@
                 android:id="@+id/question2_code"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
+                android:layout_marginTop="16sp"
                 android:text="age = 25\nprint('My age is', age)"
                 android:textColor="#FFFF"
                 android:textSize="20sp"
@@ -90,7 +106,7 @@
                 android:id="@+id/question2_answer"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
+                android:layout_marginTop="8sp"
                 android:hint="Enter the output here"
                 android:inputType="text"
                 android:textColor="#FFFF"
@@ -109,7 +125,7 @@
                 android:id="@+id/question3_code"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
+                android:layout_marginTop="16sp"
                 android:text="x = 10\ny = 5\nprint(x + y)"
                 android:textColor="#FFFF"
                 android:textSize="20sp"
@@ -124,7 +140,7 @@
                 android:id="@+id/question3_answer"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
+                android:layout_marginTop="8sp"
                 android:hint="Enter the output here"
                 android:inputType="text"
                 android:textColor="#FFFF"
@@ -143,7 +159,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
-                android:layout_marginTop="24dp"
+                android:layout_marginTop="24sp"
                 android:text="Check Answers"
                 android:shadowColor="#000000"
                 android:shadowDx="1"
@@ -156,7 +172,7 @@
                 android:id="@+id/results_text"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
+                android:layout_marginTop="16sp"
                 android:textAlignment="center"
                 android:textColor="#FFFF"
                 android:textSize="20sp"
@@ -171,12 +187,26 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
-                android:layout_marginTop="16dp"
+                android:layout_marginTop="16sp"
                 android:text="Show Solution"
                 android:shadowColor="#000000"
                 android:shadowDx="1"
                 android:shadowDy="1"
                 android:shadowRadius="2"
+                tools:ignore="HardcodedText" />
+
+            <!-- Button to go to Conditional Statements Activity -->
+            <Button
+                android:id="@+id/goToConditionalStatementsButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="32sp"
+                android:shadowColor="#000000"
+                android:shadowDx="1"
+                android:shadowDy="1"
+                android:shadowRadius="2"
+                android:text="Go to Conditional Statements"
                 tools:ignore="HardcodedText" />
         </LinearLayout>
     </ScrollView>

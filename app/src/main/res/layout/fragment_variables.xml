@@ -17,15 +17,14 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:padding="16dp">
+            android:orientation="vertical">
 
             <!-- Title of the variables section -->
             <TextView
                 android:id="@+id/variables_title"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:paddingBottom="16dp"
+                android:layout_margin="10sp"
                 android:text="Variables in Python"
                 android:textColor="#FFFF"
                 android:textSize="24sp"
@@ -43,7 +42,7 @@
                 android:id="@+id/variables_explanation"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:paddingBottom="16dp"
+                android:layout_margin="10sp"
                 android:text="Variables are used to store data. You can think of them as containers that hold values. To create a variable, you choose a name and assign a value to it using the '=' operator."
                 android:textColor="#FFFF"
                 android:textSize="16sp"
@@ -60,7 +59,7 @@
                 android:id="@+id/variables_example"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:paddingBottom="24dp"
+                android:layout_margin="10sp"
                 android:text="name = 'Libby'\nage = 30\nprint(name)\nprint(age)"
                 android:textColor="#FFFF"
                 android:textSize="18sp"
@@ -78,7 +77,7 @@
                 android:id="@+id/variables_rules"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:paddingBottom="16dp"
+                android:layout_margin="10sp"
                 android:text="Variable names must start with a letter or an underscore, and can contain letters, numbers, and underscores. They are case-sensitive."
                 android:textColor="#FFFF"
                 android:textSize="16sp"
@@ -95,7 +94,7 @@
                 android:id="@+id/variables_rules_example"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:paddingBottom="24dp"
+                android:layout_margin="10sp"
                 android:text="valid_name = 10\n_another_valid_name = 'Hello'\nmyVariable123 = True\n\n# Invalid:\n# 123variable = 5 (starts with a number)\n# my-variable = 'test' (contains a hyphen)"
                 android:textColor="#FFFF"
                 android:textSize="18sp"
@@ -108,11 +107,29 @@
                 android:textDirection="ltr"
                 tools:ignore="HardcodedText" />
 
+            <!-- Challenge TextView: Prompts the user to try creating variables -->
+            <TextView
+                android:id="@+id/variables_challenge"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10sp"
+                android:shadowColor="#000000"
+                android:shadowDx="1"
+                android:shadowDy="1"
+                android:shadowRadius="2"
+                android:text="Now it's your turn! Try creating a variable with your name and another with your age, then print them!"
+                android:textColor="#FFFF"
+                android:textSize="20sp"
+                android:layoutDirection="ltr"
+                android:textDirection="ltr"
+                tools:ignore="HardcodedText" />
+
             <!-- EditText for entering Python code -->
             <EditText
                 android:id="@+id/code_editor_variables"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_margin="10sp"
                 android:hint="Enter Python code here"
                 android:inputType="textMultiLine"
                 android:textColor="#FFFF"
@@ -131,6 +148,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
+                android:layout_margin="10sp"
                 android:text="Run Code"
                 android:shadowColor="#000000"
                 android:shadowDx="1"
@@ -143,6 +161,7 @@
                 android:id="@+id/output_text_variables"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_margin="10sp"
                 android:textColor="#FFFF"
                 android:shadowColor="#000000"
                 android:shadowDx="1"
@@ -157,6 +176,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
+                android:layout_margin="10sp"
                 android:text="Go to Practice"
                 android:shadowColor="#000000"
                 android:shadowDx="1"

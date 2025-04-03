@@ -18,8 +18,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:padding="16dp">
+            android:orientation="vertical">
 
             <!-- Title TextView: "Starting with the basics" -->
             <TextView
@@ -27,7 +26,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="10sp"
-                android:paddingBottom="16dp"
                 android:shadowColor="#000000"
                 android:shadowDx="1"
                 android:shadowDy="1"
@@ -63,7 +61,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="10sp"
-                android:paddingBottom="24dp"
                 android:shadowColor="#000000"
                 android:shadowDx="1"
                 android:shadowDy="1"
@@ -99,7 +96,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="10sp"
-                android:paddingBottom="24dp"
                 android:shadowColor="#000000"
                 android:shadowDx="1"
                 android:shadowDy="1"
@@ -108,6 +104,23 @@
                 android:textColor="#FFFF"
                 android:textSize="20sp"
                 android:textStyle="italic"
+                android:layoutDirection="ltr"
+                android:textDirection="ltr"
+                tools:ignore="HardcodedText" />
+
+            <!-- Challenge TextView: Prompts the user to try printing their name and age -->
+            <TextView
+                android:id="@+id/challengeTextView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10sp"
+                android:shadowColor="#000000"
+                android:shadowDx="1"
+                android:shadowDy="1"
+                android:shadowRadius="2"
+                android:text="Your turn! Can you print your name and age on separate lines using a single print() statement?"
+                android:textColor="#FFFF"
+                android:textSize="20sp"
                 android:layoutDirection="ltr"
                 android:textDirection="ltr"
                 tools:ignore="HardcodedText" />

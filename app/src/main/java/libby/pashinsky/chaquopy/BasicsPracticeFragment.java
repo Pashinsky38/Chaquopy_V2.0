@@ -31,6 +31,8 @@ public class BasicsPracticeFragment extends Fragment {
     private EditText question1Answer;
     private EditText question2Answer;
     private EditText question3Answer;
+    private int incorrectAttempts = 0; // Counter for incorrect attempts
+    private Button goToConditionalStatementsButton;
 
     /**
      * Required empty public constructor for the BasicsPracticeFragment.
@@ -71,15 +73,17 @@ public class BasicsPracticeFragment extends Fragment {
         question1Answer = binding.question1Answer;
         question2Answer = binding.question2Answer;
         question3Answer = binding.question3Answer;
+        goToConditionalStatementsButton = binding.goToConditionalStatementsButton;
 
-        // Initially hide the "Show Solution" button
+        // Initially hide the "Show Solution" button and the "Go to Conditional Statements" button
         showSolutionButton.setVisibility(View.GONE);
+        goToConditionalStatementsButton.setVisibility(View.GONE);
 
         /*
           Sets a click listener on the checkAnswersButton.
           When clicked, it retrieves the user's answers, checks them against the correct answers,
           and displays the results. If all answers are correct, it disables the EditTexts and stops the timer.
-          If some answers are incorrect, it shows the "Show Solution" button.
+          If some answers are incorrect, it shows the "Show Solution" button after 3 tries.
          */
         checkAnswersButton.setOnClickListener(v -> {
             // Get user's answers
@@ -104,10 +108,16 @@ public class BasicsPracticeFragment extends Fragment {
                 showSolutionButton.setVisibility(View.GONE);
                 // Disable the EditTexts
                 disableEditTexts();
+                // Reset incorrect attempts
+                incorrectAttempts = 0;
+                // Show the "Go to Conditional Statements" button
+                goToConditionalStatementsButton.setVisibility(View.VISIBLE);
             } else {
                 resultsText.setText(getString(R.string.some_answers_incorrect));
-                // Show the "Show Solution" button if some answers are incorrect
-                if (!solutionsShown) {
+                incorrectAttempts++; // Increment incorrect attempts
+
+                // Show the "Show Solution" button if there are 3 incorrect attempts and solutions haven't been shown
+                if (incorrectAttempts >= 3 && !solutionsShown) {
                     showSolutionButton.setVisibility(View.VISIBLE);
                 }
             }

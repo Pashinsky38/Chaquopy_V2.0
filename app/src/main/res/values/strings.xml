@@ -6,4 +6,5 @@
     <string name="all_answers_correct">All answers are correct!</string>
     <string name="some_answers_incorrect">Some answers are incorrect.</string>
     <string name="title_activity_progress">Progress</string>
+    <string name="title_activity_test">TestActivity</string>
 </resources>
