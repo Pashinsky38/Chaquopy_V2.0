@@ -1,5 +1,6 @@
 package libby.pashinsky.chaquopy;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.view.LayoutInflater;
@@ -67,6 +68,7 @@ public class BasicsPracticeFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
+        // Initialize views using binding
         Button checkAnswersButton = binding.checkAnswersButton;
         resultsText = binding.resultsText;
         showSolutionButton = binding.showSolutionButton;
@@ -140,8 +142,19 @@ public class BasicsPracticeFragment extends Fragment {
             showSolutionButton.setVisibility(View.VISIBLE);
         });
 
+        // Set click listener for the "Go to Conditional Statements" button
+        goToConditionalStatementsButton.setOnClickListener(v -> navigateToConditionalStatements());
+
         // Start the countdown timer
         startCountdownTimer();
+    }
+
+    /**
+     * Navigates to the ConditionalsStatements activity.
+     */
+    private void navigateToConditionalStatements() {
+        Intent intent = new Intent(getActivity(), ConditionalsStatements.class);
+        startActivity(intent);
     }
 
     /**

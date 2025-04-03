@@ -1,0 +1,224 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Root layout for the ConditionalsStatements activity -->
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/background_start"
+    tools:context=".ConditionalsStatements">
+
+    <!-- ScrollView to allow scrolling if content exceeds screen height -->
+    <ScrollView
+        android:id="@+id/scrollView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <!-- LinearLayout to arrange content vertically -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <!-- Title TextView: "Conditional Statements" -->
+            <TextView
+                android:id="@+id/conditional_statements_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10sp"
+                android:shadowColor="#000000"
+                android:shadowDx="1"
+                android:shadowDy="1"
+                android:shadowRadius="2"
+                android:text="Conditional Statements"
+                android:textColor="#FFFF"
+                android:textSize="24sp"
+                android:textStyle="bold"
+                android:layoutDirection="ltr"
+                android:textDirection="ltr"
+                tools:ignore="HardcodedText" />
+
+            <!-- Explanation TextView: Describes conditional statements in Python -->
+            <TextView
+                android:id="@+id/conditional_statements_explanation1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10sp"
+                android:shadowColor="#000000"
+                android:shadowDx="1"
+                android:shadowDy="1"
+                android:shadowRadius="2"
+                android:text="Conditional statements (if, elif, else) allow you to execute different blocks of code based on whether a condition is true or false."
+                android:textColor="#FFFF"
+                android:textSize="16sp"
+                android:layoutDirection="ltr"
+                android:textDirection="ltr"
+                tools:ignore="HardcodedText" />
+
+            <!-- Code Example TextView: Shows an example of conditional statements -->
+            <TextView
+                android:id="@+id/conditional_statements_explanation2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10sp"
+                android:shadowColor="#000000"
+                android:shadowDx="1"
+                android:shadowDy="1"
+                android:shadowRadius="2"
+                android:text="The elif keyword allows you to add multiple conditions. If the if condition is false, it checks the elif conditions one by one. If an elif condition is true, its code is executed, and the rest are skipped. If none of the if or elif conditions are true, the else block, if present, is executed."
+                android:textColor="#FFFF"
+                android:textSize="16sp"
+                android:layoutDirection="ltr"
+                android:textDirection="ltr"
+                tools:ignore="HardcodedText" />
+
+            <!-- Code Example TextView: Shows an example of conditional statements -->
+            <TextView
+                android:id="@+id/operators_explanation1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10sp"
+                android:shadowColor="#000000"
+                android:shadowDx="1"
+                android:shadowDy="1"
+                android:shadowRadius="2"
+                android:text="Comparison operators (==, !=, &gt;, &lt;, &gt;=, &lt;=) are used to compare values in conditions."
+                android:textColor="#FFFF"
+                android:textSize="16sp"
+                android:layoutDirection="ltr"
+                android:textDirection="ltr"
+                tools:ignore="HardcodedText" />
+
+            <!-- Code Example TextView: Compares values using comparison operators -->
+            <TextView
+                android:id="@+id/operators_comparison_example1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10sp"
+                android:shadowColor="#000000"
+                android:shadowDx="1"
+                android:shadowDy="1"
+                android:shadowRadius="2"
+                android:text="x == y  # x is equal to y\nx != y  # x is not equal to y\nx &gt; y   # x is greater than y\nx &lt; y   # x is less than y\nx &gt;= y  # x is greater than or equal to y\nx &lt;= y  # x is less than or equal to y"
+                android:textColor="#FFFF"
+                android:textSize="16sp"
+                android:textStyle="italic"
+                android:layoutDirection="ltr"
+                android:textDirection="ltr"
+                tools:ignore="HardcodedText" />
+
+            <!-- Explanation TextView: Describes logical operators (and, or, not) -->
+            <TextView
+                android:id="@+id/logical_operators_explanation"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10sp"
+                android:shadowColor="#000000"
+                android:shadowDx="1"
+                android:shadowDy="1"
+                android:shadowRadius="2"
+                android:text="Logical operators (and, or, not) are used to combine or modify conditions."
+                android:textColor="#FFFF"
+                android:textSize="16sp"
+                android:layoutDirection="ltr"
+                android:textDirection="ltr"
+                tools:ignore="HardcodedText" />
+
+            <!-- Code Example TextView: Shows examples of logical operators -->
+            <TextView
+                android:id="@+id/logical_operators_example"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10sp"
+                android:shadowColor="#000000"
+                android:shadowDx="1"
+                android:shadowDy="1"
+                android:shadowRadius="2"
+                android:text="x and y  # True if both x and y are true\nx or y   # True if either x or y is true\nnot x    # True if x is false"
+                android:textColor="#FFFF"
+                android:textSize="16sp"
+                android:textStyle="italic"
+                android:layoutDirection="ltr"
+                android:textDirection="ltr"
+                tools:ignore="HardcodedText" />
+
+            <TextView
+                android:id="@+id/conditional_statement_example5"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10sp"
+                android:shadowColor="#000000"
+                android:shadowDx="1"
+                android:shadowDy="1"
+                android:shadowRadius="2"
+                android:text="age = 20\nif age &lt; 13:\n    print(&quot;You are a child&quot;)\nelif age &lt; 18:\n    print(&quot;You are a teenager&quot;)\nelif age &lt; 65:\n    print(&quot;You are an adult&quot;)\nelse:\n    print(&quot;You are a senior&quot;)"
+                android:textColor="#FFFF"
+                android:textSize="16sp"
+                android:textStyle="italic"
+                android:layoutDirection="ltr"
+                android:textDirection="ltr"
+                tools:ignore="HardcodedText" />
+
+            <TextView
+                android:id="@+id/challengeTextView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10sp"
+                android:shadowColor="#000000"
+                android:shadowDx="1"
+                android:shadowDy="1"
+                android:shadowRadius="2"
+                android:text="Now it's your turn! Try creating a program that checks if a number is positive, negative, or zero."
+                android:textColor="#FFFF"
+                android:textSize="16sp"
+                android:layoutDirection="ltr"
+                android:textDirection="ltr"
+                tools:ignore="HardcodedText" />
+
+            <EditText
+                android:id="@+id/codeEditor"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10sp"
+                android:hint="Enter Python code here"
+                android:inputType="textMultiLine"
+                android:shadowColor="#000000"
+                android:shadowDx="1"
+                android:shadowDy="1"
+                android:shadowRadius="2"
+                android:textColor="#FFFF"
+                android:textColorHint="#FFFF"
+                android:textSize="16sp"
+                android:layoutDirection="ltr"
+                android:textDirection="ltr"
+                tools:ignore="Autofill,HardcodedText" />
+
+            <Button
+                android:id="@+id/runCodeButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_margin="10sp"
+                android:shadowColor="#000000"
+                android:shadowDx="1"
+                android:shadowDy="1"
+                android:shadowRadius="2"
+                android:text="Run Code"
+                tools:ignore="HardcodedText" />
+
+            <TextView
+                android:id="@+id/output_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10sp"
+                android:shadowColor="#000000"
+                android:shadowDx="1"
+                android:shadowDy="1"
+                android:shadowRadius="2"
+                android:textColor="#FFFF"
+                android:layoutDirection="ltr"
+                android:textDirection="ltr"
+                android:textSize="16sp" />
+
+        </LinearLayout>
+    </ScrollView>
+</FrameLayout>

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<manifest xmlns:android="http://schemas.android.com/apk/res/android" >
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
     <!-- Permission to post notifications -->
     <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
 
@@ -12,12 +12,16 @@
         android:roundIcon="@drawable/python_programming_language_icon"
         android:supportsRtl="true"
         android:theme="@style/Theme.Chaquopy">
+        <activity
+            android:name=".ConditionalsStatements"
+            android:exported="false"
+            android:windowSoftInputMode="adjustPan" />
         <!-- Text-to-speech service -->
         <service
             android:name=".TextToSpeechService"
             android:enabled="true"
             android:exported="true"
-            android:permission="android.permission.BIND_TEXT_TO_SPEECH_SERVICE" >
+            android:permission="android.permission.BIND_TEXT_TO_SPEECH_SERVICE">
             <intent-filter>
                 <action android:name="android.speech.tts.TextToSpeechService" />
             </intent-filter>
@@ -34,7 +38,7 @@
         <!-- Home page activity -->
         <activity
             android:name=".HomePage"
-            android:exported="true" >
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

@@ -16,7 +16,8 @@ def alarm_handler(signum, frame):
     """
     raise TimeoutExpired
 
-def main(code, timeout=2):
+# I set it to 1 because the python code is really short on phone, so the user should get a result instantly
+def main(code, timeout=1):
     """
     Executes the provided Python code with a timeout to prevent infinite loops.
 
