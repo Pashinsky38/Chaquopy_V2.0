@@ -219,6 +219,27 @@
                 android:textDirection="ltr"
                 android:textSize="16sp" />
 
+            <!-- Button to go to ConditionalsStatementsPractice -->
+            <Button
+                android:id="@+id/goToConditionalsPracticeButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_margin="10sp"
+                android:shadowColor="#000000"
+                android:shadowDx="1"
+                android:shadowDy="1"
+                android:shadowRadius="2"
+                android:text="Go to Practice"
+                tools:ignore="HardcodedText" />
         </LinearLayout>
     </ScrollView>
+
+    <!-- FrameLayout to hold ConditionalsStatementsPractice fragment -->
+    <FrameLayout
+        android:id="@+id/fragment_conditionals_practice"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="center" />
+
 </FrameLayout>

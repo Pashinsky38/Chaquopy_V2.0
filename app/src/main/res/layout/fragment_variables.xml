@@ -107,6 +107,59 @@
                 android:textDirection="ltr"
                 tools:ignore="HardcodedText" />
 
+            <!-- Explanation of operators -->
+            <TextView
+                android:id="@+id/operators_explanation"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10sp"
+                android:text="Python supports various mathematical operators:"
+                android:textColor="#FFFF"
+                android:textSize="16sp"
+                android:shadowColor="#000000"
+                android:shadowDx="1"
+                android:shadowDy="1"
+                android:shadowRadius="2"
+                android:layoutDirection="ltr"
+                android:textDirection="ltr"
+                tools:ignore="HardcodedText" />
+
+            <!-- Example of operators -->
+            <TextView
+                android:id="@+id/operators_example"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10sp"
+                android:text="Addition: +\nSubtraction: -\nMultiplication: *\nDivision: /\nModulo (remainder): %\nExponentiation: **"
+                android:textColor="#FFFF"
+                android:textSize="16sp"
+                android:textStyle="italic"
+                android:shadowColor="#000000"
+                android:shadowDx="1"
+                android:shadowDy="1"
+                android:shadowRadius="2"
+                android:layoutDirection="ltr"
+                android:textDirection="ltr"
+                tools:ignore="HardcodedText" />
+
+            <!-- Example of operators in use -->
+            <TextView
+                android:id="@+id/operators_in_use_example"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10sp"
+                android:text="x = 10\ny = 3\nprint(x + y)  # Output: 13\nprint(x - y)  # Output: 7\nprint(x * y)  # Output: 30\nprint(x / y)  # Output: 3.333...\nprint(x % y)  # Output: 1\nprint(x ** y) # Output: 1000"
+                android:textColor="#FFFF"
+                android:textSize="16sp"
+                android:textStyle="italic"
+                android:shadowColor="#000000"
+                android:shadowDx="1"
+                android:shadowDy="1"
+                android:shadowRadius="2"
+                android:layoutDirection="ltr"
+                android:textDirection="ltr"
+                tools:ignore="HardcodedText" />
+
             <!-- Challenge TextView: Prompts the user to try creating variables -->
             <TextView
                 android:id="@+id/variables_challenge"
