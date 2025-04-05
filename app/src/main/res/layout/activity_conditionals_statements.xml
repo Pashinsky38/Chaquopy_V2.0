@@ -37,9 +37,9 @@
                 android:textDirection="ltr"
                 tools:ignore="HardcodedText" />
 
-            <!-- Explanation TextView: Describes conditional statements in Python -->
+            <!-- Explanation TextView: Describes conditional statements -->
             <TextView
-                android:id="@+id/conditional_statements_explanation1"
+                android:id="@+id/conditional_statements_explanation"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="10sp"
@@ -47,28 +47,25 @@
                 android:shadowDx="1"
                 android:shadowDy="1"
                 android:shadowRadius="2"
-                android:text="Conditional statements (if, elif, else) allow you to execute different blocks of code based on whether a condition is true or false."
+                android:text="@string/conditional_statements_explanation"
                 android:textColor="#FFFF"
                 android:textSize="16sp"
                 android:layoutDirection="ltr"
                 android:textDirection="ltr"
                 tools:ignore="HardcodedText" />
 
-            <!-- Code Example TextView: Shows an example of conditional statements -->
-            <TextView
-                android:id="@+id/conditional_statements_explanation2"
-                android:layout_width="match_parent"
+            <!-- Text-to-Speech Button: Reads the conditional statements explanation aloud -->
+            <Button
+                android:id="@+id/textToSpeechButton"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
                 android:layout_margin="10sp"
                 android:shadowColor="#000000"
                 android:shadowDx="1"
                 android:shadowDy="1"
                 android:shadowRadius="2"
-                android:text="The elif keyword allows you to add multiple conditions. If the if condition is false, it checks the elif conditions one by one. If an elif condition is true, its code is executed, and the rest are skipped. If none of the if or elif conditions are true, the else block, if present, is executed."
-                android:textColor="#FFFF"
-                android:textSize="16sp"
-                android:layoutDirection="ltr"
-                android:textDirection="ltr"
+                android:text="Text to Speech"
                 tools:ignore="HardcodedText" />
 
             <!-- Code Example TextView: Shows an example of conditional statements -->
@@ -141,6 +138,7 @@
                 android:textDirection="ltr"
                 tools:ignore="HardcodedText" />
 
+            <!-- Code Example TextView: Shows an example of conditional statements with logical operators -->
             <TextView
                 android:id="@+id/conditional_statement_example5"
                 android:layout_width="match_parent"
@@ -158,6 +156,7 @@
                 android:textDirection="ltr"
                 tools:ignore="HardcodedText" />
 
+            <!-- Challenge TextView: Encourages the user to create a program -->
             <TextView
                 android:id="@+id/challengeTextView"
                 android:layout_width="match_parent"
@@ -174,6 +173,7 @@
                 android:textDirection="ltr"
                 tools:ignore="HardcodedText" />
 
+            <!-- EditText for entering Python code -->
             <EditText
                 android:id="@+id/codeEditor"
                 android:layout_width="match_parent"
@@ -192,6 +192,7 @@
                 android:textDirection="ltr"
                 tools:ignore="Autofill,HardcodedText" />
 
+            <!-- Button to run the entered Python code -->
             <Button
                 android:id="@+id/runCodeButton"
                 android:layout_width="wrap_content"
@@ -205,6 +206,7 @@
                 android:text="Run Code"
                 tools:ignore="HardcodedText" />
 
+            <!-- TextView to display the output of the executed Python code -->
             <TextView
                 android:id="@+id/output_text"
                 android:layout_width="match_parent"

@@ -1,157 +1,172 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<!-- Root layout for the ConditionalsStatementsPracticeFragment -->
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/background_start"
     tools:context=".ConditionalsStatementsPractice">
 
-    <LinearLayout
+    <!-- ScrollView to allow scrolling if content exceeds screen height -->
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:padding="16dp">
+        android:layout_height="match_parent">
 
-        <TextView
-            android:id="@+id/practice_title"
+        <!-- LinearLayout to arrange content vertically -->
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="16dp"
-            android:shadowColor="#000000"
-            android:shadowDx="1"
-            android:shadowDy="1"
-            android:shadowRadius="2"
-            android:text="Practice: Conditional Statements"
-            android:textColor="#FFFF"
-            android:textSize="24sp"
-            android:textStyle="bold"
-            android:layoutDirection="ltr"
-            android:textDirection="ltr"
-            tools:ignore="HardcodedText" />
+            android:orientation="vertical"
+            android:padding="16dp">
 
-        <!-- Question 1 -->
-        <TextView
-            android:id="@+id/question1"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="8dp"
-            android:shadowColor="#000000"
-            android:shadowDx="1"
-            android:shadowDy="1"
-            android:shadowRadius="2"
-            android:text="Question 1: Write a Python program that checks if a given number is even or odd. Print 'Even' if the number is even, and 'Odd' if it's odd."
-            android:textColor="#FFFF"
-            android:textSize="16sp"
-            android:layoutDirection="ltr"
-            android:textDirection="ltr"
-            tools:ignore="HardcodedText" />
+            <!-- Title of the practice section -->
+            <TextView
+                android:id="@+id/practice_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                android:shadowColor="#000000"
+                android:shadowDx="1"
+                android:shadowDy="1"
+                android:shadowRadius="2"
+                android:text="Practice: Conditional Statements"
+                android:textColor="#FFFF"
+                android:textSize="24sp"
+                android:textStyle="bold"
+                android:layoutDirection="ltr"
+                android:textDirection="ltr"
+                tools:ignore="HardcodedText" />
 
-        <EditText
-            android:id="@+id/codeEditor1"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="16dp"
-            android:hint="Enter your code here"
-            android:inputType="textMultiLine"
-            android:padding="8dp"
-            android:shadowColor="#000000"
-            android:shadowDx="1"
-            android:shadowDy="1"
-            android:shadowRadius="2"
-            android:textColor="#FFFF"
-            android:textColorHint="#FFFF"
-            android:layoutDirection="ltr"
-            android:textDirection="ltr"
-            tools:ignore="Autofill,HardcodedText" />
+            <!-- Question 1 -->
+            <TextView
+                android:id="@+id/question1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:shadowColor="#000000"
+                android:shadowDx="1"
+                android:shadowDy="1"
+                android:shadowRadius="2"
+                android:text="Question 1: Write a Python program that checks if a given number is even or odd. Print 'Even' if the number is even, and 'Odd' if it's odd."
+                android:textColor="#FFFF"
+                android:textSize="16sp"
+                android:layoutDirection="ltr"
+                android:textDirection="ltr"
+                tools:ignore="HardcodedText" />
 
-        <Button
-            android:id="@+id/runCodeButton1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginBottom="16dp"
-            android:shadowColor="#000000"
-            android:shadowDx="1"
-            android:shadowDy="1"
-            android:shadowRadius="2"
-            android:text="Run Code"
-            tools:ignore="HardcodedText" />
+            <!-- EditText for user to input code for Question 1 -->
+            <EditText
+                android:id="@+id/codeEditor1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                android:hint="Enter your code here"
+                android:inputType="textMultiLine"
+                android:padding="8dp"
+                android:shadowColor="#000000"
+                android:shadowDx="1"
+                android:shadowDy="1"
+                android:shadowRadius="2"
+                android:textColor="#FFFF"
+                android:textColorHint="#FFFF"
+                android:layoutDirection="ltr"
+                android:textDirection="ltr"
+                tools:ignore="Autofill,HardcodedText" />
 
-        <TextView
-            android:id="@+id/output_text1"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="16dp"
-            android:shadowColor="#000000"
-            android:shadowDx="1"
-            android:shadowDy="1"
-            android:shadowRadius="2"
-            android:textColor="#FFFF"
-            android:layoutDirection="ltr"
-            android:textDirection="ltr"
-            android:textSize="16sp" />
+            <!-- Button to run the code for Question 1 -->
+            <Button
+                android:id="@+id/runCodeButton1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginBottom="16dp"
+                android:shadowColor="#000000"
+                android:shadowDx="1"
+                android:shadowDy="1"
+                android:shadowRadius="2"
+                android:text="Run Code"
+                tools:ignore="HardcodedText" />
 
-        <!-- Question 2 -->
-        <TextView
-            android:id="@+id/question2"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="8dp"
-            android:shadowColor="#000000"
-            android:shadowDx="1"
-            android:shadowDy="1"
-            android:shadowRadius="2"
-            android:text="Question 2: Write a Python program that takes two numbers as input and determines which one is greater. Print 'The first number is greater', 'The second number is greater', or 'Both numbers are equal' accordingly."
-            android:textColor="#FFFF"
-            android:textSize="16sp"
-            android:layoutDirection="ltr"
-            android:textDirection="ltr"
-            tools:ignore="HardcodedText" />
+            <!-- TextView to display the output of Question 1 -->
+            <TextView
+                android:id="@+id/output_text1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                android:shadowColor="#000000"
+                android:shadowDx="1"
+                android:shadowDy="1"
+                android:shadowRadius="2"
+                android:textColor="#FFFF"
+                android:layoutDirection="ltr"
+                android:textDirection="ltr"
+                android:textSize="16sp" />
 
-        <EditText
-            android:id="@+id/codeEditor2"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="16dp"
-            android:hint="Enter your code here"
-            android:inputType="textMultiLine"
-            android:padding="8dp"
-            android:shadowColor="#000000"
-            android:shadowDx="1"
-            android:shadowDy="1"
-            android:shadowRadius="2"
-            android:textColor="#FFFF"
-            android:textColorHint="#FFFF"
-            android:layoutDirection="ltr"
-            android:textDirection="ltr"
-            tools:ignore="Autofill,HardcodedText" />
+            <!-- Question 2 -->
+            <TextView
+                android:id="@+id/question2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:shadowColor="#000000"
+                android:shadowDx="1"
+                android:shadowDy="1"
+                android:shadowRadius="2"
+                android:text="Question 2: Write a Python program that takes two numbers as input and determines which one is greater. Print 'The first number is greater', 'The second number is greater', or 'Both numbers are equal' accordingly."
+                android:textColor="#FFFF"
+                android:textSize="16sp"
+                android:layoutDirection="ltr"
+                android:textDirection="ltr"
+                tools:ignore="HardcodedText" />
 
-        <Button
-            android:id="@+id/runCodeButton2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginBottom="16dp"
-            android:shadowColor="#000000"
-            android:shadowDx="1"
-            android:shadowDy="1"
-            android:shadowRadius="2"
-            android:text="Run Code"
-            tools:ignore="HardcodedText" />
+            <!-- EditText for user to input code for Question 2 -->
+            <EditText
+                android:id="@+id/codeEditor2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                android:hint="Enter your code here"
+                android:inputType="textMultiLine"
+                android:padding="8dp"
+                android:shadowColor="#000000"
+                android:shadowDx="1"
+                android:shadowDy="1"
+                android:shadowRadius="2"
+                android:textColor="#FFFF"
+                android:textColorHint="#FFFF"
+                android:layoutDirection="ltr"
+                android:textDirection="ltr"
+                tools:ignore="Autofill,HardcodedText" />
 
-        <TextView
-            android:id="@+id/output_text2"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="16dp"
-            android:shadowColor="#000000"
-            android:shadowDx="1"
-            android:shadowDy="1"
-            android:shadowRadius="2"
-            android:textColor="#FFFF"
-            android:layoutDirection="ltr"
-            android:textDirection="ltr"
-            android:textSize="16sp" />
+            <!-- Button to run the code for Question 2 -->
+            <Button
+                android:id="@+id/runCodeButton2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginBottom="16dp"
+                android:shadowColor="#000000"
+                android:shadowDx="1"
+                android:shadowDy="1"
+                android:shadowRadius="2"
+                android:text="Run Code"
+                tools:ignore="HardcodedText" />
 
-    </LinearLayout>
-</ScrollView>
+            <!-- TextView to display the output of Question 2 -->
+            <TextView
+                android:id="@+id/output_text2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                android:shadowColor="#000000"
+                android:shadowDx="1"
+                android:shadowDy="1"
+                android:shadowRadius="2"
+                android:textColor="#FFFF"
+                android:layoutDirection="ltr"
+                android:textDirection="ltr"
+                android:textSize="16sp" />
+
+        </LinearLayout>
+    </ScrollView>
+</FrameLayout>

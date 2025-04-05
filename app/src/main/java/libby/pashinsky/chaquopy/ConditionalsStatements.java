@@ -52,8 +52,17 @@ public class ConditionalsStatements extends AppCompatActivity {
         // Set click listener for the Go to Practice button
         Button goToPracticeButton = binding.goToConditionalsPracticeButton;
         goToPracticeButton.setOnClickListener(v -> {
+            // Stop the TextToSpeechService before navigating
+            TextToSpeechService.stopSpeaking(this);
             // Navigate to the ConditionalsStatementsPractice fragment
             navigateToConditionalsStatementsPractice(new ConditionalsStatementsPractice());
+        });
+
+        // Set click listener for the Text-to-Speech button
+        binding.textToSpeechButton.setOnClickListener(v -> {
+            // Start the TextToSpeechService to speak the explanation text
+            String textToSpeak = binding.conditionalStatementsExplanation.getText().toString();
+            TextToSpeechService.startService(this, textToSpeak);
         });
     }
 
@@ -74,10 +83,18 @@ public class ConditionalsStatements extends AppCompatActivity {
         binding.outputText.setText(result.toString());
     }
 
+    // Method to navigate to the ConditionalsStatementsPractice fragment
     private void navigateToConditionalsStatementsPractice(Fragment fragment) {
         FragmentTransaction transaction = fragmentManager.beginTransaction();
         transaction.replace(R.id.fragment_conditionals_practice, fragment);
         transaction.addToBackStack(null);
         transaction.commit();
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        // Stop the TextToSpeechService when the activity is destroyed
+        TextToSpeechService.stopSpeaking(this);
     }
 }
