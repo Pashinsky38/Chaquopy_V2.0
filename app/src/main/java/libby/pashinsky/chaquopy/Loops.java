@@ -5,7 +5,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.Button;
 import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
@@ -21,18 +20,18 @@ import com.chaquo.python.PyObject;
 import com.chaquo.python.Python;
 import com.chaquo.python.android.AndroidPlatform;
 
-import libby.pashinsky.chaquopy.databinding.ActivityConditionalsStatementsBinding;
+import libby.pashinsky.chaquopy.databinding.ActivityLoopsBinding;
 
-public class ConditionalsStatements extends AppCompatActivity {
+public class Loops extends AppCompatActivity {
 
-    private ActivityConditionalsStatementsBinding binding;
+    private ActivityLoopsBinding binding;
     private FragmentManager fragmentManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
-        binding = ActivityConditionalsStatementsBinding.inflate(getLayoutInflater());
+        binding = ActivityLoopsBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
         // Initialize Python
@@ -47,50 +46,49 @@ public class ConditionalsStatements extends AppCompatActivity {
             return insets;
         });
 
-        // Set click listener for the Run button
+        // Set click listener for the Text-to-Speech button
+        binding.textToSpeechButton.setOnClickListener(v -> {
+            String textToSpeak = binding.loopsExplanation.getText().toString();
+            TextToSpeechService.startService(this, textToSpeak);
+        });
+
+        // Set click listener for the Run Code button
         binding.runCodeButton.setOnClickListener(v -> runPythonCode());
 
         // Get the FragmentManager
         fragmentManager = getSupportFragmentManager();
 
         // Set click listener for the Go to Practice button
-        Button goToPracticeButton = binding.goToConditionalsPracticeButton;
-        goToPracticeButton.setOnClickListener(v -> {
+        binding.goToLoopsPracticeButton.setOnClickListener(v -> {
             // Stop the TextToSpeechService before navigating
             TextToSpeechService.stopSpeaking(this);
-            // Navigate to the ConditionalsStatementsPractice fragment
-            navigateToConditionalsStatementsPractice(new ConditionalsStatementsPractice());
-        });
-
-        // Set click listener for the Text-to-Speech button
-        binding.textToSpeechButton.setOnClickListener(v -> {
-            // Start the TextToSpeechService to speak the explanation text
-            String textToSpeak = binding.conditionalStatementsExplanation.getText().toString();
-            TextToSpeechService.startService(this, textToSpeak);
+            // Navigate to the LoopsPractice fragment
+            navigateToLoopsPractice(new LoopsPractice());
         });
     }
 
     /**
-     * Executes the Python code entered in the code editor.
-     * Retrieves the code, executes it using Chaquopy, and displays the result in the output TextView.
+     * Executes the Python code entered by the user in the code editor.
+     * It retrieves the code, runs it using Chaquopy, and displays the result in the output TextView.
      */
     private void runPythonCode() {
-        // Get Python code from EditText using View Binding
+        // Get Python code from EditText
         String pythonCode = binding.codeEditor.getText().toString();
 
         // Execute Python code using Chaquopy
         Python py = Python.getInstance();
         PyObject pyObject = py.getModule("pythonRunner"); // "pythonRunner" is the Python file name
         PyObject result = pyObject.callAttr("main", pythonCode); // Call a function named "main" in the Python file
+        String output = result.toString();
 
-        // Display the result in the TextView using View Binding
-        binding.outputText.setText(result.toString());
+        // Display the result in the output TextView
+        binding.outputText.setText(output);
     }
 
-    // Method to navigate to the ConditionalsStatementsPractice fragment
-    private void navigateToConditionalsStatementsPractice(Fragment fragment) {
+    // Method to navigate to the LoopsPractice fragment
+    private void navigateToLoopsPractice(Fragment fragment) {
         FragmentTransaction transaction = fragmentManager.beginTransaction();
-        transaction.replace(R.id.fragment_conditionals_practice, fragment);
+        transaction.replace(R.id.fragment_loops_practice, fragment);
         transaction.addToBackStack(null);
         transaction.commit();
     }

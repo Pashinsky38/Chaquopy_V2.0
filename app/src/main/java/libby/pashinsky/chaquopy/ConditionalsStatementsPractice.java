@@ -1,6 +1,7 @@
 package libby.pashinsky.chaquopy;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -23,6 +24,8 @@ import libby.pashinsky.chaquopy.databinding.FragmentConditionalsStatementsPracti
 public class ConditionalsStatementsPractice extends Fragment {
 
     private FragmentConditionalsStatementsPracticeBinding binding;
+    private boolean isQuestion1Correct = false;
+    private boolean isQuestion2Correct = false;
 
     /**
      * Required empty public constructor for the ConditionalsStatementsPractice.
@@ -64,6 +67,9 @@ public class ConditionalsStatementsPractice extends Fragment {
             Python.start(new AndroidPlatform(context));
         }
 
+        // Initially hide the "Go to Loops" button
+        binding.goToLoopsButton.setVisibility(View.GONE);
+
         /*
           Sets a click listener on the runCodeButton1.
           When clicked, it calls the {@link #runPythonCode(int)} method to execute the Python code for question 1.
@@ -75,6 +81,9 @@ public class ConditionalsStatementsPractice extends Fragment {
           When clicked, it calls the {@link #runPythonCode(int)} method to execute the Python code for question 2.
          */
         binding.runCodeButton2.setOnClickListener(v -> runPythonCode(2));
+
+        // Set a click listener for the "Go to Loops" button
+        binding.goToLoopsButton.setOnClickListener(v -> goToLoops());
     }
 
     /**
@@ -104,6 +113,13 @@ public class ConditionalsStatementsPractice extends Fragment {
         // Check if the answer is correct
         boolean isCorrect = checkAnswer(questionNumber, output);
 
+        // Update the correctness flags
+        if (questionNumber == 1) {
+            isQuestion1Correct = isCorrect;
+        } else if (questionNumber == 2) {
+            isQuestion2Correct = isCorrect;
+        }
+
         // Display the result in the correct TextView using View Binding
         String feedback = "";
         if (!usesConditionals) {
@@ -113,6 +129,13 @@ public class ConditionalsStatementsPractice extends Fragment {
             binding.outputText1.setText(feedback + output + "\nCorrect: " + isCorrect);
         } else if (questionNumber == 2) {
             binding.outputText2.setText(feedback + output + "\nCorrect: " + isCorrect);
+        }
+
+        // Check if both questions are correct and show the button if so
+        if (isQuestion1Correct && isQuestion2Correct) {
+            binding.goToLoopsButton.setVisibility(View.VISIBLE);
+        } else {
+            binding.goToLoopsButton.setVisibility(View.GONE);
         }
     }
 
@@ -152,5 +175,13 @@ public class ConditionalsStatementsPractice extends Fragment {
             default:
                 return false;
         }
+    }
+
+    /**
+     * Navigates to the Loops activity.
+     */
+    private void goToLoops() {
+        Intent intent = new Intent(requireActivity(), Loops.class);
+        startActivity(intent);
     }
 }

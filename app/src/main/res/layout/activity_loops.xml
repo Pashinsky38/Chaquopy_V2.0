@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- Root layout for the ConditionalsStatements activity -->
+<!-- Root layout for the Loops activity -->
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/background_start"
-    tools:context=".ConditionalsStatements">
+    tools:context=".Loops">
 
     <!-- ScrollView to allow scrolling if content exceeds screen height -->
     <ScrollView
@@ -19,9 +19,9 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-            <!-- Title TextView: "Conditional Statements" -->
+            <!-- Title TextView: "Loops in Python" -->
             <TextView
-                android:id="@+id/conditional_statements_title"
+                android:id="@+id/loops_title"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="10sp"
@@ -29,17 +29,16 @@
                 android:shadowDx="1"
                 android:shadowDy="1"
                 android:shadowRadius="2"
-                android:text="Conditional Statements"
+                android:text="@string/loops_title"
                 android:textColor="#FFFF"
                 android:textSize="24sp"
                 android:textStyle="bold"
                 android:layoutDirection="ltr"
-                android:textDirection="ltr"
-                tools:ignore="HardcodedText" />
+                android:textDirection="ltr" />
 
-            <!-- Explanation TextView: Describes conditional statements -->
+            <!-- Explanation TextView: Describes loops -->
             <TextView
-                android:id="@+id/conditional_statements_explanation"
+                android:id="@+id/loops_explanation"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="10sp"
@@ -47,14 +46,13 @@
                 android:shadowDx="1"
                 android:shadowDy="1"
                 android:shadowRadius="2"
-                android:text="@string/conditional_statements_explanation"
+                android:text="@string/loops_explanation"
                 android:textColor="#FFFF"
                 android:textSize="16sp"
                 android:layoutDirection="ltr"
-                android:textDirection="ltr"
-                tools:ignore="HardcodedText" />
+                android:textDirection="ltr" />
 
-            <!-- Text-to-Speech Button: Reads the conditional statements explanation aloud -->
+            <!-- Text-to-Speech Button: Reads the loops explanation aloud -->
             <Button
                 android:id="@+id/textToSpeechButton"
                 android:layout_width="wrap_content"
@@ -65,12 +63,11 @@
                 android:shadowDx="1"
                 android:shadowDy="1"
                 android:shadowRadius="2"
-                android:text="Text to Speech"
-                tools:ignore="HardcodedText" />
+                android:text="@string/text_to_speech_button" />
 
-            <!-- Code Example TextView: Shows an example of conditional statements -->
+            <!-- For Loop Section -->
             <TextView
-                android:id="@+id/operators_explanation1"
+                android:id="@+id/for_loop_title"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="10sp"
@@ -78,16 +75,32 @@
                 android:shadowDx="1"
                 android:shadowDy="1"
                 android:shadowRadius="2"
-                android:text="Comparison operators (==, !=, &gt;, &lt;, &gt;=, &lt;=) are used to compare values in conditions."
+                android:text="@string/for_loop_title"
+                android:textColor="#FFFF"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:layoutDirection="ltr"
+                android:textDirection="ltr" />
+
+            <!-- For Loop Explanation -->
+            <TextView
+                android:id="@+id/for_loop_explanation"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10sp"
+                android:shadowColor="#000000"
+                android:shadowDx="1"
+                android:shadowDy="1"
+                android:shadowRadius="2"
+                android:text="@string/for_loop_explanation"
                 android:textColor="#FFFF"
                 android:textSize="16sp"
                 android:layoutDirection="ltr"
-                android:textDirection="ltr"
-                tools:ignore="HardcodedText" />
+                android:textDirection="ltr" />
 
-            <!-- Code Example TextView: Compares values using comparison operators -->
+            <!-- For Loop Example 1 -->
             <TextView
-                android:id="@+id/operators_comparison_example1"
+                android:id="@+id/for_loop_example1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="10sp"
@@ -95,52 +108,16 @@
                 android:shadowDx="1"
                 android:shadowDy="1"
                 android:shadowRadius="2"
-                android:text="x == y  # x is equal to y\nx != y  # x is not equal to y\nx &gt; y   # x is greater than y\nx &lt; y   # x is less than y\nx &gt;= y  # x is greater than or equal to y\nx &lt;= y  # x is less than or equal to y"
-                android:textColor="#FFFF"
-                android:textSize="16sp"
-                android:textStyle="italic"
-                android:layoutDirection="ltr"
-                android:textDirection="ltr"
-                tools:ignore="HardcodedText" />
-
-            <!-- Explanation TextView: Describes logical operators (and, or, not) -->
-            <TextView
-                android:id="@+id/logical_operators_explanation"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="10sp"
-                android:shadowColor="#000000"
-                android:shadowDx="1"
-                android:shadowDy="1"
-                android:shadowRadius="2"
-                android:text="Logical operators (and, or, not) are used to combine or modify conditions."
-                android:textColor="#FFFF"
-                android:textSize="16sp"
-                android:layoutDirection="ltr"
-                android:textDirection="ltr"
-                tools:ignore="HardcodedText" />
-
-            <!-- Code Example TextView: Shows examples of logical operators -->
-            <TextView
-                android:id="@+id/logical_operators_example"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="10sp"
-                android:shadowColor="#000000"
-                android:shadowDx="1"
-                android:shadowDy="1"
-                android:shadowRadius="2"
-                android:text="x and y  # True if both x and y are true\nx or y   # True if either x or y is true\nnot x    # True if x is false"
+                android:text="@string/for_loop_example1"
                 android:textColor="#FFFF"
                 android:textSize="16sp"
                 android:textStyle="italic"
                 android:layoutDirection="ltr"
-                android:textDirection="ltr"
-                tools:ignore="HardcodedText" />
+                android:textDirection="ltr" />
 
-            <!-- Code Example TextView: Shows an example of conditional statements with logical operators -->
+            <!-- For Loop Example 2 -->
             <TextView
-                android:id="@+id/conditional_statement_example5"
+                android:id="@+id/for_loop_example2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="10sp"
@@ -148,13 +125,112 @@
                 android:shadowDx="1"
                 android:shadowDy="1"
                 android:shadowRadius="2"
-                android:text="age = 20\nif age &lt; 13:\n    print(&quot;You are a child&quot;)\nelif age &lt; 18:\n    print(&quot;You are a teenager&quot;)\nelif age &lt; 65:\n    print(&quot;You are an adult&quot;)\nelse:\n    print(&quot;You are a senior&quot;)"
+                android:text="@string/for_loop_example2"
                 android:textColor="#FFFF"
                 android:textSize="16sp"
                 android:textStyle="italic"
                 android:layoutDirection="ltr"
-                android:textDirection="ltr"
-                tools:ignore="HardcodedText" />
+                android:textDirection="ltr" />
+
+            <!-- While Loop Section -->
+            <TextView
+                android:id="@+id/while_loop_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10sp"
+                android:shadowColor="#000000"
+                android:shadowDx="1"
+                android:shadowDy="1"
+                android:shadowRadius="2"
+                android:text="@string/while_loop_title"
+                android:textColor="#FFFF"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:layoutDirection="ltr"
+                android:textDirection="ltr" />
+
+            <!-- While Loop Explanation -->
+            <TextView
+                android:id="@+id/while_loop_explanation"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10sp"
+                android:shadowColor="#000000"
+                android:shadowDx="1"
+                android:shadowDy="1"
+                android:shadowRadius="2"
+                android:text="@string/while_loop_explanation"
+                android:textColor="#FFFF"
+                android:textSize="16sp"
+                android:layoutDirection="ltr"
+                android:textDirection="ltr" />
+
+            <!-- While Loop Example 1 -->
+            <TextView
+                android:id="@+id/while_loop_example1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10sp"
+                android:shadowColor="#000000"
+                android:shadowDx="1"
+                android:shadowDy="1"
+                android:shadowRadius="2"
+                android:text="@string/while_loop_example1"
+                android:textColor="#FFFF"
+                android:textSize="16sp"
+                android:textStyle="italic"
+                android:layoutDirection="ltr"
+                android:textDirection="ltr" />
+
+            <!-- Loop Control Section -->
+            <TextView
+                android:id="@+id/loop_control_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10sp"
+                android:shadowColor="#000000"
+                android:shadowDx="1"
+                android:shadowDy="1"
+                android:shadowRadius="2"
+                android:text="@string/loop_control_title"
+                android:textColor="#FFFF"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:layoutDirection="ltr"
+                android:textDirection="ltr" />
+
+            <!-- Loop Control Explanation -->
+            <TextView
+                android:id="@+id/loop_control_explanation"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10sp"
+                android:shadowColor="#000000"
+                android:shadowDx="1"
+                android:shadowDy="1"
+                android:shadowRadius="2"
+                android:text="@string/loop_control_explanation"
+                android:textColor="#FFFF"
+                android:textSize="16sp"
+                android:layoutDirection="ltr"
+                android:textDirection="ltr" />
+
+            <!-- Loop Control Example -->
+            <TextView
+                android:id="@+id/loop_control_example"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10sp"
+                android:shadowColor="#000000"
+                android:shadowDx="1"
+                android:shadowDy="1"
+                android:shadowRadius="2"
+                android:text="@string/loop_control_example"
+                android:textColor="#FFFF"
+                android:textSize="16sp"
+                android:textStyle="italic"
+                android:layoutDirection="ltr"
+                android:textDirection="ltr" />
 
             <!-- Challenge TextView: Encourages the user to create a program -->
             <TextView
@@ -166,12 +242,11 @@
                 android:shadowDx="1"
                 android:shadowDy="1"
                 android:shadowRadius="2"
-                android:text="Now it's your turn! Try creating a program that checks if a number is positive, negative, or zero."
+                android:text="@string/loops_challenge"
                 android:textColor="#FFFF"
                 android:textSize="16sp"
                 android:layoutDirection="ltr"
-                android:textDirection="ltr"
-                tools:ignore="HardcodedText" />
+                android:textDirection="ltr" />
 
             <!-- EditText for entering Python code -->
             <EditText
@@ -179,7 +254,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="10sp"
-                android:hint="Enter Python code here"
+                android:hint="@string/code_editor_hint"
                 android:inputType="textMultiLine"
                 android:shadowColor="#000000"
                 android:shadowDx="1"
@@ -190,7 +265,7 @@
                 android:textSize="16sp"
                 android:layoutDirection="ltr"
                 android:textDirection="ltr"
-                tools:ignore="Autofill,HardcodedText" />
+                tools:ignore="Autofill" />
 
             <!-- Button to run the entered Python code -->
             <Button
@@ -203,8 +278,7 @@
                 android:shadowDx="1"
                 android:shadowDy="1"
                 android:shadowRadius="2"
-                android:text="Run Code"
-                tools:ignore="HardcodedText" />
+                android:text="@string/run_code_button" />
 
             <!-- TextView to display the output of the executed Python code -->
             <TextView
@@ -221,9 +295,9 @@
                 android:textDirection="ltr"
                 android:textSize="16sp" />
 
-            <!-- Button to go to ConditionalsStatementsPractice -->
+            <!-- Button to go to LoopsPractice -->
             <Button
-                android:id="@+id/goToConditionalsPracticeButton"
+                android:id="@+id/goToLoopsPracticeButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
@@ -232,14 +306,13 @@
                 android:shadowDx="1"
                 android:shadowDy="1"
                 android:shadowRadius="2"
-                android:text="Go to Practice"
-                tools:ignore="HardcodedText" />
+                android:text="@string/go_to_practice_button" />
         </LinearLayout>
     </ScrollView>
 
-    <!-- FrameLayout to hold ConditionalsStatementsPractice fragment -->
+    <!-- FrameLayout to hold LoopsPractice fragment -->
     <FrameLayout
-        android:id="@+id/fragment_conditionals_practice"
+        android:id="@+id/fragment_loops_practice"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_gravity="center" />

@@ -1,21 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
-        android:id="@+id/menuHome"
+        android:id="@+id/IntroductionToPython"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:title="Home Page" />
+        android:title="Introduction to Python" />
     <item
-        android:id="@+id/menuLogin"
+        android:id="@+id/ConditionalStatements"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:title="Login" />
+        android:title="Conditional Statements" />
     <item
-        android:id="@+id/menuRegister"
+        android:id="@+id/Loops"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:title="Register" />
+        android:title="Loops" />
+    <item
+        android:id="@+id/Functions"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:title="Functions" />
     <item
         android:id="@+id/menuCloseApp"
         android:layout_width="wrap_content"

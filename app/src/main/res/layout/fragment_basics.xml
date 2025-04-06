@@ -160,7 +160,7 @@
 
             <!-- TextView to display the output of the Python code -->
             <TextView
-                android:id="@+id/output_text"
+                android:id="@+id/outputText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="10sp"

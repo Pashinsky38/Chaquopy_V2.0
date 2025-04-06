@@ -7,8 +7,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -57,63 +55,12 @@ public class HomePage extends AppCompatActivity {
     }
 
     /**
-     * Initialize the contents of the Activity's standard options menu.
-     *
-     * @param menu The options menu in which you place your items.
-     * @return You must return true for the menu to be displayed; if you return false it will not be shown.
-     */
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        menu.clear();
-        getMenuInflater().inflate(R.menu.main, menu);
-        return true;
-    }
-
-    /**
-     * This hook is called whenever an item in your options menu is selected.
-     *
-     * @param item The menu item that was selected.
-     * @return boolean Return false to allow normal menu processing to proceed, true to consume it here.
-     */
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        int id = item.getItemId();
-
-        if (id == R.id.menuHome) {
-            // Stay on HomePage
-            Toast.makeText(this, "You are already on HomePage", Toast.LENGTH_SHORT).show();
-            return true;
-        } else if (id == R.id.menuLogin) {
-            navigateToLoginFragment();
-            return true;
-        } else if (id == R.id.menuRegister) {
-            navigateToRegisterFragment();
-            return true;
-        } else if (id == R.id.menuCloseApp) {
-            finishAffinity();
-            return true;
-        }
-        return super.onOptionsItemSelected(item);
-    }
-
-    /**
      * Navigates to the LoginFragment.
      * Replaces the current fragment in the fragment_login container with the LoginFragment.
      */
     private void navigateToLoginFragment() {
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
         transaction.replace(R.id.fragment_login, new LoginFragment());
-        transaction.addToBackStack(null); // Add to back stack for navigation history
-        transaction.commit();
-    }
-
-    /**
-     * Navigates to the RegisterFragment.
-     * Replaces the current fragment in the fragment_register container with the RegisterFragment.
-     */
-    private void navigateToRegisterFragment() {
-        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-        transaction.replace(R.id.fragment_register, new RegisterFragment());
         transaction.addToBackStack(null); // Add to back stack for navigation history
         transaction.commit();
     }

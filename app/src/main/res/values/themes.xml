@@ -1,5 +1,5 @@
 <resources>
-    <style name="Base.Theme.Chaquopy" parent="Theme.Material3.DayNight.NoActionBar">
+    <style name="Base.Theme.Chaquopy" parent="Theme.Material3.DayNight">
     </style>
     <style name="Theme.Chaquopy" parent="Base.Theme.Chaquopy" />
 </resources>

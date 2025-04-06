@@ -12,10 +12,7 @@
         android:roundIcon="@drawable/python_programming_language_icon"
         android:supportsRtl="true"
         android:theme="@style/Theme.Chaquopy">
-        <activity
-            android:name=".ConditionalsStatements"
-            android:exported="false"
-            android:windowSoftInputMode="adjustPan" />
+
         <!-- Text-to-speech service -->
         <service
             android:name=".TextToSpeechService"
@@ -26,22 +23,42 @@
                 <action android:name="android.speech.tts.TextToSpeechService" />
             </intent-filter>
         </service>
-        <!-- Introduction activity -->
-        <activity
-            android:name=".Introduction"
-            android:exported="false"
-            android:windowSoftInputMode="adjustPan" />
+
         <!-- Notification receiver -->
         <receiver
             android:name=".NotificationReceiver"
             android:exported="false" />
+
+        <!-- Functions activity -->
+        <activity
+            android:name=".Functions"
+            android:exported="false"
+            android:windowSoftInputMode="adjustPan" />
+
+        <!-- Loops activity -->
+        <activity
+            android:name=".Loops"
+            android:exported="false"
+            android:windowSoftInputMode="adjustPan" />
+
+        <!-- Conditionals statements activity -->
+        <activity
+            android:name=".ConditionalsStatements"
+            android:exported="false"
+            android:windowSoftInputMode="adjustPan" />
+
+        <!-- Introduction activity -->
+        <activity
+            android:name=".Introduction"
+            android:exported="false"
+            android:windowSoftInputMode="adjustPan" /> <!-- Notification receiver -->
+
         <!-- Home page activity -->
         <activity
             android:name=".HomePage"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>

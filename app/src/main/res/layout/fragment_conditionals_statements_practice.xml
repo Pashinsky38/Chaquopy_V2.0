@@ -166,6 +166,19 @@
                 android:layoutDirection="ltr"
                 android:textDirection="ltr"
                 android:textSize="16sp" />
+            <!-- Button to go to Loops -->
+            <Button
+                android:id="@+id/goToLoopsButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_margin="10sp"
+                android:shadowColor="#000000"
+                android:shadowDx="1"
+                android:shadowDy="1"
+                android:shadowRadius="2"
+                android:text="Go to Loops"
+                tools:ignore="HardcodedText" />
 
         </LinearLayout>
     </ScrollView>

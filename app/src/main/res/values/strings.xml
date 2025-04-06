@@ -1,5 +1,4 @@
 <resources>
-    <!-- -->
     <string name="app_name">Python Course</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="title_activity_introduction">Introduction</string>
@@ -9,4 +8,35 @@
     <string name="title_activity_progress">Progress</string>
     <string name="title_activity_test">TestActivity</string>
     <string name="conditional_statements_explanation">Conditional statements (if, elif, else) allow you to execute different blocks of code based on whether a condition is true or false.\n\nThe elif keyword allows you to add multiple conditions. If the if condition is false, it checks the elif conditions one by one. If an elif condition is true, its code is executed, and the rest are skipped. If none of the if or elif conditions are true, the else block, if present, is executed.</string>
+
+    <!-- Main Explanation String -->
+    <string name="loops_explanation">Loops are used in Python to execute a block of code multiple times. Python has two main types of loops: for loops and while loops.\n\nFor loops are used to iterate over a sequence (such as a list, tuple, or string) or other iterable objects. While loops execute a block of code as long as a specified condition is true.\n\nLoops are essential for automating repetitive tasks and processing collections of data.</string>
+
+    <!-- For Loop Section Strings -->
+    <string name="for_loop_title">For Loops</string>
+    <string name="for_loop_explanation">For loops are used to iterate over a sequence (like a list, tuple, string) or other iterable objects.</string>
+    <string name="for_loop_example1"># Basic for loop with range\nfor i in range(5):\n    print(i)  # Prints 0, 1, 2, 3, 4</string>
+    <string name="for_loop_example2"># For loop with a list\nfruits = [\"apple\", \"banana\", \"cherry\"]\nfor fruit in fruits:\n    print(fruit)</string>
+
+    <!-- While Loop Section Strings -->
+    <string name="while_loop_title">While Loops</string>
+    <string name="while_loop_explanation">While loops execute a set of statements as long as a condition is true.</string>
+    <string name="while_loop_example1"># Basic while loop\ncount = 0\nwhile count &lt; 5:\n    print(count)\n    count += 1  # Increment count</string>
+
+    <!-- Loop Control Section Strings -->
+    <string name="loop_control_title">Loop Control Statements</string>
+    <string name="loop_control_explanation">Python provides break and continue statements to control the flow of loops.</string>
+    <string name="loop_control_example"># Break example\nfor i in range(10):\n    if i == 5:\n        break  # Exit the loop when i is 5\n    print(i)\n\n# Continue example\nfor i in range(10):\n    if i % 2 == 0:\n        continue  # Skip even numbers\n    print(i)  # Only prints odd numbers</string>
+
+    <!-- Challenge String -->
+    <string name="loops_challenge">Now it\'s your turn! Try creating a program that uses a loop to print the first 10 Fibonacci numbers.</string>
+
+    <!-- Button Strings -->
+    <string name="text_to_speech_button">Text to Speech</string>
+    <string name="run_code_button">Run Code</string>
+    <string name="go_to_practice_button">Go to Practice</string>
+
+    <!-- Other UI Strings -->
+    <string name="loops_title">Loops in Python</string>
+    <string name="code_editor_hint">Enter Python code here</string>
 </resources>
