@@ -68,8 +68,16 @@ public class BasicsPracticeFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
+        initializeViews();
+        setupButtonListeners();
+        startCountdownTimer();
+    }
+
+    /**
+     * Initializes all the UI views and sets their initial visibility.
+     */
+    private void initializeViews() {
         // Initialize views using binding
-        Button checkAnswersButton = binding.checkAnswersButton;
         resultsText = binding.resultsText;
         showSolutionButton = binding.showSolutionButton;
         question1Answer = binding.question1Answer;
@@ -80,73 +88,98 @@ public class BasicsPracticeFragment extends Fragment {
         // Initially hide the "Show Solution" button and the "Go to Conditional Statements" button
         showSolutionButton.setVisibility(View.GONE);
         goToConditionalStatementsButton.setVisibility(View.GONE);
+    }
 
-        /*
-          Sets a click listener on the checkAnswersButton.
-          When clicked, it retrieves the user's answers, checks them against the correct answers,
-          and displays the results. If all answers are correct, it disables the EditTexts and stops the timer.
-          If some answers are incorrect, it shows the "Show Solution" button after 3 tries.
-         */
-        checkAnswersButton.setOnClickListener(v -> {
-            // Get user's answers
-            String answer1 = question1Answer.getText().toString().trim();
-            String answer2 = question2Answer.getText().toString().trim();
-            String answer3 = question3Answer.getText().toString().trim();
+    /**
+     * Sets up all the button click listeners.
+     */
+    private void setupButtonListeners() {
+        // Set click listener for the check answers button
+        binding.checkAnswersButton.setOnClickListener(v -> checkAnswers());
 
-            // Check answers
-            boolean isCorrect1 = answer1.equals("Michal");
-            boolean isCorrect2 = answer2.equals("My age is 25");
-            boolean isCorrect3 = answer3.equals("15");
-
-            // Display results
-            if (isCorrect1 && isCorrect2 && isCorrect3) {
-                resultsText.setText(getString(R.string.all_answers_correct));
-                allAnswersCorrect = true;
-                // Stop the timer if all answers are correct
-                if (countDownTimer != null) {
-                    countDownTimer.cancel();
-                }
-                // Hide the "Show Solution" button if all answers are correct
-                showSolutionButton.setVisibility(View.GONE);
-                // Disable the EditTexts
-                disableEditTexts();
-                // Reset incorrect attempts
-                incorrectAttempts = 0;
-                // Show the "Go to Conditional Statements" button
-                goToConditionalStatementsButton.setVisibility(View.VISIBLE);
-            } else {
-                resultsText.setText(getString(R.string.some_answers_incorrect));
-                incorrectAttempts++; // Increment incorrect attempts
-
-                // Show the "Show Solution" button if there are 3 incorrect attempts and solutions haven't been shown
-                if (incorrectAttempts >= 3 && !solutionsShown) {
-                    showSolutionButton.setVisibility(View.VISIBLE);
-                }
-            }
-        });
-
-        /*
-          Sets a click listener on the showSolutionButton.
-          When clicked, it displays the solutions to the questions and keeps the button visible.
-         */
-        showSolutionButton.setOnClickListener(v -> {
-            // Display the solutions
-            String solution = "Solutions:\n" +
-                    "Question 1: Michal\n" +
-                    "Question 2: My age is 25\n" +
-                    "Question 3: 15";
-            resultsText.setText(solution);
-            // Set solutionsShown to true
-            solutionsShown = true;
-            // Keep the "Show Solution" button visible
-            showSolutionButton.setVisibility(View.VISIBLE);
-        });
+        // Set click listener for the show solution button
+        showSolutionButton.setOnClickListener(v -> showSolutions());
 
         // Set click listener for the "Go to Conditional Statements" button
         goToConditionalStatementsButton.setOnClickListener(v -> navigateToConditionalStatements());
+    }
 
-        // Start the countdown timer
-        startCountdownTimer();
+    /**
+     * Checks the user's answers against the correct answers and updates the UI accordingly.
+     */
+    private void checkAnswers() {
+        // Get user's answers
+        String answer1 = question1Answer.getText().toString().trim();
+        String answer2 = question2Answer.getText().toString().trim();
+        String answer3 = question3Answer.getText().toString().trim();
+
+        // Check answers
+        boolean isCorrect1 = answer1.equals("Michal");
+        boolean isCorrect2 = answer2.equals("My age is 25");
+        boolean isCorrect3 = answer3.equals("15");
+
+        // Display results
+        if (isCorrect1 && isCorrect2 && isCorrect3) {
+            handleCorrectAnswers();
+        } else {
+            handleIncorrectAnswers();
+        }
+    }
+
+    /**
+     * Handles the case when all answers are correct.
+     */
+    private void handleCorrectAnswers() {
+        resultsText.setText(getString(R.string.all_answers_correct));
+        allAnswersCorrect = true;
+
+        // Stop the timer if all answers are correct
+        if (countDownTimer != null) {
+            countDownTimer.cancel();
+        }
+
+        // Hide the "Show Solution" button if all answers are correct
+        showSolutionButton.setVisibility(View.GONE);
+
+        // Disable the EditTexts
+        disableEditTexts();
+
+        // Reset incorrect attempts
+        incorrectAttempts = 0;
+
+        // Show the "Go to Conditional Statements" button
+        goToConditionalStatementsButton.setVisibility(View.VISIBLE);
+    }
+
+    /**
+     * Handles the case when some answers are incorrect.
+     */
+    private void handleIncorrectAnswers() {
+        resultsText.setText(getString(R.string.some_answers_incorrect));
+        incorrectAttempts++; // Increment incorrect attempts
+
+        // Show the "Show Solution" button if there are 3 incorrect attempts and solutions haven't been shown
+        if (incorrectAttempts >= 3 && !solutionsShown) {
+            showSolutionButton.setVisibility(View.VISIBLE);
+        }
+    }
+
+    /**
+     * Shows the solutions to all questions.
+     */
+    private void showSolutions() {
+        // Display the solutions
+        String solution = "Solutions:\n" +
+                "Question 1: Michal\n" +
+                "Question 2: My age is 25\n" +
+                "Question 3: 15";
+        resultsText.setText(solution);
+
+        // Set solutionsShown to true
+        solutionsShown = true;
+
+        // Keep the "Show Solution" button visible
+        showSolutionButton.setVisibility(View.VISIBLE);
     }
 
     /**

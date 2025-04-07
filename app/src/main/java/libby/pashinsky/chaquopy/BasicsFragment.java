@@ -58,12 +58,25 @@ public class BasicsFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        // Initialize Python
+        initializePython();
+        setupButtonListeners();
+    }
+
+    /**
+     * Initializes the Python environment using Chaquopy.
+     * This method checks if Python is already started and starts it if necessary.
+     */
+    private void initializePython() {
         Context context = requireContext().getApplicationContext();
         if (!Python.isStarted()) {
             Python.start(new AndroidPlatform(context));
         }
+    }
 
+    /**
+     * Sets up all button click listeners for the fragment.
+     */
+    private void setupButtonListeners() {
         // Set click listener for the Run button
         binding.runCodeButton.setOnClickListener(v -> runPythonCode());
 

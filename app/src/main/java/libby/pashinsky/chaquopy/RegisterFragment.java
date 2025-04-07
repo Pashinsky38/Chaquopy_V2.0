@@ -31,58 +31,113 @@ public class RegisterFragment extends Fragment {
     /**
      * Called to have the fragment instantiate its user interface view.
      *
-     * @param inflater The LayoutInflater object that can be used to inflate any views in the fragment.
-     * @param container If non-null, this is the parent view that the fragment's UI should be attached to.
-     *                  The fragment should not add the view itself, but this can be used to generate the LayoutParams of the view.
+     * @param inflater           The LayoutInflater object that can be used to inflate any views in the fragment.
+     * @param container          If non-null, this is the parent view that the fragment's UI should be attached to.
+     *                           The fragment should not add the view itself, but this can be used to generate the LayoutParams of the view.
      * @param savedInstanceState If non-null, this fragment is being re-constructed from a previous saved state as given here.
-     * @return Return the View for the fragment's UI, or null.
+     * @return The View for the fragment's UI, or null.
      */
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         binding = FragmentRegisterBinding.inflate(inflater, container, false);
-        View view = binding.getRoot();
-
-        // Set click listener for the sign-up button
-        binding.newSignUpButton.setOnClickListener(v -> {
-            String name = binding.newName.getText().toString().trim();
-            String email = binding.newEmail.getText().toString().trim();
-            String password = binding.newPassword.getText().toString().trim();
-            String reEnteredPassword = binding.newReEnterPassword.getText().toString().trim();
-            String phoneNumber = binding.newPhoneNumber.getText().toString().trim();
-
-            // Validate input fields
-            if (name.isEmpty() || email.isEmpty() || password.isEmpty() ||
-                    reEnteredPassword.isEmpty() || phoneNumber.isEmpty()) {
-                Toast.makeText(getActivity(), "All fields must be filled", Toast.LENGTH_SHORT).show();
-                return;
-            }
-
-            // Check if passwords match
-            if (!password.equals(reEnteredPassword)) {
-                Toast.makeText(getActivity(), "Passwords do not match", Toast.LENGTH_SHORT).show();
-                return;
-            }
-
-            // Create a UserDetails object, now named newUser
-            UserDetails newUser = new UserDetails(name, email, password, phoneNumber);
-
-            // Insert user data into the database
-            HelperDB helperDB = new HelperDB(getActivity());
-            //Now we use the newUser object to get the data
-            boolean isInserted = helperDB.insertUser(newUser.getName(), newUser.getEmail(), newUser.getPassword(), newUser.getPhoneNumber());
-            if (isInserted) {
-                Toast.makeText(getActivity(), "Registered successfully", Toast.LENGTH_SHORT).show();
-                navigateToLoginFragment();
-            } else {
-                Toast.makeText(getActivity(), "Failed to register user", Toast.LENGTH_SHORT).show();
-            }
-        });
-
-        binding.newLoginButton.setOnClickListener(v -> navigateToLoginFragment());
-
-        return view;
+        return binding.getRoot();
     }
+
+    /**
+     * Called immediately after {@link #onCreateView(LayoutInflater, ViewGroup, Bundle)}
+     * has returned, but before any saved state has been restored into the view.
+     * It sets up the click listeners for the buttons and handles the user registration process.
+     *
+     * @param view               The View returned by {@link #onCreateView(LayoutInflater, ViewGroup, Bundle)}.
+     * @param savedInstanceState If non-null, this fragment is being re-constructed from a previous saved state.
+     */
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        setUpButtonListeners();
+    }
+
+    /**
+     * Sets up click listeners for the buttons in the fragment.
+     * - The sign-up button triggers user registration.
+     * - The login button navigates to the LoginFragment.
+     */
+    private void setUpButtonListeners() {
+        binding.newSignUpButton.setOnClickListener(v -> handleSignUp());
+        binding.newLoginButton.setOnClickListener(v -> navigateToLoginFragment());
+    }
+
+    /**
+     * Handles the user sign-up process by validating input, creating a new UserDetails object,
+     * inserting the user into the database, and providing feedback via Toast messages.
+     */
+    private void handleSignUp() {
+        String name = binding.newName.getText().toString().trim();
+        String email = binding.newEmail.getText().toString().trim();
+        String password = binding.newPassword.getText().toString().trim();
+        String reEnteredPassword = binding.newReEnterPassword.getText().toString().trim();
+        String phoneNumber = binding.newPhoneNumber.getText().toString().trim();
+
+        // Validate input fields
+        if (validateInput(name, email, password, reEnteredPassword, phoneNumber)) {
+            if (!password.equals(reEnteredPassword)) {
+                showToast("Passwords do not match");
+            } else {
+                registerUser(name, email, password, phoneNumber);
+            }
+        }
+    }
+
+    /**
+     * Validates the input fields to ensure no fields are empty.
+     *
+     * @param name              The user's name.
+     * @param email             The user's email.
+     * @param password          The user's password.
+     * @param reEnteredPassword The password re-entered by the user.
+     * @param phoneNumber       The user's phone number.
+     * @return true if all input fields are valid; false otherwise.
+     */
+    private boolean validateInput(String name, String email, String password, String reEnteredPassword, String phoneNumber) {
+        if (name.isEmpty() || email.isEmpty() || password.isEmpty() ||
+                reEnteredPassword.isEmpty() || phoneNumber.isEmpty()) {
+            showToast("All fields must be filled");
+            return false;
+        }
+        return true;
+    }
+
+    /**
+     * Registers the user by inserting their details into the database.
+     *
+     * @param name        The user's name.
+     * @param email       The user's email.
+     * @param password    The user's password.
+     * @param phoneNumber The user's phone number.
+     */
+    private void registerUser(String name, String email, String password, String phoneNumber) {
+        UserDetails newUser = new UserDetails(name, email, password, phoneNumber);
+        HelperDB helperDB = new HelperDB(getActivity());
+        boolean isInserted = helperDB.insertUser(newUser.getName(), newUser.getEmail(), newUser.getPassword(), newUser.getPhoneNumber());
+
+        if (isInserted) {
+            showToast("Registered successfully");
+            navigateToLoginFragment();
+        } else {
+            showToast("Failed to register user");
+        }
+    }
+
+    /**
+     * Displays a toast message with the provided text.
+     *
+     * @param message The message to display in the toast.
+     */
+    private void showToast(String message) {
+        Toast.makeText(getActivity(), message, Toast.LENGTH_SHORT).show();
+    }
+
     /**
      * Navigates to the LoginFragment.
      * Replaces the current fragment in the fragment_register container with the LoginFragment.

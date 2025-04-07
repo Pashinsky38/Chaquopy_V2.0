@@ -3,9 +3,11 @@ package libby.pashinsky.chaquopy;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.CountDownTimer;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -26,6 +28,10 @@ public class ConditionalsStatementsPractice extends Fragment {
     private FragmentConditionalsStatementsPracticeBinding binding;
     private boolean isQuestion1Correct = false;
     private boolean isQuestion2Correct = false;
+    private CountDownTimer timer;
+    private int incorrectAttempts = 0;
+    private static final int MAX_INCORRECT_ATTEMPTS = 3;
+    private static final long TIMER_DURATION = 3 * 60 * 1000; // 3 minutes in milliseconds
 
     /**
      * Required empty public constructor for the ConditionalsStatementsPractice.
@@ -67,8 +73,16 @@ public class ConditionalsStatementsPractice extends Fragment {
             Python.start(new AndroidPlatform(context));
         }
 
-        // Initially hide the "Go to Loops" button
+        // Initially hide the "Go to Loops" and "Show Solution" buttons
         binding.goToLoopsButton.setVisibility(View.GONE);
+        binding.showSolutionButton.setVisibility(View.GONE);
+
+        // Initially hide the solution TextViews
+        binding.solutionText1.setVisibility(View.GONE);
+        binding.solutionText2.setVisibility(View.GONE);
+
+        // Set up the timer
+        startTimer();
 
         /*
           Sets a click listener on the runCodeButton1.
@@ -84,6 +98,39 @@ public class ConditionalsStatementsPractice extends Fragment {
 
         // Set a click listener for the "Go to Loops" button
         binding.goToLoopsButton.setOnClickListener(v -> goToLoops());
+
+        // Set a click listener for the "Show Solution" button
+        binding.showSolutionButton.setOnClickListener(v -> showSolutions());
+    }
+
+    /**
+     * Starts a 3-minute countdown timer. When the timer finishes, the "Show Solution" button becomes visible.
+     */
+    private void startTimer() {
+        timer = new CountDownTimer(TIMER_DURATION, 1000) {
+            @Override
+            public void onTick(long millisUntilFinished) {
+                // We don't update UI since we want the timer to be hidden
+            }
+
+            @Override
+            public void onFinish() {
+                // Show the "Show Solution" button when the timer finishes
+                if (binding != null && isAdded()) {  // Check if fragment is still attached
+                    binding.showSolutionButton.setVisibility(View.VISIBLE);
+                }
+            }
+        }.start();
+    }
+
+    /**
+     * Cancels the timer if it's running.
+     */
+    private void cancelTimer() {
+        if (timer != null) {
+            timer.cancel();
+            timer = null;
+        }
     }
 
     /**
@@ -131,11 +178,20 @@ public class ConditionalsStatementsPractice extends Fragment {
             binding.outputText2.setText(feedback + output + "\nCorrect: " + isCorrect);
         }
 
+        // If the answer is incorrect, increment the incorrect attempts counter
+        if (!isCorrect) {
+            incorrectAttempts++;
+            // If the user has reached the maximum incorrect attempts, show the solution button
+            if (incorrectAttempts >= MAX_INCORRECT_ATTEMPTS) {
+                binding.showSolutionButton.setVisibility(View.VISIBLE);
+            }
+        }
+
         // Check if both questions are correct and show the button if so
         if (isQuestion1Correct && isQuestion2Correct) {
             binding.goToLoopsButton.setVisibility(View.VISIBLE);
-        } else {
-            binding.goToLoopsButton.setVisibility(View.GONE);
+            // Cancel the timer since the user has completed both questions correctly
+            cancelTimer();
         }
     }
 
@@ -178,10 +234,54 @@ public class ConditionalsStatementsPractice extends Fragment {
     }
 
     /**
+     * Shows the solution for both questions in dedicated TextViews.
+     */
+    private void showSolutions() {
+        // Solution text for Question 1
+        String solution1 = "# Solution for Question 1\n" +
+                "num = 5  # You can change this value to test different numbers\n" +
+                "if num % 2 == 0:\n" +
+                "    print(\"Even\")\n" +
+                "else:\n" +
+                "    print(\"Odd\")";
+
+        // Solution text for Question 2
+        String solution2 = "# Solution for Question 2\n" +
+                "num1 = 10  # First number for comparison\n" +
+                "num2 = 5   # Second number for comparison\n" +
+                "if num1 > num2:\n" +
+                "    print(\"The first number is greater\")\n" +
+                "elif num2 > num1:\n" +
+                "    print(\"The second number is greater\")\n" +
+                "else:\n" +
+                "    print(\"Both numbers are equal\")";
+
+        // Display solutions in dedicated TextViews
+        binding.solutionText1.setText("Solution:\n" + solution1);
+        binding.solutionText1.setVisibility(View.VISIBLE);
+
+        binding.solutionText2.setText("Solution:\n" + solution2);
+        binding.solutionText2.setVisibility(View.VISIBLE);
+
+        // Show a toast message indicating solutions are shown
+        Toast.makeText(requireContext(), "Solutions have been displayed", Toast.LENGTH_SHORT).show();
+    }
+
+    /**
      * Navigates to the Loops activity.
      */
     private void goToLoops() {
         Intent intent = new Intent(requireActivity(), Loops.class);
         startActivity(intent);
+    }
+
+    /**
+     * Called when the fragment is no longer in use.
+     * Cancels the timer to prevent memory leaks.
+     */
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        cancelTimer();
     }
 }

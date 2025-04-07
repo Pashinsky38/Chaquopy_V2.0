@@ -61,26 +61,28 @@ public class VariablesFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        initializePython();
+        setupButtonListeners();
+    }
 
-        // Initialize Python
+    /**
+     * Initializes the Python environment using the Chaquopy library.
+     */
+    private void initializePython() {
         Context context = requireContext().getApplicationContext();
         if (!Python.isStarted()) {
             Python.start(new AndroidPlatform(context));
         }
+    }
 
-        /*
-          Sets a click listener on the runCodeButtonVariables.
-          When clicked, it calls the {@link #runPythonCode()} method to execute the Python code.
-         */
+    /**
+     * Sets up the click listeners for the buttons in the fragment.
+     * - Sets a click listener for the run code button to execute Python code.
+     * - Sets a click listener for the navigation button to go to the BasicsPracticeFragment.
+     */
+    private void setupButtonListeners() {
         binding.runCodeButtonVariables.setOnClickListener(v -> runPythonCode());
-
-        // Find the button in the layout
         Button goToPracticeButton = binding.goToPracticeButton;
-
-        /*
-          Sets a click listener on the goToPracticeButton.
-          When clicked, it navigates to the {@link BasicsPracticeFragment}.
-         */
         goToPracticeButton.setOnClickListener(v -> navigateToBasicsPracticeFragment());
     }
 
@@ -101,15 +103,38 @@ public class VariablesFragment extends Fragment {
      * It retrieves the code, runs it using Chaquopy, and displays the result in the output TextView.
      */
     private void runPythonCode() {
-        // Get Python code from EditText using View Binding
-        String pythonCode = binding.codeEditorVariables.getText().toString();
+        String pythonCode = getPythonCodeFromEditor();
+        PyObject result = executePythonCode(pythonCode);
+        displayPythonResult(result);
+    }
 
-        // Execute Python code using Chaquopy
+    /**
+     * Retrieves the Python code from the code editor.
+     *
+     * @return The Python code as a String.
+     */
+    private String getPythonCodeFromEditor() {
+        return binding.codeEditorVariables.getText().toString();
+    }
+
+    /**
+     * Executes the Python code using Chaquopy.
+     *
+     * @param pythonCode The Python code to execute.
+     * @return The result of the Python code execution.
+     */
+    private PyObject executePythonCode(String pythonCode) {
         Python py = Python.getInstance();
         PyObject pyObject = py.getModule("pythonRunner"); // "pythonRunner" is the Python file name
-        PyObject result = pyObject.callAttr("main", pythonCode); // Call a function named "main" in the Python file
+        return pyObject.callAttr("main", pythonCode); // Call a function named "main" in the Python file
+    }
 
-        // Display the result in the TextView using View Binding
+    /**
+     * Displays the result of the Python code execution in the output TextView.
+     *
+     * @param result The result of the Python code execution.
+     */
+    private void displayPythonResult(PyObject result) {
         binding.outputTextVariables.setText(result.toString());
     }
 }

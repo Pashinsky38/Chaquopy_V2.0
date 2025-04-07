@@ -35,52 +35,73 @@ public class LoginFragment extends Fragment {
      * This is optional, and non-graphical fragments can return null (which is the default implementation).
      * This will be called between {@link #onCreate} and {@link #onActivityCreated}.
      *
-     * @param inflater The LayoutInflater object that can be used to inflate any views in the fragment.
-     * @param container If non-null, this is the parent view that the fragment's UI should be attached to.
-     *                  The fragment should not add the view itself, but this can be used to generate the LayoutParams of the view.
+     * @param inflater           The LayoutInflater object that can be used to inflate any views in the fragment.
+     * @param container          If non-null, this is the parent view that the fragment's UI should be attached to.
+     *                           The fragment should not add the view itself, but this can be used to generate the LayoutParams of the view.
      * @param savedInstanceState If non-null, this fragment is being re-constructed from a previous saved state as given here.
-     * @return Return the View for the fragment's UI, or null.
+     * @return The View for the fragment's UI, or null.
      */
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         binding = FragmentLoginBinding.inflate(inflater, container, false);
-        View view = binding.getRoot();
+        return binding.getRoot();
+    }
 
+    /**
+     * Called immediately after {@link #onCreateView(LayoutInflater, ViewGroup, Bundle)}
+     * has returned, but before any saved state has been restored into the view.
+     * Initializes the database helper and sets up click listeners for the buttons.
+     *
+     * @param view               The View returned by {@link #onCreateView(LayoutInflater, ViewGroup, Bundle)}.
+     * @param savedInstanceState If non-null, this fragment is being re-constructed from a previous saved state.
+     */
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
         dbHelper = new HelperDB(getActivity());
+        setUpButtonListeners();
+    }
 
-        // Set click listener for the login button
-        binding.buttonLogin.setOnClickListener(v -> {
-            String emailLogin = binding.EnterEmail.getText().toString().trim();
-            String passwordLogin = binding.EnterPassword.getText().toString().trim();
-
-            // Check if email and password are empty
-            if (emailLogin.isEmpty() || passwordLogin.isEmpty()) {
-                Toast.makeText(getActivity(), "Email and password must not be empty", Toast.LENGTH_SHORT).show();
-                return;
-            }
-
-            // Authenticate user
-            if (isUserRegistered(emailLogin, passwordLogin)) {
-                // Navigate to Introduction activity if login is successful
-                navigateToIntroduction();
-            } else {
-                Toast.makeText(getActivity(), "Invalid email or password", Toast.LENGTH_SHORT).show();
-            }
-        });
-
-        // Set click listener for the sign up button
+    /**
+     * Sets up click listeners for the login, sign-up, and skip buttons.
+     * - Login button attempts to authenticate the user.
+     * - Sign-up button navigates to the RegisterFragment.
+     * - Skip button navigates to the HomePage activity.
+     */
+    private void setUpButtonListeners() {
+        binding.buttonLogin.setOnClickListener(v -> handleLogin());
         binding.buttonSignUp.setOnClickListener(v -> navigateToRegisterFragment());
-        // Set click listener for the skip button
         binding.gotoHomePageButton.setOnClickListener(v -> navigateToHomePage());
+    }
 
-        return view;
+    /**
+     * Handles the login process by validating the user's credentials.
+     * If valid, it navigates to the Introduction activity.
+     * Otherwise, it displays a Toast message.
+     */
+    private void handleLogin() {
+        String emailLogin = binding.EnterEmail.getText().toString().trim();
+        String passwordLogin = binding.EnterPassword.getText().toString().trim();
+
+        // Check if email and password are empty
+        if (emailLogin.isEmpty() || passwordLogin.isEmpty()) {
+            showToast("Email and password must not be empty");
+            return;
+        }
+
+        // Authenticate user
+        if (isUserRegistered(emailLogin, passwordLogin)) {
+            navigateToIntroduction();
+        } else {
+            showToast("Invalid email or password");
+        }
     }
 
     /**
      * Checks if the user is registered in the database.
      *
-     * @param email The user's email address.
+     * @param email    The user's email address.
      * @param password The user's password.
      * @return True if the user is registered, false otherwise.
      */
@@ -116,5 +137,14 @@ public class LoginFragment extends Fragment {
     private void navigateToHomePage() {
         Intent intent = new Intent(requireActivity(), HomePage.class);
         startActivity(intent);
+    }
+
+    /**
+     * Displays a toast message with the provided text.
+     *
+     * @param message The message to display in the toast.
+     */
+    private void showToast(String message) {
+        Toast.makeText(getActivity(), message, Toast.LENGTH_SHORT).show();
     }
 }

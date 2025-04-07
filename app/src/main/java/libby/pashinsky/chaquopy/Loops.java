@@ -111,19 +111,25 @@ public class Loops extends AppCompatActivity {
         int id = item.getItemId();
 
         if (id == R.id.IntroductionToPython) {
+            TextToSpeechService.stopSpeaking(this);
             Toast.makeText(this, "Introduction to Python", Toast.LENGTH_SHORT).show();
+            Intent intentIntroduction = new Intent(this, Introduction.class);
+            startActivity(intentIntroduction);
             return true;
         } else if (id == R.id.ConditionalStatements) {
+            TextToSpeechService.stopSpeaking(this);
             Toast.makeText(this, "Conditional Statements", Toast.LENGTH_SHORT).show();
             Intent intentConditionals = new Intent(this, ConditionalsStatements.class);
             startActivity(intentConditionals);
             return true;
         } else if (id == R.id.Loops) {
+            TextToSpeechService.stopSpeaking(this);
             Toast.makeText(this, "Loops", Toast.LENGTH_SHORT).show();
             Intent intentLoops = new Intent(this, Loops.class);
             startActivity(intentLoops);
             return true;
         } else if (id == R.id.Functions) {
+            TextToSpeechService.stopSpeaking(this);
             Toast.makeText(this, "Functions", Toast.LENGTH_SHORT).show();
             Intent intentFunctions = new Intent(this, Functions.class);
             startActivity(intentFunctions);

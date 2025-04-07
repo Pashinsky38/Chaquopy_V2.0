@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- Root layout for the ConditionalsStatementsPracticeFragment -->
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -9,6 +10,7 @@
 
     <!-- ScrollView to allow scrolling if content exceeds screen height -->
     <ScrollView
+        android:id="@+id/scrollView"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
@@ -16,15 +18,14 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:padding="16dp">
+            android:orientation="vertical">
 
             <!-- Title of the practice section -->
             <TextView
                 android:id="@+id/practice_title"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="16dp"
+                android:layout_marginBottom="16sp"
                 android:shadowColor="#000000"
                 android:shadowDx="1"
                 android:shadowDy="1"
@@ -42,7 +43,7 @@
                 android:id="@+id/question1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="8dp"
+                android:layout_marginBottom="8sp"
                 android:shadowColor="#000000"
                 android:shadowDx="1"
                 android:shadowDy="1"
@@ -59,10 +60,10 @@
                 android:id="@+id/codeEditor1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="16dp"
+                android:layout_marginBottom="16sp"
                 android:hint="Enter your code here"
                 android:inputType="textMultiLine"
-                android:padding="8dp"
+                android:padding="8sp"
                 android:shadowColor="#000000"
                 android:shadowDx="1"
                 android:shadowDy="1"
@@ -79,7 +80,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
-                android:layout_marginBottom="16dp"
+                android:layout_marginBottom="16sp"
                 android:shadowColor="#000000"
                 android:shadowDx="1"
                 android:shadowDy="1"
@@ -92,7 +93,7 @@
                 android:id="@+id/output_text1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="16dp"
+                android:layout_marginBottom="16sp"
                 android:shadowColor="#000000"
                 android:shadowDx="1"
                 android:shadowDy="1"
@@ -102,12 +103,31 @@
                 android:textDirection="ltr"
                 android:textSize="16sp" />
 
+            <!-- TextView to display the solution for Question 1 (initially gone) -->
+            <TextView
+                android:id="@+id/solution_text1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16sp"
+                android:shadowColor="#000000"
+                android:shadowDx="1"
+                android:shadowDy="1"
+                android:shadowRadius="2"
+                android:textColor="#FFFF"
+                android:background="#33000000"
+                android:padding="8sp"
+                android:layoutDirection="ltr"
+                android:textDirection="ltr"
+                android:textSize="16sp"
+                android:visibility="gone"
+                tools:ignore="HardcodedText" />
+
             <!-- Question 2 -->
             <TextView
                 android:id="@+id/question2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="8dp"
+                android:layout_marginBottom="8sp"
                 android:shadowColor="#000000"
                 android:shadowDx="1"
                 android:shadowDy="1"
@@ -124,10 +144,10 @@
                 android:id="@+id/codeEditor2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="16dp"
+                android:layout_marginBottom="16sp"
                 android:hint="Enter your code here"
                 android:inputType="textMultiLine"
-                android:padding="8dp"
+                android:padding="8sp"
                 android:shadowColor="#000000"
                 android:shadowDx="1"
                 android:shadowDy="1"
@@ -144,7 +164,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
-                android:layout_marginBottom="16dp"
+                android:layout_marginBottom="16sp"
                 android:shadowColor="#000000"
                 android:shadowDx="1"
                 android:shadowDy="1"
@@ -157,7 +177,7 @@
                 android:id="@+id/output_text2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="16dp"
+                android:layout_marginBottom="16sp"
                 android:shadowColor="#000000"
                 android:shadowDx="1"
                 android:shadowDy="1"
@@ -166,6 +186,41 @@
                 android:layoutDirection="ltr"
                 android:textDirection="ltr"
                 android:textSize="16sp" />
+
+            <!-- TextView to display the solution for Question 2 (initially gone) -->
+            <TextView
+                android:id="@+id/solution_text2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16sp"
+                android:shadowColor="#000000"
+                android:shadowDx="1"
+                android:shadowDy="1"
+                android:shadowRadius="2"
+                android:textColor="#FFFF"
+                android:background="#33000000"
+                android:padding="8sp"
+                android:layoutDirection="ltr"
+                android:textDirection="ltr"
+                android:textSize="16sp"
+                android:visibility="gone"
+                tools:ignore="HardcodedText" />
+
+            <!-- Show Solution Button (initially hidden) -->
+            <Button
+                android:id="@+id/showSolutionButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginBottom="16sp"
+                android:shadowColor="#000000"
+                android:shadowDx="1"
+                android:shadowDy="1"
+                android:shadowRadius="2"
+                android:text="Show Solution"
+                android:visibility="gone"
+                tools:ignore="HardcodedText" />
+
             <!-- Button to go to Loops -->
             <Button
                 android:id="@+id/goToLoopsButton"
@@ -178,6 +233,7 @@
                 android:shadowDy="1"
                 android:shadowRadius="2"
                 android:text="Go to Loops"
+                android:visibility="gone"
                 tools:ignore="HardcodedText" />
 
         </LinearLayout>
