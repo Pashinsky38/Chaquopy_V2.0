@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/background_start"
+    android:fitsSystemWindows="true"
     tools:context=".Loops">
 
     <!-- ScrollView to allow scrolling if content exceeds screen height -->
@@ -15,6 +16,7 @@
 
         <!-- LinearLayout to arrange content vertically -->
         <LinearLayout
+            android:padding="16sp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">

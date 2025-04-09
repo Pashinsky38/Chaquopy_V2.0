@@ -1,14 +1,327 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<!-- Root layout for the LoopsPracticeFragment -->
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/background_start"
+    android:fitsSystemWindows="true"
     tools:context=".LoopsPractice">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <!-- ScrollView to allow scrolling if content exceeds screen height -->
+    <ScrollView
+        android:id="@+id/scrollView"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_height="match_parent">
 
+        <!-- LinearLayout to arrange content vertically -->
+        <LinearLayout
+            android:padding="16sp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <!-- Title of the practice section -->
+            <TextView
+                android:id="@+id/practice_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16sp"
+                android:shadowColor="#000000"
+                android:shadowDx="1"
+                android:shadowDy="1"
+                android:shadowRadius="2"
+                android:text="Practice: Loops"
+                android:textColor="#FFFF"
+                android:textSize="24sp"
+                android:textStyle="bold"
+                android:layoutDirection="ltr"
+                android:textDirection="ltr"
+                tools:ignore="HardcodedText" />
+
+            <!-- Question 1 -->
+            <TextView
+                android:id="@+id/question1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8sp"
+                android:shadowColor="#000000"
+                android:shadowDx="1"
+                android:shadowDy="1"
+                android:shadowRadius="2"
+                android:text="Question 1: Write a Python program using a for loop that prints only the even numbers from 1 to 20. For each number, also print whether it's greater than or less than 10."
+                android:textColor="#FFFF"
+                android:textSize="16sp"
+                android:layoutDirection="ltr"
+                android:textDirection="ltr"
+                tools:ignore="HardcodedText" />
+
+            <!-- EditText for user to input code for Question 1 -->
+            <EditText
+                android:id="@+id/codeEditor1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16sp"
+                android:hint="Enter your code here"
+                android:inputType="textMultiLine"
+                android:padding="8sp"
+                android:shadowColor="#000000"
+                android:shadowDx="1"
+                android:shadowDy="1"
+                android:shadowRadius="2"
+                android:textColor="#FFFF"
+                android:textColorHint="#FFFF"
+                android:layoutDirection="ltr"
+                android:textDirection="ltr"
+                tools:ignore="Autofill,HardcodedText" />
+
+            <!-- Button to run the code for Question 1 -->
+            <Button
+                android:id="@+id/runCodeButton1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginBottom="16sp"
+                android:shadowColor="#000000"
+                android:shadowDx="1"
+                android:shadowDy="1"
+                android:shadowRadius="2"
+                android:text="Run Code"
+                tools:ignore="HardcodedText" />
+
+            <!-- TextView to display the output of Question 1 -->
+            <TextView
+                android:id="@+id/output_text1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16sp"
+                android:shadowColor="#000000"
+                android:shadowDx="1"
+                android:shadowDy="1"
+                android:shadowRadius="2"
+                android:textColor="#FFFF"
+                android:layoutDirection="ltr"
+                android:textDirection="ltr"
+                android:textSize="16sp" />
+
+            <!-- TextView to display the solution for Question 1 (initially gone) -->
+            <TextView
+                android:id="@+id/solution_text1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16sp"
+                android:shadowColor="#000000"
+                android:shadowDx="1"
+                android:shadowDy="1"
+                android:shadowRadius="2"
+                android:textColor="#FFFF"
+                android:background="#33000000"
+                android:padding="8sp"
+                android:layoutDirection="ltr"
+                android:textDirection="ltr"
+                android:textSize="16sp"
+                android:visibility="gone"
+                tools:ignore="HardcodedText" />
+
+            <!-- Question 2 -->
+            <TextView
+                android:id="@+id/question2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8sp"
+                android:shadowColor="#000000"
+                android:shadowDx="1"
+                android:shadowDy="1"
+                android:shadowRadius="2"
+                android:text="Question 2: Write a Python program that uses a for loop to iterate through a list of numbers [12, 5, 8, 21, 13, 9, 31, 2] and create a new list containing only numbers greater than 10. Print both lists at the end."
+                android:textColor="#FFFF"
+                android:textSize="16sp"
+                android:layoutDirection="ltr"
+                android:textDirection="ltr"
+                tools:ignore="HardcodedText" />
+
+            <!-- EditText for user to input code for Question 2 -->
+            <EditText
+                android:id="@+id/codeEditor2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16sp"
+                android:hint="Enter your code here"
+                android:inputType="textMultiLine"
+                android:padding="8sp"
+                android:shadowColor="#000000"
+                android:shadowDx="1"
+                android:shadowDy="1"
+                android:shadowRadius="2"
+                android:textColor="#FFFF"
+                android:textColorHint="#FFFF"
+                android:layoutDirection="ltr"
+                android:textDirection="ltr"
+                tools:ignore="Autofill,HardcodedText" />
+
+            <!-- Button to run the code for Question 2 -->
+            <Button
+                android:id="@+id/runCodeButton2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginBottom="16sp"
+                android:shadowColor="#000000"
+                android:shadowDx="1"
+                android:shadowDy="1"
+                android:shadowRadius="2"
+                android:text="Run Code"
+                tools:ignore="HardcodedText" />
+
+            <!-- TextView to display the output of Question 2 -->
+            <TextView
+                android:id="@+id/output_text2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16sp"
+                android:shadowColor="#000000"
+                android:shadowDx="1"
+                android:shadowDy="1"
+                android:shadowRadius="2"
+                android:textColor="#FFFF"
+                android:layoutDirection="ltr"
+                android:textDirection="ltr"
+                android:textSize="16sp" />
+
+            <!-- TextView to display the solution for Question 2 (initially gone) -->
+            <TextView
+                android:id="@+id/solution_text2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16sp"
+                android:shadowColor="#000000"
+                android:shadowDx="1"
+                android:shadowDy="1"
+                android:shadowRadius="2"
+                android:textColor="#FFFF"
+                android:background="#33000000"
+                android:padding="8sp"
+                android:layoutDirection="ltr"
+                android:textDirection="ltr"
+                android:textSize="16sp"
+                android:visibility="gone"
+                tools:ignore="HardcodedText" />
+
+            <!-- Question 3 -->
+            <TextView
+                android:id="@+id/question3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8sp"
+                android:shadowColor="#000000"
+                android:shadowDx="1"
+                android:shadowDy="1"
+                android:shadowRadius="2"
+                android:text="Question 3: Write a Python program using a while loop that counts from 1 to 15. For each number, if it's divisible by 3, print 'Fizz', if it's divisible by 5, print 'Buzz', and if it's divisible by both 3 and 5, print 'FizzBuzz'. Otherwise, print the number itself."
+                android:textColor="#FFFF"
+                android:textSize="16sp"
+                android:layoutDirection="ltr"
+                android:textDirection="ltr"
+                tools:ignore="HardcodedText" />
+
+            <!-- EditText for user to input code for Question 3 -->
+            <EditText
+                android:id="@+id/codeEditor3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16sp"
+                android:hint="Enter your code here"
+                android:inputType="textMultiLine"
+                android:padding="8sp"
+                android:shadowColor="#000000"
+                android:shadowDx="1"
+                android:shadowDy="1"
+                android:shadowRadius="2"
+                android:textColor="#FFFF"
+                android:textColorHint="#FFFF"
+                android:layoutDirection="ltr"
+                android:textDirection="ltr"
+                tools:ignore="Autofill,HardcodedText" />
+
+            <!-- Button to run the code for Question 3 -->
+            <Button
+                android:id="@+id/runCodeButton3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginBottom="16sp"
+                android:shadowColor="#000000"
+                android:shadowDx="1"
+                android:shadowDy="1"
+                android:shadowRadius="2"
+                android:text="Run Code"
+                tools:ignore="HardcodedText" />
+
+            <!-- TextView to display the output of Question 3 -->
+            <TextView
+                android:id="@+id/output_text3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16sp"
+                android:shadowColor="#000000"
+                android:shadowDx="1"
+                android:shadowDy="1"
+                android:shadowRadius="2"
+                android:textColor="#FFFF"
+                android:layoutDirection="ltr"
+                android:textDirection="ltr"
+                android:textSize="16sp" />
+
+            <!-- TextView to display the solution for Question 3 (initially gone) -->
+            <TextView
+                android:id="@+id/solution_text3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16sp"
+                android:shadowColor="#000000"
+                android:shadowDx="1"
+                android:shadowDy="1"
+                android:shadowRadius="2"
+                android:textColor="#FFFF"
+                android:background="#33000000"
+                android:padding="8sp"
+                android:layoutDirection="ltr"
+                android:textDirection="ltr"
+                android:textSize="16sp"
+                android:visibility="gone"
+                tools:ignore="HardcodedText" />
+
+            <!-- Show Solution Button (initially hidden) -->
+            <Button
+                android:id="@+id/showSolutionButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginBottom="16sp"
+                android:shadowColor="#000000"
+                android:shadowDx="1"
+                android:shadowDy="1"
+                android:shadowRadius="2"
+                android:text="Show Solution"
+                android:visibility="gone"
+                tools:ignore="HardcodedText" />
+
+            <!-- Button to go to Functions -->
+            <Button
+                android:id="@+id/goToFunctionsButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_margin="10sp"
+                android:shadowColor="#000000"
+                android:shadowDx="1"
+                android:shadowDy="1"
+                android:shadowRadius="2"
+                android:text="Go to Functions"
+                android:visibility="gone"
+                tools:ignore="HardcodedText" />
+
+        </LinearLayout>
+    </ScrollView>
 </FrameLayout>
