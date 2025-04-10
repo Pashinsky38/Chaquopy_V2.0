@@ -34,13 +34,12 @@
                 android:shadowDx="1"
                 android:shadowDy="1"
                 android:shadowRadius="2"
-                android:text="Conditional Statements"
+                android:text="@string/conditional_statements_title"
                 android:textColor="#FFFF"
                 android:textSize="24sp"
                 android:textStyle="bold"
                 android:layoutDirection="ltr"
-                android:textDirection="ltr"
-                tools:ignore="HardcodedText" />
+                android:textDirection="ltr" />
 
             <!-- Explanation TextView: Describes conditional statements -->
             <TextView
@@ -56,8 +55,7 @@
                 android:textColor="#FFFF"
                 android:textSize="16sp"
                 android:layoutDirection="ltr"
-                android:textDirection="ltr"
-                tools:ignore="HardcodedText" />
+                android:textDirection="ltr" />
 
             <!-- Text-to-Speech Button: Reads the conditional statements explanation aloud -->
             <Button
@@ -70,8 +68,7 @@
                 android:shadowDx="1"
                 android:shadowDy="1"
                 android:shadowRadius="2"
-                android:text="Text to Speech"
-                tools:ignore="HardcodedText" />
+                android:text="@string/text_to_speech_button" />
 
             <!-- Code Example TextView: Shows an example of conditional statements -->
             <TextView
@@ -83,12 +80,11 @@
                 android:shadowDx="1"
                 android:shadowDy="1"
                 android:shadowRadius="2"
-                android:text="Comparison operators (==, !=, &gt;, &lt;, &gt;=, &lt;=) are used to compare values in conditions."
+                android:text="@string/comparison_operators_explanation"
                 android:textColor="#FFFF"
                 android:textSize="16sp"
                 android:layoutDirection="ltr"
-                android:textDirection="ltr"
-                tools:ignore="HardcodedText" />
+                android:textDirection="ltr" />
 
             <!-- Code Example TextView: Compares values using comparison operators -->
             <TextView
@@ -100,13 +96,12 @@
                 android:shadowDx="1"
                 android:shadowDy="1"
                 android:shadowRadius="2"
-                android:text="x == y  # x is equal to y\nx != y  # x is not equal to y\nx &gt; y   # x is greater than y\nx &lt; y   # x is less than y\nx &gt;= y  # x is greater than or equal to y\nx &lt;= y  # x is less than or equal to y"
+                android:text="@string/comparison_operators_example"
                 android:textColor="#FFFF"
                 android:textSize="16sp"
                 android:textStyle="italic"
                 android:layoutDirection="ltr"
-                android:textDirection="ltr"
-                tools:ignore="HardcodedText" />
+                android:textDirection="ltr" />
 
             <!-- Explanation TextView: Describes logical operators (and, or, not) -->
             <TextView
@@ -118,12 +113,11 @@
                 android:shadowDx="1"
                 android:shadowDy="1"
                 android:shadowRadius="2"
-                android:text="Logical operators (and, or, not) are used to combine or modify conditions."
+                android:text="@string/logical_operators_explanation"
                 android:textColor="#FFFF"
                 android:textSize="16sp"
                 android:layoutDirection="ltr"
-                android:textDirection="ltr"
-                tools:ignore="HardcodedText" />
+                android:textDirection="ltr" />
 
             <!-- Code Example TextView: Shows examples of logical operators -->
             <TextView
@@ -135,13 +129,12 @@
                 android:shadowDx="1"
                 android:shadowDy="1"
                 android:shadowRadius="2"
-                android:text="x and y  # True if both x and y are true\nx or y   # True if either x or y is true\nnot x    # True if x is false"
+                android:text="@string/logical_operators_example"
                 android:textColor="#FFFF"
                 android:textSize="16sp"
                 android:textStyle="italic"
                 android:layoutDirection="ltr"
-                android:textDirection="ltr"
-                tools:ignore="HardcodedText" />
+                android:textDirection="ltr" />
 
             <!-- Code Example TextView: Shows an example of conditional statements with logical operators -->
             <TextView
@@ -153,13 +146,12 @@
                 android:shadowDx="1"
                 android:shadowDy="1"
                 android:shadowRadius="2"
-                android:text="age = 20\nif age &lt; 13:\n    print(&quot;You are a child&quot;)\nelif age &lt; 18:\n    print(&quot;You are a teenager&quot;)\nelif age &lt; 65:\n    print(&quot;You are an adult&quot;)\nelse:\n    print(&quot;You are a senior&quot;)"
+                android:text="@string/conditional_statement_example"
                 android:textColor="#FFFF"
                 android:textSize="16sp"
                 android:textStyle="italic"
                 android:layoutDirection="ltr"
-                android:textDirection="ltr"
-                tools:ignore="HardcodedText" />
+                android:textDirection="ltr" />
 
             <!-- Challenge TextView: Encourages the user to create a program -->
             <TextView
@@ -171,12 +163,11 @@
                 android:shadowDx="1"
                 android:shadowDy="1"
                 android:shadowRadius="2"
-                android:text="Now it's your turn! Try creating a program that checks if a number is positive, negative, or zero."
+                android:text="@string/conditional_statements_challenge"
                 android:textColor="#FFFF"
                 android:textSize="16sp"
                 android:layoutDirection="ltr"
-                android:textDirection="ltr"
-                tools:ignore="HardcodedText" />
+                android:textDirection="ltr" />
 
             <!-- EditText for entering Python code -->
             <EditText
@@ -184,7 +175,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="10sp"
-                android:hint="Enter Python code here"
+                android:hint="@string/code_editor_hint"
                 android:inputType="textMultiLine"
                 android:shadowColor="#000000"
                 android:shadowDx="1"
@@ -195,7 +186,7 @@
                 android:textSize="16sp"
                 android:layoutDirection="ltr"
                 android:textDirection="ltr"
-                tools:ignore="Autofill,HardcodedText" />
+                tools:ignore="Autofill" />
 
             <!-- Button to run the entered Python code -->
             <Button
@@ -208,8 +199,7 @@
                 android:shadowDx="1"
                 android:shadowDy="1"
                 android:shadowRadius="2"
-                android:text="Run Code"
-                tools:ignore="HardcodedText" />
+                android:text="@string/run_code_button" />
 
             <!-- TextView to display the output of the executed Python code -->
             <TextView
@@ -237,8 +227,7 @@
                 android:shadowDx="1"
                 android:shadowDy="1"
                 android:shadowRadius="2"
-                android:text="Go to Practice"
-                tools:ignore="HardcodedText" />
+                android:text="@string/go_to_practice_button" />
         </LinearLayout>
     </ScrollView>
 

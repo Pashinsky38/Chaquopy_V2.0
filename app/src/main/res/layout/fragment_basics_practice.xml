@@ -25,15 +25,14 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
-                android:text="Practice: Printing and Variables"
+                android:text="@string/practice_title"
                 android:textColor="#FFFF"
                 android:textSize="24sp"
                 android:textStyle="bold"
                 android:shadowColor="#000000"
                 android:shadowDx="1"
                 android:shadowDy="1"
-                android:shadowRadius="2"
-                tools:ignore="HardcodedText" />
+                android:shadowRadius="2" />
 
             <!-- Instruction TextView: Tells the user to type the output precisely -->
             <TextView
@@ -42,14 +41,13 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5sp"
                 android:layout_marginEnd="10sp"
-                android:text="Type the output precisely as it would appear in the console."
+                android:text="@string/instruction_text"
                 android:textColor="#FFFF"
                 android:textSize="16sp"
                 android:shadowColor="#000000"
                 android:shadowDx="1"
                 android:shadowDy="1"
-                android:shadowRadius="2"
-                tools:ignore="HardcodedText" />
+                android:shadowRadius="2" />
 
             <!-- Question 1 Section -->
             <!-- Code snippet for Question 1 -->
@@ -58,14 +56,13 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16sp"
-                android:text="name = 'Michal'\nprint(name)"
+                android:text="@string/question1_code"
                 android:textColor="#FFFF"
                 android:textSize="20sp"
                 android:shadowColor="#000000"
                 android:shadowDx="1"
                 android:shadowDy="1"
-                android:shadowRadius="2"
-                tools:ignore="HardcodedText" />
+                android:shadowRadius="2" />
 
             <!-- EditText for user to input answer for Question 1 -->
             <EditText
@@ -73,7 +70,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8sp"
-                android:hint="Enter the output here"
+                android:hint="@string/enter_output_hint"
                 android:inputType="text"
                 android:textColor="#FFFF"
                 android:textColorHint="#FFFF"
@@ -82,7 +79,7 @@
                 android:shadowDy="1"
                 android:shadowRadius="2"
                 android:textSize="20sp"
-                tools:ignore="Autofill,HardcodedText"
+                tools:ignore="Autofill"
                 android:textDirection="ltr"/>
 
             <!-- Question 2 Section -->
@@ -92,14 +89,13 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16sp"
-                android:text="age = 25\nprint('My age is', age)"
+                android:text="@string/question2_code"
                 android:textColor="#FFFF"
                 android:textSize="20sp"
                 android:shadowColor="#000000"
                 android:shadowDx="1"
                 android:shadowDy="1"
-                android:shadowRadius="2"
-                tools:ignore="HardcodedText" />
+                android:shadowRadius="2" />
 
             <!-- EditText for user to input answer for Question 2 -->
             <EditText
@@ -107,7 +103,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8sp"
-                android:hint="Enter the output here"
+                android:hint="@string/enter_output_hint"
                 android:inputType="text"
                 android:textColor="#FFFF"
                 android:textColorHint="#FFFF"
@@ -116,7 +112,7 @@
                 android:shadowDy="1"
                 android:shadowRadius="2"
                 android:textSize="20sp"
-                tools:ignore="Autofill,HardcodedText"
+                tools:ignore="Autofill"
                 android:textDirection="ltr"/>
 
             <!-- Question 3 Section -->
@@ -126,14 +122,13 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16sp"
-                android:text="x = 10\ny = 5\nprint(x + y)"
+                android:text="@string/question3_code"
                 android:textColor="#FFFF"
                 android:textSize="20sp"
                 android:shadowColor="#000000"
                 android:shadowDx="1"
                 android:shadowDy="1"
-                android:shadowRadius="2"
-                tools:ignore="HardcodedText" />
+                android:shadowRadius="2" />
 
             <!-- EditText for user to input answer for Question 3 -->
             <EditText
@@ -141,7 +136,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8sp"
-                android:hint="Enter the output here"
+                android:hint="@string/enter_output_hint"
                 android:inputType="text"
                 android:textColor="#FFFF"
                 android:textColorHint="#FFFF"
@@ -150,7 +145,7 @@
                 android:shadowDy="1"
                 android:shadowRadius="2"
                 android:textSize="20sp"
-                tools:ignore="Autofill,HardcodedText"
+                tools:ignore="Autofill"
                 android:textDirection="ltr"/>
 
             <!-- Button to check the answers -->
@@ -160,12 +155,11 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginTop="24sp"
-                android:text="Check Answers"
+                android:text="@string/check_answers_button"
                 android:shadowColor="#000000"
                 android:shadowDx="1"
                 android:shadowDy="1"
-                android:shadowRadius="2"
-                tools:ignore="HardcodedText" />
+                android:shadowRadius="2" />
 
             <!-- TextView to display the results -->
             <TextView
@@ -188,12 +182,11 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginTop="16sp"
-                android:text="Show Solution"
+                android:text="@string/show_solution_button"
                 android:shadowColor="#000000"
                 android:shadowDx="1"
                 android:shadowDy="1"
-                android:shadowRadius="2"
-                tools:ignore="HardcodedText" />
+                android:shadowRadius="2" />
 
             <!-- Button to go to Conditional Statements Activity -->
             <Button
@@ -206,8 +199,7 @@
                 android:shadowDx="1"
                 android:shadowDy="1"
                 android:shadowRadius="2"
-                android:text="Go to Conditional Statements"
-                tools:ignore="HardcodedText" />
+                android:text="@string/go_to_conditional_statements" />
         </LinearLayout>
     </ScrollView>
 </FrameLayout>

@@ -26,7 +26,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="10sp"
-                android:text="Variables in Python"
+                android:text="@string/variables_title"
                 android:textColor="#FFFF"
                 android:textSize="24sp"
                 android:textStyle="bold"
@@ -35,8 +35,7 @@
                 android:shadowDy="1"
                 android:shadowRadius="2"
                 android:layoutDirection="ltr"
-                android:textDirection="ltr"
-                tools:ignore="HardcodedText" />
+                android:textDirection="ltr" />
 
             <!-- Explanation of variables -->
             <TextView
@@ -44,7 +43,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="10sp"
-                android:text="Variables are used to store data. You can think of them as containers that hold values. To create a variable, you choose a name and assign a value to it using the '=' operator."
+                android:text="@string/variables_explanation"
                 android:textColor="#FFFF"
                 android:textSize="16sp"
                 android:shadowColor="#000000"
@@ -52,8 +51,7 @@
                 android:shadowDy="1"
                 android:shadowRadius="2"
                 android:layoutDirection="ltr"
-                android:textDirection="ltr"
-                tools:ignore="HardcodedText" />
+                android:textDirection="ltr" />
 
             <!-- Text-to-Speech Button -->
             <Button
@@ -66,8 +64,7 @@
                 android:shadowDx="1"
                 android:shadowDy="1"
                 android:shadowRadius="2"
-                android:text="@string/text_to_speech_button"
-                tools:ignore="HardcodedText" />
+                android:text="@string/text_to_speech_button" />
 
             <!-- Example of variables -->
             <TextView
@@ -75,7 +72,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="10sp"
-                android:text="name = 'Libby'\nage = 30\nprint(name)\nprint(age)"
+                android:text="@string/variables_example"
                 android:textColor="#FFFF"
                 android:textSize="18sp"
                 android:textStyle="italic"
@@ -84,8 +81,7 @@
                 android:shadowDy="1"
                 android:shadowRadius="2"
                 android:layoutDirection="ltr"
-                android:textDirection="ltr"
-                tools:ignore="HardcodedText" />
+                android:textDirection="ltr" />
 
             <!-- Rules for variable names -->
             <TextView
@@ -93,7 +89,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="10sp"
-                android:text="Variable names must start with a letter or an underscore, and can contain letters, numbers, and underscores. They are case-sensitive."
+                android:text="@string/variables_rules"
                 android:textColor="#FFFF"
                 android:textSize="16sp"
                 android:shadowColor="#000000"
@@ -101,8 +97,7 @@
                 android:shadowDy="1"
                 android:shadowRadius="2"
                 android:layoutDirection="ltr"
-                android:textDirection="ltr"
-                tools:ignore="HardcodedText" />
+                android:textDirection="ltr" />
 
             <!-- Example of valid and invalid variable names -->
             <TextView
@@ -110,7 +105,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="10sp"
-                android:text="valid_name = 10\n_another_valid_name = 'Hello'\nmyVariable123 = True\n\n# Invalid:\n# 123variable = 5 (starts with a number)\n# my-variable = 'test' (contains a hyphen)"
+                android:text="@string/variables_rules_example"
                 android:textColor="#FFFF"
                 android:textSize="18sp"
                 android:textStyle="italic"
@@ -119,8 +114,7 @@
                 android:shadowDy="1"
                 android:shadowRadius="2"
                 android:layoutDirection="ltr"
-                android:textDirection="ltr"
-                tools:ignore="HardcodedText" />
+                android:textDirection="ltr" />
 
             <!-- Explanation of operators -->
             <TextView
@@ -128,7 +122,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="10sp"
-                android:text="Python supports various mathematical operators:"
+                android:text="@string/operators_explanation"
                 android:textColor="#FFFF"
                 android:textSize="16sp"
                 android:shadowColor="#000000"
@@ -136,8 +130,7 @@
                 android:shadowDy="1"
                 android:shadowRadius="2"
                 android:layoutDirection="ltr"
-                android:textDirection="ltr"
-                tools:ignore="HardcodedText" />
+                android:textDirection="ltr" />
 
             <!-- Example of operators -->
             <TextView
@@ -145,7 +138,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="10sp"
-                android:text="Addition: +\nSubtraction: -\nMultiplication: *\nDivision: /\nModulo (remainder): %\nExponentiation: **"
+                android:text="@string/operators_example"
                 android:textColor="#FFFF"
                 android:textSize="16sp"
                 android:textStyle="italic"
@@ -154,8 +147,7 @@
                 android:shadowDy="1"
                 android:shadowRadius="2"
                 android:layoutDirection="ltr"
-                android:textDirection="ltr"
-                tools:ignore="HardcodedText" />
+                android:textDirection="ltr" />
 
             <!-- Example of operators in use -->
             <TextView
@@ -163,7 +155,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="10sp"
-                android:text="x = 10\ny = 3\nprint(x + y)  # Output: 13\nprint(x - y)  # Output: 7\nprint(x * y)  # Output: 30\nprint(x / y)  # Output: 3.333...\nprint(x % y)  # Output: 1\nprint(x ** y) # Output: 1000"
+                android:text="@string/operators_in_use_example"
                 android:textColor="#FFFF"
                 android:textSize="16sp"
                 android:textStyle="italic"
@@ -172,8 +164,7 @@
                 android:shadowDy="1"
                 android:shadowRadius="2"
                 android:layoutDirection="ltr"
-                android:textDirection="ltr"
-                tools:ignore="HardcodedText" />
+                android:textDirection="ltr" />
 
             <!-- Challenge TextView: Prompts the user to try creating variables -->
             <TextView
@@ -185,12 +176,11 @@
                 android:shadowDx="1"
                 android:shadowDy="1"
                 android:shadowRadius="2"
-                android:text="Now it's your turn! Try creating a variable with your name and another with your age, then print them!"
+                android:text="@string/variables_challenge"
                 android:textColor="#FFFF"
                 android:textSize="20sp"
                 android:layoutDirection="ltr"
-                android:textDirection="ltr"
-                tools:ignore="HardcodedText" />
+                android:textDirection="ltr" />
 
             <!-- EditText for entering Python code -->
             <EditText
@@ -198,7 +188,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="10sp"
-                android:hint="Enter Python code here"
+                android:hint="@string/code_editor_hint"
                 android:inputType="textMultiLine"
                 android:textColor="#FFFF"
                 android:textColorHint="#FFFF"
@@ -208,7 +198,7 @@
                 android:shadowRadius="2"
                 android:layoutDirection="ltr"
                 android:textDirection="ltr"
-                tools:ignore="Autofill,HardcodedText" />
+                tools:ignore="Autofill" />
 
             <!-- Button to run the entered code -->
             <Button
@@ -217,12 +207,11 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
                 android:layout_margin="10sp"
-                android:text="Run Code"
+                android:text="@string/run_code_button"
                 android:shadowColor="#000000"
                 android:shadowDx="1"
                 android:shadowDy="1"
-                android:shadowRadius="2"
-                tools:ignore="HardcodedText" />
+                android:shadowRadius="2" />
 
             <!-- TextView to display the output of the code -->
             <TextView
@@ -245,12 +234,11 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
                 android:layout_margin="10sp"
-                android:text="Go to Practice"
+                android:text="@string/go_to_practice_button"
                 android:shadowColor="#000000"
                 android:shadowDx="1"
                 android:shadowDy="1"
-                android:shadowRadius="2"
-                tools:ignore="HardcodedText" />
+                android:shadowRadius="2" />
         </LinearLayout>
     </ScrollView>
 </FrameLayout>

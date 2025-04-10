@@ -29,9 +29,9 @@
             android:ems="10"
             android:textSize="20sp"
             android:textColorHint="#FFFFFF"
-            android:hint="Enter the Email..."
+            android:hint="@string/enter_login_email"
             android:inputType="text"
-            tools:ignore="HardcodedText,TextFields" />
+            tools:ignore="TextFields" />
 
         <!-- EditText for entering password -->
         <EditText
@@ -46,9 +46,8 @@
             android:textColor="#FFFFFF"
             android:ems="10"
             android:textSize="20sp"
-            android:hint="Enter the password..."
-            android:inputType="textPassword"
-            tools:ignore="HardcodedText" />
+            android:hint="@string/enter_login_password"
+            android:inputType="textPassword" />
 
         <!-- Button for logging in -->
         <Button
@@ -60,8 +59,7 @@
             android:layout_width="150dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="250dp"
-            android:text="Login"
-            tools:ignore="HardcodedText" />
+            android:text="@string/login" />
 
         <!-- Button for signing up -->
         <Button
@@ -73,8 +71,7 @@
             android:layout_width="150dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
-            android:text="Sign up"
-            tools:ignore="HardcodedText" />
+            android:text="@string/sign_up_button" />
 
         <!-- Button for going back to HomePage -->
         <Button
@@ -86,7 +83,6 @@
             android:layout_width="150dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
-            android:text="Go back"
-            tools:ignore="HardcodedText" />
+            android:text="@string/go_back" />
     </LinearLayout>
 </FrameLayout>

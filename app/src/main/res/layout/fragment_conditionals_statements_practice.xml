@@ -32,13 +32,12 @@
                 android:shadowDx="1"
                 android:shadowDy="1"
                 android:shadowRadius="2"
-                android:text="Practice: Conditional Statements"
+                android:text="@string/conditional_practice_title"
                 android:textColor="#FFFF"
                 android:textSize="24sp"
                 android:textStyle="bold"
                 android:layoutDirection="ltr"
-                android:textDirection="ltr"
-                tools:ignore="HardcodedText" />
+                android:textDirection="ltr" />
 
             <!-- Question 1 -->
             <TextView
@@ -50,12 +49,11 @@
                 android:shadowDx="1"
                 android:shadowDy="1"
                 android:shadowRadius="2"
-                android:text="Question 1: Write a Python program that checks if a given number is even or odd. Print 'Even' if the number is even, and 'Odd' if it's odd."
+                android:text="@string/conditional_question1"
                 android:textColor="#FFFF"
                 android:textSize="16sp"
                 android:layoutDirection="ltr"
-                android:textDirection="ltr"
-                tools:ignore="HardcodedText" />
+                android:textDirection="ltr" />
 
             <!-- EditText for user to input code for Question 1 -->
             <EditText
@@ -63,7 +61,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="16sp"
-                android:hint="Enter your code here"
+                android:hint="@string/code_editor_hint"
                 android:inputType="textMultiLine"
                 android:padding="8sp"
                 android:shadowColor="#000000"
@@ -74,7 +72,7 @@
                 android:textColorHint="#FFFF"
                 android:layoutDirection="ltr"
                 android:textDirection="ltr"
-                tools:ignore="Autofill,HardcodedText" />
+                tools:ignore="Autofill" />
 
             <!-- Button to run the code for Question 1 -->
             <Button
@@ -87,8 +85,7 @@
                 android:shadowDx="1"
                 android:shadowDy="1"
                 android:shadowRadius="2"
-                android:text="Run Code"
-                tools:ignore="HardcodedText" />
+                android:text="@string/run_code_button" />
 
             <!-- TextView to display the output of Question 1 -->
             <TextView
@@ -121,8 +118,7 @@
                 android:layoutDirection="ltr"
                 android:textDirection="ltr"
                 android:textSize="16sp"
-                android:visibility="gone"
-                tools:ignore="HardcodedText" />
+                android:visibility="gone" />
 
             <!-- Question 2 -->
             <TextView
@@ -134,12 +130,11 @@
                 android:shadowDx="1"
                 android:shadowDy="1"
                 android:shadowRadius="2"
-                android:text="Question 2: Write a Python program that takes two numbers as input and determines which one is greater. Print 'The first number is greater', 'The second number is greater', or 'Both numbers are equal' accordingly."
+                android:text="@string/conditional_question2"
                 android:textColor="#FFFF"
                 android:textSize="16sp"
                 android:layoutDirection="ltr"
-                android:textDirection="ltr"
-                tools:ignore="HardcodedText" />
+                android:textDirection="ltr" />
 
             <!-- EditText for user to input code for Question 2 -->
             <EditText
@@ -147,7 +142,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="16sp"
-                android:hint="Enter your code here"
+                android:hint="@string/code_editor_hint"
                 android:inputType="textMultiLine"
                 android:padding="8sp"
                 android:shadowColor="#000000"
@@ -158,7 +153,7 @@
                 android:textColorHint="#FFFF"
                 android:layoutDirection="ltr"
                 android:textDirection="ltr"
-                tools:ignore="Autofill,HardcodedText" />
+                tools:ignore="Autofill" />
 
             <!-- Button to run the code for Question 2 -->
             <Button
@@ -171,8 +166,7 @@
                 android:shadowDx="1"
                 android:shadowDy="1"
                 android:shadowRadius="2"
-                android:text="Run Code"
-                tools:ignore="HardcodedText" />
+                android:text="@string/run_code_button" />
 
             <!-- TextView to display the output of Question 2 -->
             <TextView
@@ -205,8 +199,7 @@
                 android:layoutDirection="ltr"
                 android:textDirection="ltr"
                 android:textSize="16sp"
-                android:visibility="gone"
-                tools:ignore="HardcodedText" />
+                android:visibility="gone" />
 
             <!-- Show Solution Button (initially hidden) -->
             <Button
@@ -219,9 +212,8 @@
                 android:shadowDx="1"
                 android:shadowDy="1"
                 android:shadowRadius="2"
-                android:text="Show Solution"
-                android:visibility="gone"
-                tools:ignore="HardcodedText" />
+                android:text="@string/show_solution_button"
+                android:visibility="gone" />
 
             <!-- Button to go to Loops -->
             <Button
@@ -234,9 +226,8 @@
                 android:shadowDx="1"
                 android:shadowDy="1"
                 android:shadowRadius="2"
-                android:text="Go to Loops"
-                android:visibility="gone"
-                tools:ignore="HardcodedText" />
+                android:text="@string/go_to_loops"
+                android:visibility="gone" />
 
         </LinearLayout>
     </ScrollView>
