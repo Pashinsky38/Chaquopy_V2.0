@@ -79,11 +79,21 @@ public class VariablesFragment extends Fragment {
      * Sets up the click listeners for the buttons in the fragment.
      * - Sets a click listener for the run code button to execute Python code.
      * - Sets a click listener for the navigation button to go to the BasicsPracticeFragment.
+     * - Sets a click listener for the text-to-speech button to read the explanation.
      */
     private void setupButtonListeners() {
         binding.runCodeButtonVariables.setOnClickListener(v -> runPythonCode());
+
         Button goToPracticeButton = binding.goToPracticeButton;
         goToPracticeButton.setOnClickListener(v -> navigateToBasicsPracticeFragment());
+
+        // Set up click listener for the text-to-speech button
+        binding.textToSpeechButtonVariables.setOnClickListener(v -> {
+            // Get the explanation text to speak
+            String textToSpeak = binding.variablesExplanation.getText().toString();
+            // Start the TextToSpeechService to speak the explanation text
+            TextToSpeechService.startService(requireContext(), textToSpeak);
+        });
     }
 
     /**
@@ -91,6 +101,9 @@ public class VariablesFragment extends Fragment {
      * Replaces the current fragment with BasicsPracticeFragment and adds it to the back stack.
      */
     public void navigateToBasicsPracticeFragment() {
+        // Stop any ongoing text-to-speech before navigating
+        TextToSpeechService.stopSpeaking(requireContext());
+
         BasicsPracticeFragment basicsPracticeFragment = new BasicsPracticeFragment();
         FragmentTransaction transaction = getParentFragmentManager().beginTransaction();
         transaction.replace(R.id.fragment_basics_practice, basicsPracticeFragment);
@@ -136,5 +149,17 @@ public class VariablesFragment extends Fragment {
      */
     private void displayPythonResult(PyObject result) {
         binding.outputTextVariables.setText(result.toString());
+    }
+
+    /**
+     * Called when the fragment is no longer in use.
+     * This is called after {@link #onStop()} and before {@link #onDetach()}.
+     * Stops any ongoing text-to-speech when the fragment is destroyed.
+     */
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        // Stop the TextToSpeechService when the fragment is destroyed
+        TextToSpeechService.stopSpeaking(requireContext());
     }
 }

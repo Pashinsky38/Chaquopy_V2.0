@@ -1,64 +1,314 @@
 package libby.pashinsky.chaquopy;
 
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
-
-import androidx.fragment.app.Fragment;
-
+import android.os.CountDownTimer;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
+
+import com.chaquo.python.PyObject;
+import com.chaquo.python.Python;
+import com.chaquo.python.android.AndroidPlatform;
+
+import libby.pashinsky.chaquopy.databinding.FragmentFunctionsPracticeBinding;
 
 /**
- * A simple {@link Fragment} subclass.
- * Use the {@link FunctionsPractice#newInstance} factory method to
- * create an instance of this fragment.
+ * A Fragment that allows users to practice functions in Python using the Chaquopy library.
+ * It provides an interface to input Python code for two different questions about functions,
+ * execute them, and view the output.
  */
 public class FunctionsPractice extends Fragment {
 
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
+    private FragmentFunctionsPracticeBinding binding;
+    private boolean isQuestion1Correct = false;
+    private boolean isQuestion2Correct = false;
+    private CountDownTimer timer;
+    private int incorrectAttempts = 0;
+    private static final int MAX_INCORRECT_ATTEMPTS = 3;
+    private static final long TIMER_DURATION = 3 * 60 * 1000; // 3 minutes in milliseconds
 
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
-
+    /**
+     * Required empty public constructor for the FunctionsPractice.
+     */
     public FunctionsPractice() {
         // Required empty public constructor
     }
 
     /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
+     * Called to have the fragment instantiate its user interface view.
      *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment FunctionsPractice.
+     * @param inflater           The LayoutInflater object that can be used to inflate any views in the fragment.
+     * @param container          If non-null, this is the parent view that the fragment's UI should be attached to.
+     * @param savedInstanceState If non-null, this fragment is being re-constructed from a previous saved state.
+     * @return The View for the fragment's UI, or null.
      */
-    // TODO: Rename and change types and number of parameters
-    public static FunctionsPractice newInstance(String param1, String param2) {
-        FunctionsPractice fragment = new FunctionsPractice();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
-        return fragment;
+    @Nullable
+    @Override
+    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        binding = FragmentFunctionsPracticeBinding.inflate(inflater, container, false);
+        return binding.getRoot();
     }
 
+    /**
+     * Called immediately after {@link #onCreateView(LayoutInflater, ViewGroup, Bundle)}
+     * has returned, but before any saved state has been restored in to the view.
+     * Initializes the Python environment and sets up the click listeners for the buttons.
+     *
+     * @param view               The View returned by {@link #onCreateView(LayoutInflater, ViewGroup, Bundle)}.
+     * @param savedInstanceState If non-null, this fragment is being re-constructed from a previous saved state.
+     */
     @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+
+        // Initialize Python
+        Context context = requireContext().getApplicationContext();
+        if (!Python.isStarted()) {
+            Python.start(new AndroidPlatform(context));
+        }
+
+        // Initially hide the "Go to Classes" and "Show Solution" buttons
+        binding.goToClassesButton.setVisibility(View.GONE);
+        binding.showSolutionButton.setVisibility(View.GONE);
+
+        // Initially hide the solution TextViews
+        binding.solutionText1.setVisibility(View.GONE);
+        binding.solutionText2.setVisibility(View.GONE);
+
+        // Set up the timer
+        startTimer();
+
+        /*
+          Sets a click listener on the runCodeButton1.
+          When clicked, it calls the {@link #runPythonCode(int)} method to execute the Python code for question 1.
+         */
+        binding.runCodeButton1.setOnClickListener(v -> runPythonCode(1));
+
+        /*
+          Sets a click listener on the runCodeButton2.
+          When clicked, it calls the {@link #runPythonCode(int)} method to execute the Python code for question 2.
+         */
+        binding.runCodeButton2.setOnClickListener(v -> runPythonCode(2));
+
+        // Set a click listener for the "Show Solution" button
+        binding.showSolutionButton.setOnClickListener(v -> showSolutions());
+    }
+
+    /**
+     * Starts a 3-minute countdown timer. When the timer finishes, the "Show Solution" button becomes visible.
+     */
+    private void startTimer() {
+        timer = new CountDownTimer(TIMER_DURATION, 1000) {
+            @Override
+            public void onTick(long millisUntilFinished) {
+                // We don't update UI since we want the timer to be hidden
+            }
+
+            @Override
+            public void onFinish() {
+                // Show the "Show Solution" button when the timer finishes
+                if (binding != null && isAdded()) {  // Check if fragment is still attached
+                    binding.showSolutionButton.setVisibility(View.VISIBLE);
+                }
+            }
+        }.start();
+    }
+
+    /**
+     * Cancels the timer if it's running.
+     */
+    private void cancelTimer() {
+        if (timer != null) {
+            timer.cancel();
+            timer = null;
         }
     }
 
+    /**
+     * Executes the Python code entered by the user in the code editor.
+     * It retrieves the code, runs it using Chaquopy, and displays the result in the output TextView.
+     *
+     * @param questionNumber The number of the question (1 or 2) to determine which code editor to use.
+     */
+    private void runPythonCode(int questionNumber) {
+        // Get Python code from EditText using View Binding
+        String pythonCode = "";
+        switch (questionNumber) {
+            case 1:
+                pythonCode = binding.codeEditor1.getText().toString();
+                break;
+            case 2:
+                pythonCode = binding.codeEditor2.getText().toString();
+                break;
+        }
+
+        // Check if the code uses functions for the relevant questions
+        boolean usesFunctions = checkFunctionsUsage(questionNumber, pythonCode);
+
+        // Execute Python code using Chaquopy
+        Python py = Python.getInstance();
+        PyObject pyObject = py.getModule("pythonRunner"); // "pythonRunner" is the Python file name
+        PyObject result = pyObject.callAttr("main", pythonCode); // Call a function named "main" in the Python file
+        String output = result.toString();
+
+        // Check if the answer is correct
+        boolean isCorrect = checkAnswer(questionNumber, output);
+
+        // Update the correctness flags
+        switch (questionNumber) {
+            case 1:
+                isQuestion1Correct = isCorrect;
+                break;
+            case 2:
+                isQuestion2Correct = isCorrect;
+                break;
+        }
+
+        // Display the result in the correct TextView using View Binding
+        String feedback = "";
+        if (!usesFunctions) {
+            feedback = "You must define a function for this question.\n";
+        }
+
+        switch (questionNumber) {
+            case 1:
+                binding.outputText1.setText(feedback + output + "\nCorrect: " + isCorrect);
+                break;
+            case 2:
+                binding.outputText2.setText(feedback + output + "\nCorrect: " + isCorrect);
+                break;
+        }
+
+        // If the answer is incorrect, increment the incorrect attempts counter
+        if (!isCorrect) {
+            incorrectAttempts++;
+            // If the user has reached the maximum incorrect attempts, show the solution button
+            if (incorrectAttempts >= MAX_INCORRECT_ATTEMPTS) {
+                binding.showSolutionButton.setVisibility(View.VISIBLE);
+            }
+        }
+
+        // Check if all questions are correct and show the button if so
+        if (isQuestion1Correct && isQuestion2Correct) {
+            binding.goToClassesButton.setVisibility(View.VISIBLE);
+            // Cancel the timer since the user has completed all questions correctly
+            cancelTimer();
+        }
+    }
+
+    /**
+     * Checks if the user's Python code uses functions for the given question.
+     *
+     * @param questionNumber The number of the question (1 or 2).
+     * @param pythonCode     The user's Python code.
+     * @return True if the code uses functions appropriately, false otherwise.
+     */
+    private boolean checkFunctionsUsage(int questionNumber, String pythonCode) {
+        switch (questionNumber) {
+            case 1:
+                return pythonCode.contains("def print_pattern") && pythonCode.contains("(");
+            case 2:
+                return pythonCode.contains("def calculate_grades") && pythonCode.contains("return");
+            default:
+                return true; // No need to check for other questions
+        }
+    }
+
+    /**
+     * Checks if the user's Python code produced the correct output for the given question.
+     *
+     * @param questionNumber The number of the question (1 or 2).
+     * @param output         The output produced by the user's Python code.
+     * @return True if the output is correct, false otherwise.
+     */
+    private boolean checkAnswer(int questionNumber, String output) {
+        switch (questionNumber) {
+            case 1:
+                // Question 1: Print pattern of numbers
+                // Check for specific patterns that should be in the output
+                return output.contains("*") &&
+                        output.contains("**") &&
+                        output.contains("***") &&
+                        output.contains("****") &&
+                        output.contains("print_pattern(5)");
+
+            case 2:
+                // Question 2: Calculate grades
+                // Check if output contains calculation results
+                return output.contains("A") &&
+                        output.contains("B") &&
+                        output.contains("C") &&
+                        output.contains("F") &&
+                        output.contains("calculate_grades");
+
+            default:
+                return false;
+        }
+    }
+
+    /**
+     * Shows the solution for all questions in dedicated TextViews.
+     */
+    private void showSolutions() {
+        // Solution text for Question 1
+        String solution1 = "# Solution for Question 1\n" +
+                "def print_pattern(n):\n" +
+                "    for i in range(1, n + 1):\n" +
+                "        print(\"*\" * i)\n" +
+                "\n" +
+                "# Test the function\n" +
+                "print_pattern(5)";
+
+        // Solution text for Question 2
+        String solution2 = "# Solution for Question 2\n" +
+                "def calculate_grades(scores):\n" +
+                "    results = []\n" +
+                "    \n" +
+                "    for score in scores:\n" +
+                "        if score >= 90:\n" +
+                "            results.append(\"A\")\n" +
+                "        elif score >= 80:\n" +
+                "            results.append(\"B\")\n" +
+                "        elif score >= 70:\n" +
+                "            results.append(\"C\")\n" +
+                "        elif score >= 60:\n" +
+                "            results.append(\"D\")\n" +
+                "        else:\n" +
+                "            results.append(\"F\")\n" +
+                "    \n" +
+                "    return results\n" +
+                "\n" +
+                "# Test the function\n" +
+                "test_scores = [95, 82, 74, 65, 48]\n" +
+                "print(\"Scores:\", test_scores)\n" +
+                "print(\"Grades:\", calculate_grades(test_scores))";
+
+        // Display solutions in dedicated TextViews
+        binding.solutionText1.setText("Solution:\n" + solution1);
+        binding.solutionText1.setVisibility(View.VISIBLE);
+
+        binding.solutionText2.setText("Solution:\n" + solution2);
+        binding.solutionText2.setVisibility(View.VISIBLE);
+
+        // Show a toast message indicating solutions are shown
+        Toast.makeText(requireContext(), "Solutions have been displayed", Toast.LENGTH_SHORT).show();
+    }
+
+    /**
+     * Called when the fragment is no longer in use.
+     * Cancels the timer to prevent memory leaks.
+     */
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_functions_practice, container, false);
+    public void onDestroy() {
+        super.onDestroy();
+        cancelTimer();
+        binding = null;
     }
 }

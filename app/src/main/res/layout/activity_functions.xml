@@ -1,10 +1,354 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<!-- Root layout for the Functions activity -->
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/background_start"
     android:fitsSystemWindows="true"
     tools:context=".Functions">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <!-- ScrollView to allow scrolling if content exceeds screen height -->
+    <ScrollView
+        android:id="@+id/scrollView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <!-- LinearLayout to arrange content vertically -->
+        <LinearLayout
+            android:padding="16sp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <!-- Title TextView: "Functions in Python" -->
+            <TextView
+                android:id="@+id/functions_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10sp"
+                android:shadowColor="#000000"
+                android:shadowDx="1"
+                android:shadowDy="1"
+                android:shadowRadius="2"
+                android:text="@string/functions_title"
+                android:textColor="#FFFF"
+                android:textSize="24sp"
+                android:textStyle="bold"
+                android:layoutDirection="ltr"
+                android:textDirection="ltr" />
+
+            <!-- Explanation TextView: Describes functions -->
+            <TextView
+                android:id="@+id/functions_explanation"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10sp"
+                android:shadowColor="#000000"
+                android:shadowDx="1"
+                android:shadowDy="1"
+                android:shadowRadius="2"
+                android:text="@string/functions_explanation"
+                android:textColor="#FFFF"
+                android:textSize="16sp"
+                android:layoutDirection="ltr"
+                android:textDirection="ltr" />
+
+            <!-- Text-to-Speech Button: Reads the functions explanation aloud -->
+            <Button
+                android:id="@+id/textToSpeechButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_margin="10sp"
+                android:shadowColor="#000000"
+                android:shadowDx="1"
+                android:shadowDy="1"
+                android:shadowRadius="2"
+                android:text="@string/text_to_speech_button" />
+
+            <!-- Function Definition Section -->
+            <TextView
+                android:id="@+id/function_definition_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10sp"
+                android:shadowColor="#000000"
+                android:shadowDx="1"
+                android:shadowDy="1"
+                android:shadowRadius="2"
+                android:text="@string/function_definition_title"
+                android:textColor="#FFFF"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:layoutDirection="ltr"
+                android:textDirection="ltr" />
+
+            <!-- Function Definition Explanation -->
+            <TextView
+                android:id="@+id/function_definition_explanation"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10sp"
+                android:shadowColor="#000000"
+                android:shadowDx="1"
+                android:shadowDy="1"
+                android:shadowRadius="2"
+                android:text="@string/function_definition_explanation"
+                android:textColor="#FFFF"
+                android:textSize="16sp"
+                android:layoutDirection="ltr"
+                android:textDirection="ltr" />
+
+            <!-- Function Definition Example -->
+            <TextView
+                android:id="@+id/function_definition_example"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10sp"
+                android:shadowColor="#000000"
+                android:shadowDx="1"
+                android:shadowDy="1"
+                android:shadowRadius="2"
+                android:text="@string/function_definition_example"
+                android:textColor="#FFFF"
+                android:textSize="16sp"
+                android:textStyle="italic"
+                android:layoutDirection="ltr"
+                android:textDirection="ltr" />
+
+            <!-- Parameters Section -->
+            <TextView
+                android:id="@+id/parameters_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10sp"
+                android:shadowColor="#000000"
+                android:shadowDx="1"
+                android:shadowDy="1"
+                android:shadowRadius="2"
+                android:text="@string/parameters_title"
+                android:textColor="#FFFF"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:layoutDirection="ltr"
+                android:textDirection="ltr" />
+
+            <!-- Parameters Explanation -->
+            <TextView
+                android:id="@+id/parameters_explanation"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10sp"
+                android:shadowColor="#000000"
+                android:shadowDx="1"
+                android:shadowDy="1"
+                android:shadowRadius="2"
+                android:text="@string/parameters_explanation"
+                android:textColor="#FFFF"
+                android:textSize="16sp"
+                android:layoutDirection="ltr"
+                android:textDirection="ltr" />
+
+            <!-- Parameters Example -->
+            <TextView
+                android:id="@+id/parameters_example"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10sp"
+                android:shadowColor="#000000"
+                android:shadowDx="1"
+                android:shadowDy="1"
+                android:shadowRadius="2"
+                android:text="@string/parameters_example"
+                android:textColor="#FFFF"
+                android:textSize="16sp"
+                android:textStyle="italic"
+                android:layoutDirection="ltr"
+                android:textDirection="ltr" />
+
+            <!-- Return Values Section -->
+            <TextView
+                android:id="@+id/return_values_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10sp"
+                android:shadowColor="#000000"
+                android:shadowDx="1"
+                android:shadowDy="1"
+                android:shadowRadius="2"
+                android:text="@string/return_values_title"
+                android:textColor="#FFFF"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:layoutDirection="ltr"
+                android:textDirection="ltr" />
+
+            <!-- Return Values Explanation -->
+            <TextView
+                android:id="@+id/return_values_explanation"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10sp"
+                android:shadowColor="#000000"
+                android:shadowDx="1"
+                android:shadowDy="1"
+                android:shadowRadius="2"
+                android:text="@string/return_values_explanation"
+                android:textColor="#FFFF"
+                android:textSize="16sp"
+                android:layoutDirection="ltr"
+                android:textDirection="ltr" />
+
+            <!-- Return Values Example -->
+            <TextView
+                android:id="@+id/return_values_example"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10sp"
+                android:shadowColor="#000000"
+                android:shadowDx="1"
+                android:shadowDy="1"
+                android:shadowRadius="2"
+                android:text="@string/return_values_example"
+                android:textColor="#FFFF"
+                android:textSize="16sp"
+                android:textStyle="italic"
+                android:layoutDirection="ltr"
+                android:textDirection="ltr" />
+
+            <!-- Function Scope Section -->
+            <TextView
+                android:id="@+id/function_scope_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10sp"
+                android:shadowColor="#000000"
+                android:shadowDx="1"
+                android:shadowDy="1"
+                android:shadowRadius="2"
+                android:text="@string/function_scope_title"
+                android:textColor="#FFFF"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:layoutDirection="ltr"
+                android:textDirection="ltr" />
+
+            <!-- Function Scope Explanation -->
+            <TextView
+                android:id="@+id/function_scope_explanation"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10sp"
+                android:shadowColor="#000000"
+                android:shadowDx="1"
+                android:shadowDy="1"
+                android:shadowRadius="2"
+                android:text="@string/function_scope_explanation"
+                android:textColor="#FFFF"
+                android:textSize="16sp"
+                android:layoutDirection="ltr"
+                android:textDirection="ltr" />
+
+            <!-- Function Scope Example -->
+            <TextView
+                android:id="@+id/function_scope_example"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10sp"
+                android:shadowColor="#000000"
+                android:shadowDx="1"
+                android:shadowDy="1"
+                android:shadowRadius="2"
+                android:text="@string/function_scope_example"
+                android:textColor="#FFFF"
+                android:textSize="16sp"
+                android:textStyle="italic"
+                android:layoutDirection="ltr"
+                android:textDirection="ltr" />
+
+            <!-- Challenge TextView: Encourages the user to create a program -->
+            <TextView
+                android:id="@+id/challengeTextView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10sp"
+                android:shadowColor="#000000"
+                android:shadowDx="1"
+                android:shadowDy="1"
+                android:shadowRadius="2"
+                android:text="@string/functions_challenge"
+                android:textColor="#FFFF"
+                android:textSize="16sp"
+                android:layoutDirection="ltr"
+                android:textDirection="ltr" />
+
+            <!-- EditText for entering Python code -->
+            <EditText
+                android:id="@+id/codeEditor"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10sp"
+                android:hint="@string/code_editor_hint"
+                android:inputType="textMultiLine"
+                android:shadowColor="#000000"
+                android:shadowDx="1"
+                android:shadowDy="1"
+                android:shadowRadius="2"
+                android:textColor="#FFFF"
+                android:textColorHint="#FFFF"
+                android:textSize="16sp"
+                android:layoutDirection="ltr"
+                android:textDirection="ltr"
+                tools:ignore="Autofill" />
+
+            <!-- Button to run the entered Python code -->
+            <Button
+                android:id="@+id/runCodeButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_margin="10sp"
+                android:shadowColor="#000000"
+                android:shadowDx="1"
+                android:shadowDy="1"
+                android:shadowRadius="2"
+                android:text="@string/run_code_button" />
+
+            <!-- TextView to display the output of the executed Python code -->
+            <TextView
+                android:id="@+id/outputText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10sp"
+                android:shadowColor="#000000"
+                android:shadowDx="1"
+                android:shadowDy="1"
+                android:shadowRadius="2"
+                android:textColor="#FFFF"
+                android:layoutDirection="ltr"
+                android:textDirection="ltr"
+                android:textSize="16sp" />
+
+            <!-- Button to go to FunctionsPractice -->
+            <Button
+                android:id="@+id/goToFunctionsPracticeButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_margin="10sp"
+                android:shadowColor="#000000"
+                android:shadowDx="1"
+                android:shadowDy="1"
+                android:shadowRadius="2"
+                android:text="@string/go_to_practice_button" />
+        </LinearLayout>
+    </ScrollView>
+
+    <!-- FrameLayout to hold FunctionsPractice fragment -->
+    <FrameLayout
+        android:id="@+id/fragment_functions_practice"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="center" />
+</FrameLayout>

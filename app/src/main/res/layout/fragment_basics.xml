@@ -6,7 +6,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/background_start"
-    android:padding="16sp"
     tools:context=".BasicsFragment">
 
     <!-- ScrollView allows the content to be scrollable if it exceeds the screen height -->
@@ -17,6 +16,7 @@
 
         <!-- LinearLayout to arrange content vertically -->
         <LinearLayout
+            android:padding="16sp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
