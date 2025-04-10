@@ -74,8 +74,7 @@ public class FunctionsPractice extends Fragment {
             Python.start(new AndroidPlatform(context));
         }
 
-        // Initially hide the "Go to Classes" and "Show Solution" buttons
-        binding.goToClassesButton.setVisibility(View.GONE);
+        // Initially hide the "Show Solution" button
         binding.showSolutionButton.setVisibility(View.GONE);
 
         // Initially hide the solution TextViews
@@ -197,7 +196,6 @@ public class FunctionsPractice extends Fragment {
 
         // Check if all questions are correct and show the button if so
         if (isQuestion1Correct && isQuestion2Correct) {
-            binding.goToClassesButton.setVisibility(View.VISIBLE);
             // Cancel the timer since the user has completed all questions correctly
             cancelTimer();
         }

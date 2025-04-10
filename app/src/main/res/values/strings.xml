@@ -85,6 +85,10 @@
     <!-- Loops Practice -->
     <string name="loops_practice_title">Practice: Loops</string>
     <string name="loops_instruction_text">Write a program using loops based on the given requirements.</string>
+    <string name="loops_question1">Question 1: Write a Python program using a for loop that prints only the even numbers from 1 to 20. For each number, also print whether it\'s greater than or less than 10.</string>
+    <string name="loops_question2">Question 2: Write a Python program that uses a for loop to iterate through a list of numbers [12, 5, 8, 21, 13, 9, 31, 2] and create a new list containing only numbers greater than 10. Print both lists at the end.</string>
+    <string name="loops_question3">Question 3: Write a Python program using a while loop that counts from 1 to 15. For each number, if it\'s divisible by 3, print \'Fizz\', if it\'s divisible by 5, print \'Buzz\', and if it\'s divisible by both 3 and 5, print \'FizzBuzz\'. Otherwise, print the number itself.</string>
+    <string name="go_to_functions">Go to Functions</string>
 
     <!-- Functions -->
     <string name="functions_title">Functions in Python</string>
@@ -106,6 +110,8 @@
     <!-- Functions Practice -->
     <string name="functions_practice_title">Practice: Functions</string>
     <string name="functions_instruction_text">Write functions based on the given requirements.</string>
+    <string name="functions_question1">Question 1: Write a Python function named \'print_pattern\' that takes a number \'n\' as an argument and prints a triangle pattern of asterisks. For example, if n=5, it should print:\n*\n**\n***\n****\n*****\nCall your function with the value 5 to test it.</string>
+    <string name="functions_question2">Question 2: Write a Python function named \'calculate_grades\' that takes a list of scores and returns a list of corresponding letter grades. Use these grade ranges: A (90–100), B (80–89), C (70–79), D (60–69), F (below 60). Test your function with the list [95, 82, 74, 65, 48] and print both the scores and their corresponding grades.</string>
 
     <!-- Assessment Feedback -->
     <string name="all_answers_correct">All answers are correct!</string>

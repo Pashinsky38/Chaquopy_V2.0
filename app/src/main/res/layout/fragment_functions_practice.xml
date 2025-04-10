@@ -32,13 +32,12 @@
                 android:shadowDx="1"
                 android:shadowDy="1"
                 android:shadowRadius="2"
-                android:text="Practice: Functions"
+                android:text="@string/functions_practice_title"
                 android:textColor="#FFFF"
                 android:textSize="24sp"
                 android:textStyle="bold"
                 android:layoutDirection="ltr"
-                android:textDirection="ltr"
-                tools:ignore="HardcodedText" />
+                android:textDirection="ltr" />
 
             <!-- Question 1 -->
             <TextView
@@ -50,12 +49,11 @@
                 android:shadowDx="1"
                 android:shadowDy="1"
                 android:shadowRadius="2"
-                android:text="Question 1: Write a Python function named 'print_pattern' that takes a number 'n' as an argument and prints a triangle pattern of asterisks. For example, if n=5, it should print:\n*\n**\n***\n****\n*****\nCall your function with the value 5 to test it."
+                android:text="@string/functions_question1"
                 android:textColor="#FFFF"
                 android:textSize="16sp"
                 android:layoutDirection="ltr"
-                android:textDirection="ltr"
-                tools:ignore="HardcodedText" />
+                android:textDirection="ltr" />
 
             <!-- EditText for user to input code for Question 1 -->
             <EditText
@@ -63,7 +61,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="16sp"
-                android:hint="Enter your code here"
+                android:hint="@string/code_editor_hint"
                 android:inputType="textMultiLine"
                 android:padding="8sp"
                 android:shadowColor="#000000"
@@ -74,7 +72,7 @@
                 android:textColorHint="#FFFF"
                 android:layoutDirection="ltr"
                 android:textDirection="ltr"
-                tools:ignore="Autofill,HardcodedText" />
+                tools:ignore="Autofill" />
 
             <!-- Button to run the code for Question 1 -->
             <Button
@@ -87,8 +85,7 @@
                 android:shadowDx="1"
                 android:shadowDy="1"
                 android:shadowRadius="2"
-                android:text="Run Code"
-                tools:ignore="HardcodedText" />
+                android:text="@string/run_code_button" />
 
             <!-- TextView to display the output of Question 1 -->
             <TextView
@@ -121,8 +118,7 @@
                 android:layoutDirection="ltr"
                 android:textDirection="ltr"
                 android:textSize="16sp"
-                android:visibility="gone"
-                tools:ignore="HardcodedText" />
+                android:visibility="gone" />
 
             <!-- Question 2 -->
             <TextView
@@ -134,12 +130,11 @@
                 android:shadowDx="1"
                 android:shadowDy="1"
                 android:shadowRadius="2"
-                android:text="Question 2: Write a Python function named 'calculate_grades' that takes a list of scores and returns a list of corresponding letter grades. Use these grade ranges: A (90-100), B (80-89), C (70-79), D (60-69), F (below 60). Test your function with the list [95, 82, 74, 65, 48] and print both the scores and their corresponding grades."
+                android:text="@string/functions_question2"
                 android:textColor="#FFFF"
                 android:textSize="16sp"
                 android:layoutDirection="ltr"
-                android:textDirection="ltr"
-                tools:ignore="HardcodedText" />
+                android:textDirection="ltr" />
 
             <!-- EditText for user to input code for Question 2 -->
             <EditText
@@ -147,7 +142,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="16sp"
-                android:hint="Enter your code here"
+                android:hint="@string/code_editor_hint"
                 android:inputType="textMultiLine"
                 android:padding="8sp"
                 android:shadowColor="#000000"
@@ -158,7 +153,7 @@
                 android:textColorHint="#FFFF"
                 android:layoutDirection="ltr"
                 android:textDirection="ltr"
-                tools:ignore="Autofill,HardcodedText" />
+                tools:ignore="Autofill" />
 
             <!-- Button to run the code for Question 2 -->
             <Button
@@ -171,8 +166,7 @@
                 android:shadowDx="1"
                 android:shadowDy="1"
                 android:shadowRadius="2"
-                android:text="Run Code"
-                tools:ignore="HardcodedText" />
+                android:text="@string/run_code_button" />
 
             <!-- TextView to display the output of Question 2 -->
             <TextView
@@ -205,8 +199,7 @@
                 android:layoutDirection="ltr"
                 android:textDirection="ltr"
                 android:textSize="16sp"
-                android:visibility="gone"
-                tools:ignore="HardcodedText" />
+                android:visibility="gone" />
 
             <!-- Show Solution Button (initially hidden) -->
             <Button
@@ -219,24 +212,8 @@
                 android:shadowDx="1"
                 android:shadowDy="1"
                 android:shadowRadius="2"
-                android:text="Show Solution"
-                android:visibility="gone"
-                tools:ignore="HardcodedText" />
-
-            <!-- Button to go to Classes -->
-            <Button
-                android:id="@+id/goToClassesButton"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
-                android:layout_margin="10sp"
-                android:shadowColor="#000000"
-                android:shadowDx="1"
-                android:shadowDy="1"
-                android:shadowRadius="2"
-                android:text="Go to Classes"
-                android:visibility="gone"
-                tools:ignore="HardcodedText" />
+                android:text="@string/show_solution_button"
+                android:visibility="gone" />
 
         </LinearLayout>
     </ScrollView>
