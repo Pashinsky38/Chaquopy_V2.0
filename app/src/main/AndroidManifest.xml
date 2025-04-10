@@ -51,7 +51,7 @@
         <activity
             android:name=".Introduction"
             android:exported="false"
-            android:windowSoftInputMode="adjustPan" /> <!-- Notification receiver -->
+            android:windowSoftInputMode="adjustPan" />
 
         <!-- Home page activity -->
         <activity
