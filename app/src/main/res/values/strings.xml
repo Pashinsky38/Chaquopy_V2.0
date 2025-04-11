@@ -36,7 +36,7 @@
     <string name="variables_rules_example">valid_name = 10\n_another_valid_name = \'Hello\'\nmyVariable123 = True\n\n# Invalid:\n# 123variable = 5 (starts with a number)\n# my-variable = \'test\' (contains a hyphen)</string>
     <string name="operators_explanation">Python supports various mathematical operators:</string>
     <string name="operators_example">Addition: +\nSubtraction: -\nMultiplication: *\nDivision: /\nModulo (remainder): %\nExponentiation: **</string>
-    <string name="operators_in_use_example">x = 10\ny = 3\nprint(x + y)  # Output: 13\nprint(x - y)  # Output: 7\nprint(x * y)  # Output: 30\nprint(x / y)  # Output: 3.333...\nprint(x % y)  # Output: 1\nprint(x ** y) # Output: 1000</string>
+    <string name="operators_in_use_example">x = 10\ny = 3\nprint(x + y)  # Output: 13\nprint(x - y)  # Output: 7\nprint(x * y)  # Output: 30\nprint(x / y)  # Output: 3.333…\nprint(x % y)  # Output: 1\nprint(x ** y) # Output: 1000</string>
     <string name="variables_challenge">Now it\'s your turn! Try creating a variable with your name and another with your age, then print them!</string>
 
     <!-- Basics Fragment Practice -->
