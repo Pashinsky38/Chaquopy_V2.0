@@ -26,9 +26,20 @@
 
     <!-- Introduction -->
     <string name="title_activity_introduction">Introduction</string>
+    <string name="intro_title">Introduction to Python</string>
     <string name="python_description">Python is a high-level, general-purpose programming language known for its simplicity and readability. It\'s widely used in web development, data analysis, AI, scientific computing, and automation. Python\'s clear syntax and extensive libraries make it easy to learn and use. It runs on Windows, macOS, and Linux, and uses dynamic typing. It is used for simple scripting to large-scale applications.</string>
 
     <!-- Basics Fragment -->
+    <string name="basics_title">Starting with the basics</string>
+    <string name="print_explanation">In Python, you can display output using the \'print()\' function. For example, to print \'Hello, World!\', you would use the following code:</string>
+    <string name="print_example">print(\'Hello, World!\')</string>
+    <string name="newline_and_concatenation">To print text on a new line, you can use \'\\n\' inside the string. If you want to combine two strings, you can use the \'+\' operator like this:</string>
+    <string name="newline_example">print(\'Hello\' + \', World!\\nWelcome to Python!\')</string>
+    <string name="basics_challenge">Your turn! Can you print your name and age on separate lines using a single print() statement?</string>
+    <string name="code_editor_hint_basics">Enter Python code here</string>
+    <string name="next_button">Next</string>
+
+    <!-- Variables Fragment -->
     <string name="variables_title">Variables in Python</string>
     <string name="variables_explanation">Variables are used to store data. You can think of them as containers that hold values. To create a variable, you choose a name and assign a value to it using the \'=\' operator. Variables store different types of data such as numbers, text, and boolean values (True/False). In Python, you don\'t need to declare the type of a variable when you create it - Python determines the type automatically based on the assigned value.</string>
     <string name="variables_rules">Variable names must start with a letter or an underscore, and can contain letters, numbers, and underscores. They are case-sensitive.</string>
@@ -53,11 +64,11 @@
     <!-- Conditional Statements -->
     <string name="conditional_statements_title">Conditional Statements</string>
     <string name="conditional_statements_explanation">Conditional statements (if, elif, else) allow you to execute different blocks of code based on whether a condition is true or false.\n\nThe elif keyword allows you to add multiple conditions. If the if condition is false, it checks the elif conditions one by one. If an elif condition is true, its code is executed, and the rest are skipped. If none of the if or elif conditions are true, the else block, if present, is executed.</string>
-    <string name="comparison_operators_explanation">Comparison operators (==, !=, &gt;, &lt;, &gt;=, &lt;=) are used to compare values in conditions.</string>
-    <string name="comparison_operators_example">x == y  # x is equal to y\nx != y  # x is not equal to y\nx &gt; y   # x is greater than y\nx &lt; y   # x is less than y\nx &gt;= y  # x is greater than or equal to y\nx &lt;= y  # x is less than or equal to y</string>
+    <string name="comparison_operators_explanation">Comparison operators (==, !=, \>, &lt;, \>=, &lt;=) are used to compare values in conditions.</string>
+    <string name="comparison_operators_example">x == y  # x is equal to y\nx != y  # x is not equal to y\nx \> y   # x is greater than y\nx &lt; y   # x is less than y\nx \>= y  # x is greater than or equal to y\nx &lt;= y  # x is less than or equal to y</string>
     <string name="logical_operators_explanation">Logical operators (and, or, not) are used to combine or modify conditions.</string>
     <string name="logical_operators_example">x and y  # True if both x and y are true\nx or y   # True if either x or y is true\nnot x    # True if x is false</string>
-    <string name="conditional_statement_example">age = 20\nif age &lt; 13:\n    print(&quot;You are a child&quot;)\nelif age &lt; 18:\n    print(&quot;You are a teenager&quot;)\nelif age &lt; 65:\n    print(&quot;You are an adult&quot;)\nelse:\n    print(&quot;You are a senior&quot;)</string>
+    <string name="conditional_statement_example">age = 20\nif age &lt; 13:\n    print(\'You are a child\')\nelif age &lt; 18:\n    print(\'You are a teenager\')\nelif age &lt; 65:\n    print(\'You are an adult\')\nelse:\n    print(\'You are a senior\')</string>
     <string name="conditional_statements_challenge">Now it\'s your turn! Try creating a program that checks if a number is positive, negative, or zero.</string>
 
     <!-- Conditional Statements Practice -->

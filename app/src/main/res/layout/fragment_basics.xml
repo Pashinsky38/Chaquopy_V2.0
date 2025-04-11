@@ -31,13 +31,12 @@
                 android:shadowDx="1"
                 android:shadowDy="1"
                 android:shadowRadius="2"
-                android:text="Starting with the basics"
+                android:text="@string/basics_title"
                 android:textColor="#FFFF"
                 android:textSize="24sp"
                 android:textStyle="bold"
                 android:layoutDirection="ltr"
-                android:textDirection="ltr"
-                tools:ignore="HardcodedText" />
+                android:textDirection="ltr" />
 
             <!-- Explanation TextView: Describes the use of the print() function in Python -->
             <TextView
@@ -49,12 +48,11 @@
                 android:shadowDx="1"
                 android:shadowDy="1"
                 android:shadowRadius="2"
-                android:text="In Python, you can display output using the 'print()' function. For example, to print 'Hello, World!', you would use the following code:"
+                android:text="@string/print_explanation"
                 android:textColor="#FFFF"
                 android:textSize="20sp"
                 android:layoutDirection="ltr"
-                android:textDirection="ltr"
-                tools:ignore="HardcodedText" />
+                android:textDirection="ltr" />
 
             <!-- Code Example TextView: Shows an example of the print() function -->
             <TextView
@@ -66,13 +64,12 @@
                 android:shadowDx="1"
                 android:shadowDy="1"
                 android:shadowRadius="2"
-                android:text="print('Hello, World!')"
+                android:text="@string/print_example"
                 android:textColor="#FFFF"
                 android:textSize="20sp"
                 android:textStyle="italic"
                 android:layoutDirection="ltr"
-                android:textDirection="ltr"
-                tools:ignore="HardcodedText" />
+                android:textDirection="ltr" />
 
             <!-- Newline and Concatenation TextView: Explains how to use \n and + in Python -->
             <TextView
@@ -84,12 +81,11 @@
                 android:shadowDx="1"
                 android:shadowDy="1"
                 android:shadowRadius="2"
-                android:text="To print text on a new line, you can use '\\n' inside the string. If you want to combine two strings, you can use the '+' operator like this:"
+                android:text="@string/newline_and_concatenation"
                 android:textColor="#FFFF"
                 android:textSize="20sp"
                 android:layoutDirection="ltr"
-                android:textDirection="ltr"
-                tools:ignore="HardcodedText" />
+                android:textDirection="ltr" />
 
             <!-- Code Example 2 TextView: Shows an example of \n and + in Python -->
             <TextView
@@ -101,13 +97,12 @@
                 android:shadowDx="1"
                 android:shadowDy="1"
                 android:shadowRadius="2"
-                android:text="print('Hello' + ', World!\\nWelcome to Python!')"
+                android:text="@string/newline_example"
                 android:textColor="#FFFF"
                 android:textSize="20sp"
                 android:textStyle="italic"
                 android:layoutDirection="ltr"
-                android:textDirection="ltr"
-                tools:ignore="HardcodedText" />
+                android:textDirection="ltr" />
 
             <!-- Challenge TextView: Prompts the user to try printing their name and age -->
             <TextView
@@ -119,12 +114,11 @@
                 android:shadowDx="1"
                 android:shadowDy="1"
                 android:shadowRadius="2"
-                android:text="Your turn! Can you print your name and age on separate lines using a single print() statement?"
+                android:text="@string/basics_challenge"
                 android:textColor="#FFFF"
                 android:textSize="20sp"
                 android:layoutDirection="ltr"
-                android:textDirection="ltr"
-                tools:ignore="HardcodedText" />
+                android:textDirection="ltr" />
 
             <!-- EditText for user to enter Python code -->
             <EditText
@@ -132,7 +126,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="10sp"
-                android:hint="Enter Python code here"
+                android:hint="@string/code_editor_hint_basics"
                 android:inputType="textMultiLine"
                 android:shadowColor="#000000"
                 android:shadowDx="1"
@@ -143,7 +137,7 @@
                 android:textSize="20sp"
                 android:layoutDirection="ltr"
                 android:textDirection="ltr"
-                tools:ignore="Autofill,HardcodedText" />
+                tools:ignore="Autofill" />
 
             <!-- Button to run the code entered in the EditText -->
             <Button
@@ -156,8 +150,7 @@
                 android:shadowDx="1"
                 android:shadowDy="1"
                 android:shadowRadius="2"
-                android:text="Run Code"
-                tools:ignore="HardcodedText" />
+                android:text="@string/run_code_button" />
 
             <!-- TextView to display the output of the Python code -->
             <TextView
@@ -186,8 +179,7 @@
                 android:shadowDx="1"
                 android:shadowDy="1"
                 android:shadowRadius="2"
-                android:text="Next"
-                tools:ignore="HardcodedText" />
+                android:text="@string/next_button" />
 
         </LinearLayout>
     </ScrollView>

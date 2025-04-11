@@ -21,10 +21,9 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="50sp"
-        android:text="Introduction to Python"
+        android:text="@string/intro_title"
         android:textColor="#FFFF"
-        android:textSize="35sp"
-        tools:ignore="HardcodedText" />
+        android:textSize="35sp" />
 
     <!-- Description of Python -->
     <TextView
@@ -51,9 +50,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
-        android:text="Text to Speech"
-        android:layout_marginTop="500sp"
-        tools:ignore="HardcodedText" />
+        android:text="@string/text_to_speech_button"
+        android:layout_marginTop="500sp" />
 
     <!-- Next button to BasicsFragment-->
     <Button
@@ -66,8 +64,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="600sp"
-        android:text="Next"
-        tools:ignore="HardcodedText" />
+        android:text="@string/next_button" />
 
     <!-- FrameLayout for BasicsFragment -->
     <FrameLayout

@@ -282,7 +282,7 @@
                 android:textSize="16sp"
                 android:visibility="gone" />
 
-            <!-- Show Solution Button (initially hidden) -->
+            <!-- Show Solution Button (initially gone) -->
             <Button
                 android:id="@+id/showSolutionButton"
                 android:layout_width="wrap_content"
