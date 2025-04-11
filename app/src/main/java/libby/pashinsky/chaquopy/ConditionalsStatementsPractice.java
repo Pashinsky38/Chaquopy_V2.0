@@ -192,6 +192,9 @@ public class ConditionalsStatementsPractice extends Fragment {
             binding.goToLoopsButton.setVisibility(View.VISIBLE);
             // Cancel the timer since the user has completed both questions correctly
             cancelTimer();
+
+            // Show toast message when all questions are answered correctly
+            Toast.makeText(requireContext(), "Excellent!", Toast.LENGTH_SHORT).show();
         }
     }
 

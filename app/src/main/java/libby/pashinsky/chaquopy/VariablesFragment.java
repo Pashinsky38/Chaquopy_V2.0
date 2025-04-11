@@ -116,38 +116,15 @@ public class VariablesFragment extends Fragment {
      * It retrieves the code, runs it using Chaquopy, and displays the result in the output TextView.
      */
     private void runPythonCode() {
-        String pythonCode = getPythonCodeFromEditor();
-        PyObject result = executePythonCode(pythonCode);
-        displayPythonResult(result);
-    }
+        // Get Python code from the editor
+        String pythonCode = binding.codeEditorVariables.getText().toString();
 
-    /**
-     * Retrieves the Python code from the code editor.
-     *
-     * @return The Python code as a String.
-     */
-    private String getPythonCodeFromEditor() {
-        return binding.codeEditorVariables.getText().toString();
-    }
-
-    /**
-     * Executes the Python code using Chaquopy.
-     *
-     * @param pythonCode The Python code to execute.
-     * @return The result of the Python code execution.
-     */
-    private PyObject executePythonCode(String pythonCode) {
+        // Execute Python code using Chaquopy
         Python py = Python.getInstance();
         PyObject pyObject = py.getModule("pythonRunner"); // "pythonRunner" is the Python file name
-        return pyObject.callAttr("main", pythonCode); // Call a function named "main" in the Python file
-    }
+        PyObject result = pyObject.callAttr("main", pythonCode); // Call a function named "main" in the Python file
 
-    /**
-     * Displays the result of the Python code execution in the output TextView.
-     *
-     * @param result The result of the Python code execution.
-     */
-    private void displayPythonResult(PyObject result) {
+        // Display the result
         binding.outputTextVariables.setText(result.toString());
     }
 

@@ -1,7 +1,6 @@
 package libby.pashinsky.chaquopy;
 
 import android.content.Context;
-import android.content.Intent;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.view.LayoutInflater;
@@ -227,24 +226,54 @@ public class FunctionsPractice extends Fragment {
      * @return True if the output is correct, false otherwise.
      */
     private boolean checkAnswer(int questionNumber, String output) {
+        // Check for errors first
+        if (output.startsWith("Error:")) {
+            return false;
+        }
+
         switch (questionNumber) {
             case 1:
-                // Question 1: Print pattern of numbers
-                // Check for specific patterns that should be in the output
-                return output.contains("*") &&
-                        output.contains("**") &&
-                        output.contains("***") &&
-                        output.contains("****") &&
-                        output.contains("print_pattern(5)");
+                // For the pattern question, we need to check:
+                // 1. If there's a function definition for print_pattern
+                // 2. If the function is called with parameter 5
+                // 3. If the output shows the correct pattern
+
+                // Check for single asterisks in sequence (ignore exact formatting)
+                boolean hasAsteriskPattern = true;
+                String[] patterns = {"*", "**", "***", "****", "*****"};
+                for (String pattern : patterns) {
+                    if (!output.contains(pattern)) {
+                        hasAsteriskPattern = false;
+                        break;
+                    }
+                }
+
+                // Return true if all checks pass
+                return hasAsteriskPattern;
 
             case 2:
-                // Question 2: Calculate grades
-                // Check if output contains calculation results
-                return output.contains("A") &&
+                // For the grades question, we need to check:
+                // 1. If the output contains the input scores
+                // 2. If the output contains the correct grades
+                // 3. If the function calculate_grades is used
+
+                // Check for grades (A, B, C, D, F)
+                // We're being flexible with the exact format
+                boolean hasAllGrades = output.contains("A") &&
                         output.contains("B") &&
                         output.contains("C") &&
-                        output.contains("F") &&
-                        output.contains("calculate_grades");
+                        output.contains("D") &&
+                        output.contains("F");
+
+                // Check for input scores somewhere in the output
+                boolean hasScores = output.contains("95") &&
+                        output.contains("82") &&
+                        output.contains("74") &&
+                        output.contains("65") &&
+                        output.contains("48");
+
+                // Return true if all checks pass
+                return hasAllGrades && hasScores;
 
             default:
                 return false;

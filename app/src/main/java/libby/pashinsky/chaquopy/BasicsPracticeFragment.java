@@ -9,6 +9,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -22,6 +23,8 @@ import libby.pashinsky.chaquopy.databinding.FragmentBasicsPracticeBinding;
  * A countdown timer is implemented to show the solution button after a set time.
  */
 public class BasicsPracticeFragment extends Fragment {
+
+    private static final long TIMER_DURATION = 30 * 1000; // 30 seconds in milliseconds
 
     private FragmentBasicsPracticeBinding binding;
     private CountDownTimer countDownTimer;
@@ -133,6 +136,9 @@ public class BasicsPracticeFragment extends Fragment {
         resultsText.setText(getString(R.string.all_answers_correct));
         allAnswersCorrect = true;
 
+        // Display a toast message when all answers are correct
+        Toast.makeText(getContext(), "Great job!", Toast.LENGTH_SHORT).show();
+
         // Stop the timer if all answers are correct
         if (countDownTimer != null) {
             countDownTimer.cancel();
@@ -195,7 +201,7 @@ public class BasicsPracticeFragment extends Fragment {
      * if all answers are not correct and solutions haven't been shown.
      */
     private void startCountdownTimer() {
-        countDownTimer = new CountDownTimer(30000, 1000) {
+        countDownTimer = new CountDownTimer(TIMER_DURATION, 1000) {
             /**
              * Callback fired on regular interval.
              * @param millisUntilFinished The amount of time until finished.

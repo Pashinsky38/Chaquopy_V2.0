@@ -224,6 +224,8 @@ public class LoopsPractice extends Fragment {
         // Check if all questions are correct and show the button if so
         if (isQuestion1Correct && isQuestion2Correct && isQuestion3Correct) {
             binding.goToFunctionsButton.setVisibility(View.VISIBLE);
+            // Show "Marvellous!" toast when all questions are answered correctly
+            Toast.makeText(requireContext(), "Marvellous!", Toast.LENGTH_LONG).show();
             // Cancel the timer since the user has completed all questions correctly
             cancelTimer();
         }
