@@ -110,12 +110,13 @@
                 android:shadowDx="1"
                 android:shadowDy="1"
                 android:shadowRadius="2"
-                android:text="@string/function_definition_example"
+                android:text="# Basic function definition\ndef greet():\n    print(\'Hello, World!\')\n\n# Calling the function\ngreet()  # Output: Hello, World!"
                 android:textColor="#FFFF"
                 android:textSize="16sp"
                 android:textStyle="italic"
                 android:layoutDirection="ltr"
-                android:textDirection="ltr" />
+                android:textDirection="ltr"
+                tools:ignore="HardcodedText" />
 
             <!-- Parameters Section -->
             <TextView
@@ -160,12 +161,13 @@
                 android:shadowDx="1"
                 android:shadowDy="1"
                 android:shadowRadius="2"
-                android:text="@string/parameters_example"
+                android:text="# Function with parameters\ndef greet_person(name):\n    print(\'Hello, \' + name + \'!\')\n\n# Calling the function with an argument\ngreet_person(\'Libby\')  # Output: Hello, Libby!\n\n# Multiple parameters\ndef add_numbers(a, b):\n    print(a + b)\n\nadd_numbers(5, 3)  # Output: 8"
                 android:textColor="#FFFF"
                 android:textSize="16sp"
                 android:textStyle="italic"
                 android:layoutDirection="ltr"
-                android:textDirection="ltr" />
+                android:textDirection="ltr"
+                tools:ignore="HardcodedText" />
 
             <!-- Return Values Section -->
             <TextView
@@ -210,12 +212,13 @@
                 android:shadowDx="1"
                 android:shadowDy="1"
                 android:shadowRadius="2"
-                android:text="@string/return_values_example"
+                android:text="# Function with a return value\ndef multiply(a, b):\n    return a * b\n\n# Store the returned value in a variable\nresult = multiply(4, 5)\nprint(result)  # Output: 20\n\n# Return multiple values\ndef get_name_and_age():\n    return \'Michal\', 25\n\nname, age = get_name_and_age()\nprint(name)  # Output: Michal\nprint(age)   # Output: 25"
                 android:textColor="#FFFF"
                 android:textSize="16sp"
                 android:textStyle="italic"
                 android:layoutDirection="ltr"
-                android:textDirection="ltr" />
+                android:textDirection="ltr"
+                tools:ignore="HardcodedText" />
 
             <!-- Function Scope Section -->
             <TextView
@@ -260,12 +263,13 @@
                 android:shadowDx="1"
                 android:shadowDy="1"
                 android:shadowRadius="2"
-                android:text="@string/function_scope_example"
+                android:text="# Local and global variables\n\n# Global variable\nmessage = \'Hello\'\n\ndef say_greeting():\n    # Local variable\n    message = \'Hi there\'\n    print(message)\n\n# Call the function\nsay_greeting()  # Output: Hi there\n\n# The global variable is unchanged\nprint(message)  # Output: Hello"
                 android:textColor="#FFFF"
                 android:textSize="16sp"
                 android:textStyle="italic"
                 android:layoutDirection="ltr"
-                android:textDirection="ltr" />
+                android:textDirection="ltr"
+                tools:ignore="HardcodedText" />
 
             <!-- Challenge TextView: Encourages the user to create a program -->
             <TextView

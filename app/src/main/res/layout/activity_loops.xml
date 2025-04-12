@@ -110,12 +110,13 @@
                 android:shadowDx="1"
                 android:shadowDy="1"
                 android:shadowRadius="2"
-                android:text="@string/for_loop_example1"
+                android:text="# Basic for loop with range\nfor i in range(5):\n    print(i)  # Prints 0, 1, 2, 3, 4"
                 android:textColor="#FFFF"
                 android:textSize="16sp"
                 android:textStyle="italic"
                 android:layoutDirection="ltr"
-                android:textDirection="ltr" />
+                android:textDirection="ltr"
+                tools:ignore="HardcodedText" />
 
             <!-- For Loop Example 2 -->
             <TextView
@@ -127,12 +128,13 @@
                 android:shadowDx="1"
                 android:shadowDy="1"
                 android:shadowRadius="2"
-                android:text="@string/for_loop_example2"
+                android:text="# For loop with a list\nfruits = [\'apple\', \'banana\', \'cherry\']\nfor fruit in fruits:\n    print(fruit)"
                 android:textColor="#FFFF"
                 android:textSize="16sp"
                 android:textStyle="italic"
                 android:layoutDirection="ltr"
-                android:textDirection="ltr" />
+                android:textDirection="ltr"
+                tools:ignore="HardcodedText" />
 
             <!-- While Loop Section -->
             <TextView
@@ -177,12 +179,13 @@
                 android:shadowDx="1"
                 android:shadowDy="1"
                 android:shadowRadius="2"
-                android:text="@string/while_loop_example1"
+                android:text="# Basic while loop\ncount = 0\nwhile count &lt; 5:\n    print(count)\n    count += 1  # Increment count"
                 android:textColor="#FFFF"
                 android:textSize="16sp"
                 android:textStyle="italic"
                 android:layoutDirection="ltr"
-                android:textDirection="ltr" />
+                android:textDirection="ltr"
+                tools:ignore="HardcodedText" />
 
             <!-- Loop Control Section -->
             <TextView
@@ -227,12 +230,13 @@
                 android:shadowDx="1"
                 android:shadowDy="1"
                 android:shadowRadius="2"
-                android:text="@string/loop_control_example"
+                android:text="# Break example\nfor i in range(10):\n    if i == 5:\n        break  # Exit the loop when i is 5\n    print(i)\n\n# Continue example\nfor i in range(10):\n    if i % 2 == 0:\n        continue  # Skip even numbers\n    print(i)  # Only prints odd numbers"
                 android:textColor="#FFFF"
                 android:textSize="16sp"
                 android:textStyle="italic"
                 android:layoutDirection="ltr"
-                android:textDirection="ltr" />
+                android:textDirection="ltr"
+                tools:ignore="HardcodedText" />
 
             <!-- Challenge TextView: Encourages the user to create a program -->
             <TextView

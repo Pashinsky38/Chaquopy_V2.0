@@ -146,12 +146,13 @@
                 android:shadowDx="1"
                 android:shadowDy="1"
                 android:shadowRadius="2"
-                android:text="@string/conditional_statement_example"
+                android:text="age = 20\nif age &lt; 13:\n    print(\'You are a child\')\nelif age &lt; 18:\n    print(\'You are a teenager\')\nelif age &lt; 65:\n    print(\'You are an adult\')\nelse:\n    print(\'You are a senior\')"
                 android:textColor="#FFFF"
                 android:textSize="16sp"
                 android:textStyle="italic"
                 android:layoutDirection="ltr"
-                android:textDirection="ltr" />
+                android:textDirection="ltr"
+                tools:ignore="HardcodedText" />
 
             <!-- Challenge TextView: Encourages the user to create a program -->
             <TextView
