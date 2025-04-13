@@ -69,12 +69,27 @@ public class LoopsPractice extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
+        initializePython();
+        hideInitialElements();
+        startTimer();
+        setupButtonListeners();
+    }
+
+    /**
+     * Initializes the Python environment.
+     */
+    private void initializePython() {
         // Initialize Python
         Context context = requireContext().getApplicationContext();
         if (!Python.isStarted()) {
             Python.start(new AndroidPlatform(context));
         }
+    }
 
+    /**
+     * Hides elements that should not be initially visible.
+     */
+    private void hideInitialElements() {
         // Initially hide the "Go to Functions" and "Show Solution" buttons
         binding.goToFunctionsButton.setVisibility(View.GONE);
         binding.showSolutionButton.setVisibility(View.GONE);
@@ -83,32 +98,21 @@ public class LoopsPractice extends Fragment {
         binding.solutionText1.setVisibility(View.GONE);
         binding.solutionText2.setVisibility(View.GONE);
         binding.solutionText3.setVisibility(View.GONE);
+    }
 
-        // Set up the timer
-        startTimer();
-
-        /*
-          Sets a click listener on the runCodeButton1.
-          When clicked, it calls the {@link #runPythonCode(int)} method to execute the Python code for question 1.
-         */
+    /**
+     * Sets up all button click listeners.
+     */
+    private void setupButtonListeners() {
+        // Set up run code buttons
         binding.runCodeButton1.setOnClickListener(v -> runPythonCode(1));
-
-        /*
-          Sets a click listener on the runCodeButton2.
-          When clicked, it calls the {@link #runPythonCode(int)} method to execute the Python code for question 2.
-         */
         binding.runCodeButton2.setOnClickListener(v -> runPythonCode(2));
-
-        /*
-          Sets a click listener on the runCodeButton3.
-          When clicked, it calls the {@link #runPythonCode(int)} method to execute the Python code for question 3.
-         */
         binding.runCodeButton3.setOnClickListener(v -> runPythonCode(3));
 
-        // Set a click listener for the "Go to Functions" button
+        // Set up "Go to Functions" button
         binding.goToFunctionsButton.setOnClickListener(v -> goToFunctions());
 
-        // Set a click listener for the "Show Solution" button
+        // Set up "Show Solution" button
         binding.showSolutionButton.setOnClickListener(v -> showSolutions());
     }
 

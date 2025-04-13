@@ -68,6 +68,17 @@ public class ConditionalsStatements extends AppCompatActivity {
             String textToSpeak = binding.conditionalStatementsExplanation.getText().toString();
             TextToSpeechService.startService(this, textToSpeak);
         });
+
+        // Save this activity as the current one
+        saveLastActivity(this.getClass().getName());
+    }
+
+    /**
+     * Saves the given activity class name as the last opened activity
+     * @param activityClassName activity class name
+     */
+    private void saveLastActivity(String activityClassName) {
+        HomePage.saveLastActivity(this, activityClassName);
     }
 
     /**
@@ -117,6 +128,8 @@ public class ConditionalsStatements extends AppCompatActivity {
             Toast.makeText(this, "Introduction to Python", Toast.LENGTH_SHORT).show();
             Intent intentIntroduction = new Intent(this, Introduction.class);
             startActivity(intentIntroduction);
+            // Save the activity we're navigating to
+            saveLastActivity(Introduction.class.getName());
             return true;
         } else if (id == R.id.ConditionalStatements) {
             TextToSpeechService.stopSpeaking(this);
@@ -129,12 +142,16 @@ public class ConditionalsStatements extends AppCompatActivity {
             Toast.makeText(this, "Loops", Toast.LENGTH_SHORT).show();
             Intent intentLoops = new Intent(this, Loops.class);
             startActivity(intentLoops);
+            // Save the activity we're navigating to
+            saveLastActivity(Loops.class.getName());
             return true;
         } else if (id == R.id.Functions) {
             TextToSpeechService.stopSpeaking(this);
             Toast.makeText(this, "Functions", Toast.LENGTH_SHORT).show();
             Intent intentFunctions = new Intent(this, Functions.class);
             startActivity(intentFunctions);
+            // Save the activity we're navigating to
+            saveLastActivity(Functions.class.getName());
             return true;
         } else if (id == R.id.menuCloseApp) {
             finishAffinity();

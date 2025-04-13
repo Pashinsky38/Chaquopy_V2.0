@@ -17,12 +17,12 @@ android {
         ndk {
             abiFilters += listOf("arm64-v8a", "x86_64")
         }
-
     }
 
     chaquopy {
+        // Let Chaquopy auto-detect Python installation
         defaultConfig {
-            buildPython("C:/Users/libby/AppData/Local/Programs/Python/Python312/python.exe")
+            // No explicit buildPython() call needed
         }
     }
 
@@ -47,7 +47,6 @@ android {
 }
 
 dependencies {
-
     implementation(libs.appcompat)
     implementation(libs.material)
     implementation(libs.activity)
@@ -55,5 +54,4 @@ dependencies {
     testImplementation(libs.junit)
     androidTestImplementation(libs.ext.junit)
     androidTestImplementation(libs.espresso.core)
-
 }

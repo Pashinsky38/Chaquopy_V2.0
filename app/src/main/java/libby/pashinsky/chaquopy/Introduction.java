@@ -33,29 +33,67 @@ public class Introduction extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+        // Initialize the binding and set the content view
+        setupUI();
+
+        // Set up button listeners
+        setupButtonListeners();
+
+        // Save the current activity as the last opened activity
+        saveLastActivity(this.getClass().getName());
+    }
+
+    /**
+     * Sets up the UI components for the activity including window insets
+     */
+    private void setupUI() {
+        EdgeToEdge.enable(this);
         binding = ActivityIntroductionBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
-        EdgeToEdge.enable(this);
-
+        // Setup window insets for proper padding
         ViewCompat.setOnApplyWindowInsetsListener(binding.main, (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
+    }
 
-        // Set click listener for the TTS button
+    /**
+     * Sets up all button click listeners
+     */
+    private void setupButtonListeners() {
+        setupTextToSpeechButtonListener();
+        setupNextButtonListener();
+    }
+
+    /**
+     * Sets up the Text-to-Speech button click listener
+     */
+    private void setupTextToSpeechButtonListener() {
         binding.ttsButton.setOnClickListener(v -> {
             String textToSpeak = binding.textView2.getText().toString();
             TextToSpeechService.startService(this, textToSpeak);
         });
+    }
 
-        // Set click listener for the "Next" button
+    /**
+     * Sets up the Next button click listener
+     */
+    private void setupNextButtonListener() {
         binding.nextButton.setOnClickListener(v -> {
             // Stop Text-to-Speech before navigating
             TextToSpeechService.stopSpeaking(this);
             navigateToBasicsFragment();
         });
+    }
+
+    /**
+     * Saves the given activity class name as the last opened activity
+     * @param activityClassName activity class name
+     */
+    private void saveLastActivity(String activityClassName) {
+        HomePage.saveLastActivity(this, activityClassName);
     }
 
     /**
@@ -68,7 +106,6 @@ public class Introduction extends AppCompatActivity {
         transaction.replace(R.id.fragment_basics, new BasicsFragment());
         transaction.addToBackStack(null);
         transaction.commit();
-
     }
 
     @Override
@@ -92,18 +129,24 @@ public class Introduction extends AppCompatActivity {
             Toast.makeText(this, "Conditional Statements", Toast.LENGTH_SHORT).show();
             Intent intentConditionals = new Intent(this, ConditionalsStatements.class);
             startActivity(intentConditionals);
+            // Save the activity we're navigating to
+            saveLastActivity(ConditionalsStatements.class.getName());
             return true;
         } else if (id == R.id.Loops) {
             TextToSpeechService.stopSpeaking(this);
             Toast.makeText(this, "Loops", Toast.LENGTH_SHORT).show();
             Intent intentLoops = new Intent(this, Loops.class);
             startActivity(intentLoops);
+            // Save the activity we're navigating to
+            saveLastActivity(Loops.class.getName());
             return true;
         } else if (id == R.id.Functions) {
             TextToSpeechService.stopSpeaking(this);
             Toast.makeText(this, "Functions", Toast.LENGTH_SHORT).show();
             Intent intentFunctions = new Intent(this, Functions.class);
             startActivity(intentFunctions);
+            // Save the activity we're navigating to
+            saveLastActivity(Functions.class.getName());
             return true;
         } else if (id == R.id.menuCloseApp) {
             finishAffinity();
@@ -111,5 +154,12 @@ public class Introduction extends AppCompatActivity {
         } else {
             return super.onOptionsItemSelected(item);
         }
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        // Update last activity to Introduction when it becomes visible
+        HomePage.saveLastActivity(this, this.getClass().getName());
     }
 }

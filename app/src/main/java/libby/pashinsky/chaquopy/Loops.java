@@ -25,46 +25,94 @@ import libby.pashinsky.chaquopy.databinding.ActivityLoopsBinding;
 public class Loops extends AppCompatActivity {
 
     private ActivityLoopsBinding binding;
-    private FragmentManager fragmentManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        // Initialize the binding and set the content view
+        setupUI();
+
+        // Initialize Python
+        initializePython();
+
+        // Set up button listeners
+        setupButtonListeners();
+
+        // Save the current activity as the last opened activity
+        saveLastActivity(this.getClass().getName());
+    }
+
+    /**
+     * Sets up the UI components for the activity including window insets
+     */
+    private void setupUI() {
         EdgeToEdge.enable(this);
         binding = ActivityLoopsBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
-        // Initialize Python
-        Context context = getApplicationContext();
-        if (!Python.isStarted()) {
-            Python.start(new AndroidPlatform(context));
-        }
-
+        // Setup window insets for proper padding
         ViewCompat.setOnApplyWindowInsetsListener(binding.scrollView, (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
+    }
 
-        // Set click listener for the Text-to-Speech button
+    /**
+     * Initializes Python if it hasn't been started yet
+     */
+    private void initializePython() {
+        Context context = getApplicationContext();
+        if (!Python.isStarted()) {
+            Python.start(new AndroidPlatform(context));
+        }
+    }
+
+    /**
+     * Sets up all button click listeners
+     */
+    private void setupButtonListeners() {
+        setupTextToSpeechButtonListener();
+        setupRunCodeButtonListener();
+        setupGoToPracticeButtonListener();
+    }
+
+    /**
+     * Sets up the Text-to-Speech button listener
+     */
+    private void setupTextToSpeechButtonListener() {
         binding.textToSpeechButton.setOnClickListener(v -> {
             String textToSpeak = binding.loopsExplanation.getText().toString();
             TextToSpeechService.startService(this, textToSpeak);
         });
+    }
 
-        // Set click listener for the Run Code button
+    /**
+     * Sets up the Run Code button listener
+     */
+    private void setupRunCodeButtonListener() {
         binding.runCodeButton.setOnClickListener(v -> runPythonCode());
+    }
 
-        // Get the FragmentManager
-        fragmentManager = getSupportFragmentManager();
-
-        // Set click listener for the Go to Practice button
+    /**
+     * Sets up the Go to Practice button listener
+     */
+    private void setupGoToPracticeButtonListener() {
         binding.goToLoopsPracticeButton.setOnClickListener(v -> {
             // Stop the TextToSpeechService before navigating
             TextToSpeechService.stopSpeaking(this);
             // Navigate to the LoopsPractice fragment
             navigateToLoopsPractice(new LoopsPractice());
         });
+    }
+
+    /**
+     * Saves the given activity class name as the last opened activity
+     * @param activityClassName activity class name
+     */
+    private void saveLastActivity(String activityClassName) {
+        HomePage.saveLastActivity(this, activityClassName);
     }
 
     /**
@@ -85,8 +133,12 @@ public class Loops extends AppCompatActivity {
         binding.outputText.setText(output);
     }
 
-    // Method to navigate to the LoopsPractice fragment
+    /**
+     * Method to navigate to the LoopsPractice fragment
+     * @param fragment fragment to navigate to LoopsPractice
+     */
     private void navigateToLoopsPractice(Fragment fragment) {
+        FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction transaction = fragmentManager.beginTransaction();
         transaction.replace(R.id.fragment_loops_practice, fragment);
         transaction.addToBackStack(null);
@@ -115,12 +167,16 @@ public class Loops extends AppCompatActivity {
             Toast.makeText(this, "Introduction to Python", Toast.LENGTH_SHORT).show();
             Intent intentIntroduction = new Intent(this, Introduction.class);
             startActivity(intentIntroduction);
+            // Save the activity we're navigating to
+            saveLastActivity(Introduction.class.getName());
             return true;
         } else if (id == R.id.ConditionalStatements) {
             TextToSpeechService.stopSpeaking(this);
             Toast.makeText(this, "Conditional Statements", Toast.LENGTH_SHORT).show();
             Intent intentConditionals = new Intent(this, ConditionalsStatements.class);
             startActivity(intentConditionals);
+            // Save the activity we're navigating to
+            saveLastActivity(ConditionalsStatements.class.getName());
             return true;
         } else if (id == R.id.Loops) {
             TextToSpeechService.stopSpeaking(this);
@@ -133,6 +189,8 @@ public class Loops extends AppCompatActivity {
             Toast.makeText(this, "Functions", Toast.LENGTH_SHORT).show();
             Intent intentFunctions = new Intent(this, Functions.class);
             startActivity(intentFunctions);
+            // Save the activity we're navigating to
+            saveLastActivity(Functions.class.getName());
             return true;
         } else if (id == R.id.menuCloseApp) {
             finishAffinity();
