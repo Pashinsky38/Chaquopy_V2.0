@@ -38,9 +38,6 @@ public class Introduction extends AppCompatActivity {
 
         // Set up button listeners
         setupButtonListeners();
-
-        // Save the current activity as the last opened activity
-        saveLastActivity(this.getClass().getName());
     }
 
     /**
@@ -89,14 +86,6 @@ public class Introduction extends AppCompatActivity {
     }
 
     /**
-     * Saves the given activity class name as the last opened activity
-     * @param activityClassName activity class name
-     */
-    private void saveLastActivity(String activityClassName) {
-        HomePage.saveLastActivity(this, activityClassName);
-    }
-
-    /**
      * Navigates to the BasicsFragment.
      * Replaces the current fragment with the BasicsFragment and adds it to the back stack.
      * Hides the introduction elements (title, description, TTS button, and "Next" button).
@@ -129,24 +118,33 @@ public class Introduction extends AppCompatActivity {
             Toast.makeText(this, "Conditional Statements", Toast.LENGTH_SHORT).show();
             Intent intentConditionals = new Intent(this, ConditionalsStatements.class);
             startActivity(intentConditionals);
-            // Save the activity we're navigating to
-            saveLastActivity(ConditionalsStatements.class.getName());
             return true;
         } else if (id == R.id.Loops) {
             TextToSpeechService.stopSpeaking(this);
             Toast.makeText(this, "Loops", Toast.LENGTH_SHORT).show();
             Intent intentLoops = new Intent(this, Loops.class);
             startActivity(intentLoops);
-            // Save the activity we're navigating to
-            saveLastActivity(Loops.class.getName());
             return true;
         } else if (id == R.id.Functions) {
             TextToSpeechService.stopSpeaking(this);
             Toast.makeText(this, "Functions", Toast.LENGTH_SHORT).show();
             Intent intentFunctions = new Intent(this, Functions.class);
             startActivity(intentFunctions);
-            // Save the activity we're navigating to
-            saveLastActivity(Functions.class.getName());
+            return true;
+        } else if (id == R.id.SignOut) {
+            TextToSpeechService.stopSpeaking(this);
+            Toast.makeText(this, "Signing Out", Toast.LENGTH_SHORT).show();
+
+            // Clear the saved last activity, so it doesn't mess with checkAndRedirectToLastActivity(); function in HomePage
+            getSharedPreferences(HomePage.PREFS_NAME, MODE_PRIVATE)
+                    .edit()
+                    .remove(HomePage.LAST_ACTIVITY)
+                    .apply();
+
+            Intent intentHomePage = new Intent(this, HomePage.class);
+            // Clear the task stack and start a new one
+            intentHomePage.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+            startActivity(intentHomePage);
             return true;
         } else if (id == R.id.menuCloseApp) {
             finishAffinity();
@@ -156,6 +154,9 @@ public class Introduction extends AppCompatActivity {
         }
     }
 
+    /**
+     * Called when the activity becomes visible to the user.
+     */
     @Override
     protected void onResume() {
         super.onResume();

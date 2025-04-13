@@ -4,25 +4,30 @@
         android:id="@+id/IntroductionToPython"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:title="Introduction to Python" />
+        android:title="@string/menu_introduction" />
     <item
         android:id="@+id/ConditionalStatements"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:title="Conditional Statements" />
+        android:title="@string/menu_conditional_statements" />
     <item
         android:id="@+id/Loops"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:title="Loops" />
+        android:title="@string/menu_loops" />
     <item
         android:id="@+id/Functions"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:title="Functions" />
+        android:title="@string/menu_functions" />
+    <item
+        android:id="@+id/SignOut"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:title="@string/menu_sign_out" />
     <item
         android:id="@+id/menuCloseApp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:title="Close App" />
+        android:title="@string/menu_close_app" />
 </menu>

@@ -5,7 +5,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.Button;
 import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
@@ -31,54 +30,82 @@ public class ConditionalsStatements extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        // Initialize the binding and set the content view
+        setupUI();
+
+        // Initialize Python
+        initializePython();
+
+        // Get the FragmentManager
+        fragmentManager = getSupportFragmentManager();
+
+        // Set up button listeners
+        setupButtonListeners();
+    }
+
+    /**
+     * Sets up the UI components for the activity including window insets
+     */
+    private void setupUI() {
         EdgeToEdge.enable(this);
         binding = ActivityConditionalsStatementsBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
-        // Initialize Python
-        Context context = getApplicationContext();
-        if (!Python.isStarted()) {
-            Python.start(new AndroidPlatform(context));
-        }
-
+        // Setup window insets for proper padding
         ViewCompat.setOnApplyWindowInsetsListener(binding.scrollView, (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
+    }
 
-        // Set click listener for the Run button
+    /**
+     * Initializes Python if it hasn't been started yet
+     */
+    private void initializePython() {
+        Context context = getApplicationContext();
+        if (!Python.isStarted()) {
+            Python.start(new AndroidPlatform(context));
+        }
+    }
+
+    /**
+     * Sets up all button click listeners
+     */
+    private void setupButtonListeners() {
+        setupTextToSpeechButtonListener();
+        setupRunCodeButtonListener();
+        setupGoToPracticeButtonListener();
+    }
+
+    /**
+     * Sets up the Text-to-Speech button listener
+     */
+    private void setupTextToSpeechButtonListener() {
+        binding.textToSpeechButton.setOnClickListener(v -> {
+            String textToSpeak = binding.conditionalStatementsExplanation.getText().toString();
+            TextToSpeechService.startService(this, textToSpeak);
+        });
+    }
+
+    /**
+     * Sets up the Run Code button listener
+     */
+    private void setupRunCodeButtonListener() {
         binding.runCodeButton.setOnClickListener(v -> runPythonCode());
+    }
 
-        // Get the FragmentManager
-        fragmentManager = getSupportFragmentManager();
-
-        // Set click listener for the Go to Practice button
-        Button goToPracticeButton = binding.goToConditionalsPracticeButton;
-        goToPracticeButton.setOnClickListener(v -> {
+    /**
+     * Sets up the Go to Practice button listener
+     */
+    private void setupGoToPracticeButtonListener() {
+        binding.goToConditionalsPracticeButton.setOnClickListener(v -> {
             // Stop the TextToSpeechService before navigating
             TextToSpeechService.stopSpeaking(this);
             // Navigate to the ConditionalsStatementsPractice fragment
             navigateToConditionalsStatementsPractice(new ConditionalsStatementsPractice());
         });
-
-        // Set click listener for the Text-to-Speech button
-        binding.textToSpeechButton.setOnClickListener(v -> {
-            // Start the TextToSpeechService to speak the explanation text
-            String textToSpeak = binding.conditionalStatementsExplanation.getText().toString();
-            TextToSpeechService.startService(this, textToSpeak);
-        });
-
-        // Save this activity as the current one
-        saveLastActivity(this.getClass().getName());
-    }
-
-    /**
-     * Saves the given activity class name as the last opened activity
-     * @param activityClassName activity class name
-     */
-    private void saveLastActivity(String activityClassName) {
-        HomePage.saveLastActivity(this, activityClassName);
     }
 
     /**
@@ -98,7 +125,10 @@ public class ConditionalsStatements extends AppCompatActivity {
         binding.outputText.setText(result.toString());
     }
 
-    // Method to navigate to the ConditionalsStatementsPractice fragment
+    /**
+     * Method to navigate to the ConditionalsStatementsPractice fragment
+     * @param fragment fragment to navigate to ConditionalsStatementsPractice
+     */
     private void navigateToConditionalsStatementsPractice(Fragment fragment) {
         FragmentTransaction transaction = fragmentManager.beginTransaction();
         transaction.replace(R.id.fragment_conditionals_practice, fragment);
@@ -128,8 +158,6 @@ public class ConditionalsStatements extends AppCompatActivity {
             Toast.makeText(this, "Introduction to Python", Toast.LENGTH_SHORT).show();
             Intent intentIntroduction = new Intent(this, Introduction.class);
             startActivity(intentIntroduction);
-            // Save the activity we're navigating to
-            saveLastActivity(Introduction.class.getName());
             return true;
         } else if (id == R.id.ConditionalStatements) {
             TextToSpeechService.stopSpeaking(this);
@@ -142,16 +170,27 @@ public class ConditionalsStatements extends AppCompatActivity {
             Toast.makeText(this, "Loops", Toast.LENGTH_SHORT).show();
             Intent intentLoops = new Intent(this, Loops.class);
             startActivity(intentLoops);
-            // Save the activity we're navigating to
-            saveLastActivity(Loops.class.getName());
             return true;
         } else if (id == R.id.Functions) {
             TextToSpeechService.stopSpeaking(this);
             Toast.makeText(this, "Functions", Toast.LENGTH_SHORT).show();
             Intent intentFunctions = new Intent(this, Functions.class);
             startActivity(intentFunctions);
-            // Save the activity we're navigating to
-            saveLastActivity(Functions.class.getName());
+            return true;
+        } else if (id == R.id.SignOut) {
+            TextToSpeechService.stopSpeaking(this);
+            Toast.makeText(this, "Signing Out", Toast.LENGTH_SHORT).show();
+
+            // Clear the saved last activity, so it doesn't mess with checkAndRedirectToLastActivity(); function in HomePage
+            getSharedPreferences(HomePage.PREFS_NAME, MODE_PRIVATE)
+                    .edit()
+                    .remove(HomePage.LAST_ACTIVITY)
+                    .apply();
+
+            Intent intentHomePage = new Intent(this, HomePage.class);
+            // Clear the task stack and start a new one
+            intentHomePage.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+            startActivity(intentHomePage);
             return true;
         } else if (id == R.id.menuCloseApp) {
             finishAffinity();
@@ -159,5 +198,12 @@ public class ConditionalsStatements extends AppCompatActivity {
         } else {
             return super.onOptionsItemSelected(item);
         }
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        // Update last activity when to Conditional Statements it becomes visible
+        HomePage.saveLastActivity(this, this.getClass().getName());
     }
 }

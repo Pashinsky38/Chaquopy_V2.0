@@ -68,34 +68,67 @@ public class FunctionsPractice extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
         // Initialize Python
+        initializePython();
+
+        // Setup UI components
+        setupUI();
+
+        // Set up the timer
+        startTimer();
+
+        // Set up button listeners
+        setupButtonListeners();
+    }
+
+    /**
+     * Initializes Python if it hasn't been started yet
+     */
+    private void initializePython() {
         Context context = requireContext().getApplicationContext();
         if (!Python.isStarted()) {
             Python.start(new AndroidPlatform(context));
         }
+    }
 
+    /**
+     * Sets up the UI components for the fragment
+     */
+    private void setupUI() {
         // Initially hide the "Show Solution" button
         binding.showSolutionButton.setVisibility(View.GONE);
 
         // Initially hide the solution TextViews
         binding.solutionText1.setVisibility(View.GONE);
         binding.solutionText2.setVisibility(View.GONE);
+    }
 
-        // Set up the timer
-        startTimer();
+    /**
+     * Sets up all button click listeners
+     */
+    private void setupButtonListeners() {
+        setupRunCodeButton1Listener();
+        setupRunCodeButton2Listener();
+        setupShowSolutionButtonListener();
+    }
 
-        /*
-          Sets a click listener on the runCodeButton1.
-          When clicked, it calls the {@link #runPythonCode(int)} method to execute the Python code for question 1.
-         */
+    /**
+     * Sets up the Run Code Button 1 listener
+     */
+    private void setupRunCodeButton1Listener() {
         binding.runCodeButton1.setOnClickListener(v -> runPythonCode(1));
+    }
 
-        /*
-          Sets a click listener on the runCodeButton2.
-          When clicked, it calls the {@link #runPythonCode(int)} method to execute the Python code for question 2.
-         */
+    /**
+     * Sets up the Run Code Button 2 listener
+     */
+    private void setupRunCodeButton2Listener() {
         binding.runCodeButton2.setOnClickListener(v -> runPythonCode(2));
+    }
 
-        // Set a click listener for the "Show Solution" button
+    /**
+     * Sets up the Show Solution Button listener
+     */
+    private void setupShowSolutionButtonListener() {
         binding.showSolutionButton.setOnClickListener(v -> showSolutions());
     }
 

@@ -133,4 +133,12 @@
     <string name="run_code_button">Run Code</string>
     <string name="go_to_practice_button">Go to Practice</string>
     <string name="text_to_speech_button">Text to Speech</string>
+
+    <!-- Menu -->
+    <string name="menu_introduction">Introduction to Python</string>
+    <string name="menu_conditional_statements">Conditional Statements</string>
+    <string name="menu_loops">Loops</string>
+    <string name="menu_functions">Functions</string>
+    <string name="menu_sign_out">Sign Out</string>
+    <string name="menu_close_app">Close App</string>
 </resources>
