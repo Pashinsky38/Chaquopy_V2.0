@@ -103,10 +103,8 @@ public class VariablesFragment extends Fragment {
     public void navigateToBasicsPracticeFragment() {
         // Stop any ongoing text-to-speech before navigating
         TextToSpeechService.stopSpeaking(requireContext());
-
-        BasicsPracticeFragment basicsPracticeFragment = new BasicsPracticeFragment();
         FragmentTransaction transaction = getParentFragmentManager().beginTransaction();
-        transaction.replace(R.id.fragment_basics_practice, basicsPracticeFragment);
+        transaction.replace(R.id.fragment_basics_practice, new BasicsPracticeFragment());
         transaction.addToBackStack("BasicsPracticeFragment");
         transaction.commit();
     }

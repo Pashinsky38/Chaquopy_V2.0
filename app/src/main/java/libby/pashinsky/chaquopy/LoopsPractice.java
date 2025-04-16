@@ -263,30 +263,58 @@ public class LoopsPractice extends Fragment {
      * @return True if the output is correct, false otherwise.
      */
     private boolean checkAnswer(int questionNumber, String output) {
+        output = output.toLowerCase(); // Convert to lowercase for case-insensitive comparison
+
         switch (questionNumber) {
             case 1:
                 // Question 1: Print even numbers from 1 to 20 and check if greater than or less than 10
+                boolean hasAllEvenNumbers = true;
+                int evenNumbersFound = 0;
+
                 // Check for even numbers between 2 and 20
                 for (int i = 2; i <= 20; i += 2) {
-                    if (!output.contains(String.valueOf(i))) {
-                        return false;
+                    if (output.contains(String.valueOf(i))) {
+                        evenNumbersFound++;
                     }
                 }
-                // Check for comparison text
-                return output.contains("greater than 10") && output.contains("less than 10");
+
+                // We should find at least some even numbers (not necessarily all of them)
+                hasAllEvenNumbers = evenNumbersFound >= 5; // At least 5 even numbers should be found
+
+                // Check for comparison text (allow various phrasings)
+                boolean hasGreaterThanText = output.contains("greater than 10") ||
+                        output.contains("> 10") ||
+                        output.contains("above 10");
+
+                boolean hasLessThanText = output.contains("less than 10") ||
+                        output.contains("< 10") ||
+                        output.contains("below 10") ||
+                        output.contains("equal to 10");
+
+                return hasAllEvenNumbers && hasGreaterThanText && hasLessThanText;
 
             case 2:
                 // Question 2: Create a new list with numbers > 10 from [12, 5, 8, 21, 13, 9, 31, 2]
                 // Check if output contains both original and filtered list
-                return output.contains("[12, 5, 8, 21, 13, 9, 31, 2]") &&
-                        (output.contains("[12, 21, 13, 31]") ||
-                                output.contains("[12,21,13,31]") ||
-                                output.contains("[12, 13, 21, 31]") ||
-                                output.contains("[12,13,21,31]"));
+                boolean hasOriginalList = output.contains("[12, 5, 8, 21, 13, 9, 31, 2]") ||
+                        output.contains("[12,5,8,21,13,9,31,2]");
+
+                boolean hasFilteredList = output.contains("[12, 21, 13, 31]") ||
+                        output.contains("[12,21,13,31]") ||
+                        output.contains("[12, 13, 21, 31]") ||
+                        output.contains("[12,13,21,31]") ||
+                        // Handle other possible formats
+                        output.contains("12") &&
+                                output.contains("21") &&
+                                output.contains("13") &&
+                                output.contains("31") &&
+                                output.contains("greater than 10");
+
+                return hasOriginalList && hasFilteredList;
 
             case 3:
                 // Question 3: FizzBuzz from 1 to 15
-                return output.contains("Fizz") && output.contains("Buzz") && output.contains("FizzBuzz");
+                return output.contains("fizz") && output.contains("buzz") && output.contains("fizzbuzz");
 
             default:
                 return false;

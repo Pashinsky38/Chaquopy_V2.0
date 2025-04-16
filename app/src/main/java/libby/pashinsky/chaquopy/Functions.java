@@ -12,8 +12,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
 import com.chaquo.python.PyObject;
@@ -100,7 +98,7 @@ public class Functions extends AppCompatActivity {
             // Stop the TextToSpeechService before navigating
             TextToSpeechService.stopSpeaking(this);
             // Navigate to the FunctionsPractice fragment
-            navigateToFunctionsPractice(new FunctionsPractice());
+            navigateToFunctionsPractice();
         });
     }
 
@@ -124,12 +122,10 @@ public class Functions extends AppCompatActivity {
 
     /**
      * Method to navigate to the FunctionsPractice fragment
-     * @param fragment fragment to navigate to FunctionsPractice
      */
-    private void navigateToFunctionsPractice(Fragment fragment) {
-        FragmentManager fragmentManager = getSupportFragmentManager();
-        FragmentTransaction transaction = fragmentManager.beginTransaction();
-        transaction.replace(R.id.fragment_functions_practice, fragment);
+    private void navigateToFunctionsPractice() {
+        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+        transaction.replace(R.id.fragment_functions_practice, new FunctionsPractice());
         transaction.addToBackStack(null);
         transaction.commit();
     }

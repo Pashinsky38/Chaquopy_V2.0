@@ -12,8 +12,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
 import com.chaquo.python.PyObject;
@@ -25,7 +23,6 @@ import libby.pashinsky.chaquopy.databinding.ActivityConditionalsStatementsBindin
 public class ConditionalsStatements extends AppCompatActivity {
 
     private ActivityConditionalsStatementsBinding binding;
-    private FragmentManager fragmentManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,9 +33,6 @@ public class ConditionalsStatements extends AppCompatActivity {
 
         // Initialize Python
         initializePython();
-
-        // Get the FragmentManager
-        fragmentManager = getSupportFragmentManager();
 
         // Set up button listeners
         setupButtonListeners();
@@ -104,7 +98,7 @@ public class ConditionalsStatements extends AppCompatActivity {
             // Stop the TextToSpeechService before navigating
             TextToSpeechService.stopSpeaking(this);
             // Navigate to the ConditionalsStatementsPractice fragment
-            navigateToConditionalsStatementsPractice(new ConditionalsStatementsPractice());
+            navigateToConditionalsStatementsPractice();
         });
     }
 
@@ -127,11 +121,10 @@ public class ConditionalsStatements extends AppCompatActivity {
 
     /**
      * Method to navigate to the ConditionalsStatementsPractice fragment
-     * @param fragment fragment to navigate to ConditionalsStatementsPractice
      */
-    private void navigateToConditionalsStatementsPractice(Fragment fragment) {
-        FragmentTransaction transaction = fragmentManager.beginTransaction();
-        transaction.replace(R.id.fragment_conditionals_practice, fragment);
+    private void navigateToConditionalsStatementsPractice() {
+        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+        transaction.replace(R.id.fragment_conditionals_practice, new ConditionalsStatementsPractice());
         transaction.addToBackStack(null);
         transaction.commit();
     }

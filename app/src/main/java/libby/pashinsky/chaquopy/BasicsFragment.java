@@ -106,9 +106,8 @@ public class BasicsFragment extends Fragment {
      * Replaces the current fragment.
      */
     private void navigateToVariablesFragment() {
-        VariablesFragment variablesFragment = new VariablesFragment();
         FragmentTransaction transaction = getParentFragmentManager().beginTransaction();
-        transaction.replace(R.id.fragment_variables, variablesFragment);
+        transaction.replace(R.id.fragment_variables, new VariablesFragment());
         transaction.addToBackStack("VariablesFragment"); // Add a tag
         transaction.commit();
     }
