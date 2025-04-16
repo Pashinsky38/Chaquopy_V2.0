@@ -2,6 +2,10 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
     <!-- Permission to post notifications -->
     <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
+    <!-- Permission for exact alarms (Android 12+) -->
+    <uses-permission android:name="android.permission.SCHEDULE_EXACT_ALARM" />
+    <!-- Permission to start on boot -->
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
 
     <application
         android:allowBackup="true"
@@ -27,7 +31,14 @@
         <!-- Notification receiver -->
         <receiver
             android:name=".NotificationReceiver"
-            android:exported="false" />
+            android:enabled="true"
+            android:exported="false">
+            <intent-filter>
+                <!-- Broadcast receiver for boot completed and reschedule alarm actions -->
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+                <action android:name="RESCHEDULE_ALARM" />
+            </intent-filter>
+        </receiver>
 
         <!-- Functions activity -->
         <activity
