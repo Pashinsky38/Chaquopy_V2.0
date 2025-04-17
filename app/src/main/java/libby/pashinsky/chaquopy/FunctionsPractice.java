@@ -139,7 +139,7 @@ public class FunctionsPractice extends Fragment {
         timer = new CountDownTimer(TIMER_DURATION, 1000) {
             @Override
             public void onTick(long millisUntilFinished) {
-                // We don't update UI since we want the timer to be hidden
+                // Does nothing on each tick
             }
 
             @Override

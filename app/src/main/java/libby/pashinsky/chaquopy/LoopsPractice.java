@@ -123,7 +123,7 @@ public class LoopsPractice extends Fragment {
         timer = new CountDownTimer(TIMER_DURATION, 1000) {
             @Override
             public void onTick(long millisUntilFinished) {
-                // We don't update UI since we want the timer to be hidden
+                // Does nothing on each tick
             }
 
             @Override
@@ -268,7 +268,6 @@ public class LoopsPractice extends Fragment {
         switch (questionNumber) {
             case 1:
                 // Question 1: Print even numbers from 1 to 20 and check if greater than or less than 10
-                boolean hasAllEvenNumbers = true;
                 int evenNumbersFound = 0;
 
                 // Check for even numbers between 2 and 20
@@ -279,7 +278,7 @@ public class LoopsPractice extends Fragment {
                 }
 
                 // We should find at least some even numbers (not necessarily all of them)
-                hasAllEvenNumbers = evenNumbersFound >= 5; // At least 5 even numbers should be found
+                boolean hasAllEvenNumbers = evenNumbersFound >= 5; // At least 5 even numbers should be found
 
                 // Check for comparison text (allow various phrasings)
                 boolean hasGreaterThanText = output.contains("greater than 10") ||
