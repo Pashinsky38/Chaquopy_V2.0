@@ -110,7 +110,7 @@
                 android:shadowDx="1"
                 android:shadowDy="1"
                 android:shadowRadius="2"
-                android:text="# Basic for loop with range\nfor i in range(5):\n    print(i)  # Prints 0, 1, 2, 3, 4"
+                android:text="# Basic for loop with range\nfor i in range(0, 5):\n    print(i)  # Prints 0, 1, 2, 3, 4"
                 android:textColor="#FFFF"
                 android:textSize="16sp"
                 android:textStyle="italic"
