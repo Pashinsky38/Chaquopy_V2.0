@@ -114,11 +114,10 @@ public class HomePage extends AppCompatActivity {
 
         // If we have a saved activity and it's not HomePage
         if (!lastActivity.isEmpty() && !lastActivity.equals(this.getClass().getName())) {
-            // Simple direct approach without try-catch
             if (lastActivity.equals(Introduction.class.getName())) {
                 Intent intent = new Intent(this, Introduction.class);
                 startActivity(intent);
-                finish(); // Finish HomePage so it's not in the back stack
+                finish();
             } else if (lastActivity.equals(ConditionalsStatements.class.getName())) {
                 Intent intent = new Intent(this, ConditionalsStatements.class);
                 startActivity(intent);
