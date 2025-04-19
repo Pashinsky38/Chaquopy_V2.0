@@ -249,8 +249,6 @@ public class HomePage extends AppCompatActivity {
         getSharedPreferences("alarm_prefs", MODE_PRIVATE).edit()
                 .putLong("next_alarm_time", calendar.getTimeInMillis())
                 .apply();
-
-        Toast.makeText(this, "Daily notification scheduled for noon", Toast.LENGTH_SHORT).show();
     }
 
     /**
