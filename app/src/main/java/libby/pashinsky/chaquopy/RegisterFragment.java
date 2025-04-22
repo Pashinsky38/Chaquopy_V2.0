@@ -1,5 +1,6 @@
 package libby.pashinsky.chaquopy;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -9,7 +10,6 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentTransaction;
 
 import libby.pashinsky.chaquopy.databinding.FragmentRegisterBinding;
 
@@ -61,11 +61,9 @@ public class RegisterFragment extends Fragment {
     /**
      * Sets up click listeners for the buttons in the fragment.
      * - The sign-up button triggers user registration.
-     * - The login button navigates to the LoginFragment.
      */
     private void setUpButtonListeners() {
         binding.newSignUpButton.setOnClickListener(v -> handleSignUp());
-        binding.newLoginButton.setOnClickListener(v -> navigateToLoginFragment());
     }
 
     /**
@@ -123,7 +121,7 @@ public class RegisterFragment extends Fragment {
 
         if (isInserted) {
             showToast("Registered successfully");
-            navigateToLoginFragment();
+            navigateToIntroductionActivity();
         } else {
             showToast("Failed to register user");
         }
@@ -139,13 +137,13 @@ public class RegisterFragment extends Fragment {
     }
 
     /**
-     * Navigates to the LoginFragment.
-     * Replaces the current fragment in the fragment_register container with the LoginFragment.
+     * Navigates to the IntroductionActivity.
+     * Starts the IntroductionActivity and clears the back stack to prevent
+     * the user from navigating back to the registration screen.
      */
-    private void navigateToLoginFragment() {
-        FragmentTransaction transaction = getParentFragmentManager().beginTransaction();
-        transaction.replace(R.id.fragment_register, new LoginFragment());
-        transaction.addToBackStack(null); // Add to back stack for navigation history
-        transaction.commit();
+    private void navigateToIntroductionActivity() {
+        Intent intent = new Intent(getActivity(), Introduction.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        startActivity(intent);
     }
 }

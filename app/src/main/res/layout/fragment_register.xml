@@ -13,6 +13,23 @@
         android:orientation="vertical"
         android:background="@drawable/day_background">
 
+        <!-- Title TextView for the registration screen -->
+        <TextView
+            android:id="@+id/registerTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="30dp"
+            android:layout_marginBottom="20dp"
+            android:text="@string/welcome"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            android:textColor="#FFFFFF"
+            android:shadowColor="#000000"
+            android:shadowDx="1"
+            android:shadowDy="1"
+            android:shadowRadius="2" />
+
         <!-- EditText for entering name -->
         <EditText
             android:shadowColor="#000000"
@@ -23,14 +40,13 @@
             android:layout_width="300dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_marginTop="50dp"
+            android:layout_marginTop="20dp"
             android:ems="10"
             android:textSize="20sp"
             android:textColor="#FFFFFF"
             android:textColorHint="#FFFFFF"
             android:hint="@string/enter_name"
-            android:inputType="textPersonName"
-            tools:ignore="HardcodedText" />
+            android:inputType="textPersonName" />
 
         <!-- EditText for entering email -->
         <EditText
@@ -48,8 +64,7 @@
             android:ems="10"
             android:textSize="20sp"
             android:hint="@string/enter_email"
-            android:inputType="textEmailAddress"
-            tools:ignore="HardcodedText" />
+            android:inputType="textEmailAddress" />
 
         <!-- EditText for entering password -->
         <EditText
@@ -67,8 +82,7 @@
             android:ems="10"
             android:textSize="20sp"
             android:hint="@string/enter_password"
-            android:inputType="textPassword"
-            tools:ignore="HardcodedText" />
+            android:inputType="textPassword" />
 
         <!-- EditText for re-entering password -->
         <EditText
@@ -76,7 +90,7 @@
             android:shadowDx="1"
             android:shadowDy="1"
             android:shadowRadius="2"
-            android:id="@+id/newRe_EnterPassword"
+            android:id="@+id/newReEnterPassword"
             android:layout_width="300dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
@@ -86,8 +100,7 @@
             android:textColor="#FFFFFF"
             android:textColorHint="#FFFFFF"
             android:hint="@string/reenter_password"
-            android:inputType="textPassword"
-            tools:ignore="HardcodedText" />
+            android:inputType="textPassword" />
 
         <!-- EditText for entering phone number -->
         <EditText
@@ -105,8 +118,7 @@
             android:ems="10"
             android:textSize="20sp"
             android:hint="@string/enter_phone"
-            android:inputType="phone"
-            tools:ignore="HardcodedText" />
+            android:inputType="phone" />
 
         <!-- Button for signing up -->
         <Button
@@ -118,22 +130,8 @@
             android:layout_width="230dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_marginTop="200dp"
-            android:text="@string/sign_up"
-            tools:ignore="HardcodedText" />
+            android:layout_marginTop="160dp"
+            android:text="@string/sign_up" />
 
-        <!-- Button for going back to Login -->
-        <Button
-            android:shadowColor="#000000"
-            android:shadowDx="1"
-            android:shadowDy="1"
-            android:shadowRadius="2"
-            android:id="@+id/newLoginButton"
-            android:layout_width="230dp"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginTop="10dp"
-            android:text="@string/already_registered"
-            tools:ignore="HardcodedText" />
     </LinearLayout>
 </FrameLayout>

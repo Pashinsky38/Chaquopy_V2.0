@@ -1,8 +1,11 @@
 package libby.pashinsky.chaquopy;
 
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.CountDownTimer;
+import android.preference.PreferenceManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -32,6 +35,12 @@ public class FunctionsPractice extends Fragment {
     private int incorrectAttempts = 0;
     private static final int MAX_INCORRECT_ATTEMPTS = 3;
     private static final long TIMER_DURATION = 3 * 60 * 1000; // 3 minutes in milliseconds
+    private static final int QUESTIONS_IN_QUIZ = 2; // Total number of questions in this quiz
+
+    // Database related fields
+    private HelperDB dbHelper;
+    private String currentUserEmail;
+    private boolean quizCompleted = false; // Flag to track if quiz was already completed
 
     /**
      * Required empty public constructor for the FunctionsPractice.
@@ -70,6 +79,9 @@ public class FunctionsPractice extends Fragment {
         // Initialize Python
         initializePython();
 
+        // Set up database
+        setupDatabase();
+
         // Setup UI components
         setupUI();
 
@@ -91,6 +103,22 @@ public class FunctionsPractice extends Fragment {
     }
 
     /**
+     * Sets up the database helper and retrieves current user email.
+     */
+    private void setupDatabase() {
+        dbHelper = new HelperDB(getContext());
+
+        // Simply get the first user from the database
+        currentUserEmail = dbHelper.getFirstUserEmail();
+
+        // Save the current user email in shared preferences
+        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getContext());
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putString("current_user_email", currentUserEmail);
+        editor.apply();
+    }
+
+    /**
      * Sets up the UI components for the fragment
      */
     private void setupUI() {
@@ -106,29 +134,13 @@ public class FunctionsPractice extends Fragment {
      * Sets up all button click listeners
      */
     private void setupButtonListeners() {
-        setupRunCodeButton1Listener();
-        setupRunCodeButton2Listener();
-        setupShowSolutionButtonListener();
-    }
-
-    /**
-     * Sets up the Run Code Button 1 listener
-     */
-    private void setupRunCodeButton1Listener() {
+        // Setup Run Code Button 1 listener
         binding.runCodeButton1.setOnClickListener(v -> runPythonCode(1));
-    }
 
-    /**
-     * Sets up the Run Code Button 2 listener
-     */
-    private void setupRunCodeButton2Listener() {
+        // Setup Run Code Button 2 listener
         binding.runCodeButton2.setOnClickListener(v -> runPythonCode(2));
-    }
 
-    /**
-     * Sets up the Show Solution Button listener
-     */
-    private void setupShowSolutionButtonListener() {
+        // Setup Show Solution Button listener
         binding.showSolutionButton.setOnClickListener(v -> showSolutions());
     }
 
@@ -169,6 +181,11 @@ public class FunctionsPractice extends Fragment {
      * @param questionNumber The number of the question (1 or 2) to determine which code editor to use.
      */
     private void runPythonCode(int questionNumber) {
+        // Increment total tries every time a Run Code button is clicked
+        if (!quizCompleted) {
+            dbHelper.updateTotalTries(currentUserEmail, 1);
+        }
+
         // Get Python code from EditText using View Binding
         String pythonCode = "";
         switch (questionNumber) {
@@ -230,7 +247,61 @@ public class FunctionsPractice extends Fragment {
         if (isQuestion1Correct && isQuestion2Correct) {
             // Cancel the timer since the user has completed all questions correctly
             cancelTimer();
+
+            // Handle all questions being correct
+            handleAllQuestionsCorrect();
         }
+    }
+
+    /**
+     * Handles the case when all questions are answered correctly.
+     * Updates the database and shows statistics to the user.
+     */
+    private void handleAllQuestionsCorrect() {
+        // Update database with correct answers if not already completed
+        if (!quizCompleted) {
+            // Mark quiz as completed to prevent multiple updates
+            quizCompleted = true;
+
+            // Update correct answers (tries are already updated above)
+            dbHelper.updateCorrectAnswers(currentUserEmail, QUESTIONS_IN_QUIZ);
+
+            // Get updated statistics
+            int totalCorrectAnswers = dbHelper.getCorrectAnswers(currentUserEmail);
+            int totalTries = dbHelper.getTotalTries(currentUserEmail);
+
+            // Show a brief toast first
+            Toast.makeText(getContext(), "Excellent!", Toast.LENGTH_SHORT).show();
+
+            // Show statistics in an AlertDialog after a short delay
+            new android.os.Handler().postDelayed(() -> {
+                showStatisticsDialog(totalCorrectAnswers, totalTries);
+            }, 1000);
+        } else {
+            // Just show the basic toast if already completed
+            Toast.makeText(requireContext(), "Excellent!", Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    /**
+     * Shows an AlertDialog with the user's statistics.
+     *
+     * @param totalCorrectAnswers Total number of correct answers across all quizzes
+     * @param totalTries Total number of quiz attempts
+     */
+    private void showStatisticsDialog(int totalCorrectAnswers, int totalTries) {
+        if (getContext() == null) return;
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
+        builder.setTitle("Your Statistics");
+        builder.setMessage("Total Correct Answers: " + totalCorrectAnswers + "\n\n" +
+                "Total Tries: " + totalTries);
+        builder.setPositiveButton("OK", (dialog, which) -> dialog.dismiss());
+        builder.setCancelable(true);
+
+        // Create and show the AlertDialog
+        AlertDialog dialog = builder.create();
+        dialog.show();
     }
 
     /**

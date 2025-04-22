@@ -53,8 +53,8 @@ public class HomePage extends AppCompatActivity {
         // Setup UI components
         setupUI();
 
-        // Set up button listeners
-        setupButtonListeners();
+        // Set up register button listener
+        binding.RegisterButton.setOnClickListener(view -> navigateToRegisterFragment());
 
         // Check and request notification permissions
         checkNotificationPermissions();
@@ -70,20 +70,6 @@ public class HomePage extends AppCompatActivity {
         // Inflate the layout using View Binding
         binding = HomePageBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
-    }
-
-    /**
-     * Sets up all button click listeners
-     */
-    private void setupButtonListeners() {
-        setupLoginButtonListener();
-    }
-
-    /**
-     * Sets up the Login Button listener
-     */
-    private void setupLoginButtonListener() {
-        binding.LoginButton.setOnClickListener(view -> navigateToLoginFragment());
     }
 
     /**
@@ -154,12 +140,12 @@ public class HomePage extends AppCompatActivity {
     }
 
     /**
-     * Navigates to the LoginFragment.
-     * Replaces the current fragment in the fragment_login container with the LoginFragment.
+     * Navigates to the RegisterFragment.
+     * Replaces the current fragment in the fragment_register container with the RegisterFragment.
      */
-    private void navigateToLoginFragment() {
+    private void navigateToRegisterFragment() {
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-        transaction.replace(R.id.fragment_login, new LoginFragment());
+        transaction.replace(R.id.fragment_register, new RegisterFragment());
         transaction.addToBackStack(null); // Add to back stack for navigation history
         transaction.commit();
     }

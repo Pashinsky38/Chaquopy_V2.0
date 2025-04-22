@@ -16,6 +16,7 @@
     <string name="go_back">Go back</string>
 
     <!-- Register Fragment -->
+    <string name="welcome">Welcome! Create Your Account</string>
     <string name="already_registered">Already registered? Log in</string>
     <string name="enter_email">Please enter your email…</string>
     <string name="enter_name">Please enter your name…</string>

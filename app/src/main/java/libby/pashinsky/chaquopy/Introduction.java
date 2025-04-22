@@ -131,21 +131,6 @@ public class Introduction extends AppCompatActivity {
             Intent intentFunctions = new Intent(this, Functions.class);
             startActivity(intentFunctions);
             return true;
-        } else if (id == R.id.SignOut) {
-            TextToSpeechService.stopSpeaking(this);
-            Toast.makeText(this, "Signing Out", Toast.LENGTH_SHORT).show();
-
-            // Clear the saved last activity, so it doesn't mess with checkAndRedirectToLastActivity(); function in HomePage
-            getSharedPreferences(HomePage.PREFS_NAME, MODE_PRIVATE)
-                    .edit()
-                    .remove(HomePage.LAST_ACTIVITY)
-                    .apply();
-
-            Intent intentHomePage = new Intent(this, HomePage.class);
-            // Clear the task stack and start a new one
-            intentHomePage.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-            startActivity(intentHomePage);
-            return true;
         } else if (id == R.id.menuCloseApp) {
             finishAffinity();
             return true;

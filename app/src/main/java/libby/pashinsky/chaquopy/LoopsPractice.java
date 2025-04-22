@@ -1,9 +1,12 @@
 package libby.pashinsky.chaquopy;
 
+import android.app.AlertDialog;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.CountDownTimer;
+import android.preference.PreferenceManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -34,6 +37,11 @@ public class LoopsPractice extends Fragment {
     private int incorrectAttempts = 0;
     private static final int MAX_INCORRECT_ATTEMPTS = 3;
     private static final long TIMER_DURATION = 3 * 60 * 1000; // 3 minutes in milliseconds
+    private static final int QUESTIONS_IN_QUIZ = 3; // Total number of questions in this quiz
+
+    private HelperDB dbHelper;
+    private String currentUserEmail;
+    private boolean quizCompleted = false; // Flag to track if quiz was already completed
 
     /**
      * Required empty public constructor for the LoopsPractice.
@@ -70,6 +78,7 @@ public class LoopsPractice extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
         initializePython();
+        setupDatabase();
         hideInitialElements();
         startTimer();
         setupButtonListeners();
@@ -84,6 +93,22 @@ public class LoopsPractice extends Fragment {
         if (!Python.isStarted()) {
             Python.start(new AndroidPlatform(context));
         }
+    }
+
+    /**
+     * Sets up the database helper and retrieves current user email.
+     */
+    private void setupDatabase() {
+        dbHelper = new HelperDB(getContext());
+
+        // Simply get the first user from the database
+        currentUserEmail = dbHelper.getFirstUserEmail();
+
+        // Save the current user email in shared preferences
+        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getContext());
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putString("current_user_email", currentUserEmail);
+        editor.apply();
     }
 
     /**
@@ -153,6 +178,11 @@ public class LoopsPractice extends Fragment {
      * @param questionNumber The number of the question (1, 2, or 3) to determine which code editor to use.
      */
     private void runPythonCode(int questionNumber) {
+        // Increment total tries every time a Run Code button is clicked
+        if (!quizCompleted) {
+            dbHelper.updateTotalTries(currentUserEmail, 1);
+        }
+
         // Get Python code from EditText using View Binding
         String pythonCode = "";
         switch (questionNumber) {
@@ -227,12 +257,62 @@ public class LoopsPractice extends Fragment {
 
         // Check if all questions are correct and show the button if so
         if (isQuestion1Correct && isQuestion2Correct && isQuestion3Correct) {
-            binding.goToFunctionsButton.setVisibility(View.VISIBLE);
-            // Show "Marvellous!" toast when all questions are answered correctly
-            Toast.makeText(requireContext(), "Marvellous!", Toast.LENGTH_LONG).show();
-            // Cancel the timer since the user has completed all questions correctly
-            cancelTimer();
+            handleAllQuestionsCorrect();
         }
+    }
+
+    /**
+     * Handles the case when all questions are answered correctly.
+     */
+    private void handleAllQuestionsCorrect() {
+        binding.goToFunctionsButton.setVisibility(View.VISIBLE);
+        // Cancel the timer since the user has completed all questions correctly
+        cancelTimer();
+
+        // Update database with correct answers if not already completed
+        if (!quizCompleted) {
+            // Mark quiz as completed to prevent multiple updates
+            quizCompleted = true;
+
+            // Update correct answers (tries are already updated in runPythonCode method)
+            dbHelper.updateCorrectAnswers(currentUserEmail, QUESTIONS_IN_QUIZ);
+
+            // Get updated statistics
+            int totalCorrectAnswers = dbHelper.getCorrectAnswers(currentUserEmail);
+            int totalTries = dbHelper.getTotalTries(currentUserEmail);
+
+            // Show a brief toast first
+            Toast.makeText(getContext(), "Marvellous!", Toast.LENGTH_SHORT).show();
+
+            // Show statistics in an AlertDialog after a short delay
+            new android.os.Handler().postDelayed(() -> {
+                showStatisticsDialog(totalCorrectAnswers, totalTries);
+            }, 1000);
+        } else {
+            // Just show the basic toast if already completed
+            Toast.makeText(requireContext(), "Marvellous!", Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    /**
+     * Shows an AlertDialog with the user's statistics.
+     *
+     * @param totalCorrectAnswers Total number of correct answers across all quizzes
+     * @param totalTries Total number of quiz attempts
+     */
+    private void showStatisticsDialog(int totalCorrectAnswers, int totalTries) {
+        if (getContext() == null) return;
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
+        builder.setTitle("Your Statistics");
+        builder.setMessage("Total Correct Answers: " + totalCorrectAnswers + "\n\n" +
+                "Total Tries: " + totalTries);
+        builder.setPositiveButton("OK", (dialog, which) -> dialog.dismiss());
+        builder.setCancelable(true);
+
+        // Create and show the AlertDialog
+        AlertDialog dialog = builder.create();
+        dialog.show();
     }
 
     /**

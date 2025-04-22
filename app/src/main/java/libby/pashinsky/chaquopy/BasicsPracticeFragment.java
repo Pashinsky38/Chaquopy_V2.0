@@ -1,8 +1,11 @@
 package libby.pashinsky.chaquopy;
 
+import android.app.AlertDialog;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.CountDownTimer;
+import android.preference.PreferenceManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -25,6 +28,7 @@ import libby.pashinsky.chaquopy.databinding.FragmentBasicsPracticeBinding;
 public class BasicsPracticeFragment extends Fragment {
 
     private static final long TIMER_DURATION = 30 * 1000; // 30 seconds in milliseconds
+    private static final int QUESTIONS_IN_QUIZ = 3; // Total number of questions in this quiz
 
     private FragmentBasicsPracticeBinding binding;
     private CountDownTimer countDownTimer;
@@ -37,6 +41,9 @@ public class BasicsPracticeFragment extends Fragment {
     private EditText question3Answer;
     private int incorrectAttempts = 0; // Counter for incorrect attempts
     private Button goToConditionalStatementsButton;
+    private HelperDB dbHelper;
+    private String currentUserEmail;
+    private boolean quizCompleted = false; // Flag to track if quiz was already completed
 
     /**
      * Required empty public constructor for the BasicsPracticeFragment.
@@ -72,6 +79,7 @@ public class BasicsPracticeFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
         initializeViews();
+        setupDatabase();
         setupButtonListeners();
         startCountdownTimer();
     }
@@ -91,6 +99,22 @@ public class BasicsPracticeFragment extends Fragment {
         // Initially hide the "Show Solution" button and the "Go to Conditional Statements" button
         showSolutionButton.setVisibility(View.GONE);
         goToConditionalStatementsButton.setVisibility(View.GONE);
+    }
+
+    /**
+     * Sets up the database helper and retrieves current user email.
+     */
+    private void setupDatabase() {
+        dbHelper = new HelperDB(getContext());
+
+        // Simply get the first user from the database
+        currentUserEmail = dbHelper.getFirstUserEmail();
+
+        // Save the current user email in shared preferences
+        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getContext());
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putString("current_user_email", currentUserEmail);
+        editor.apply();
     }
 
     /**
@@ -121,6 +145,14 @@ public class BasicsPracticeFragment extends Fragment {
         boolean isCorrect2 = answer2.equals("My age is 25");
         boolean isCorrect3 = answer3.equals("15");
 
+        // Always increment tries in database if not already completed
+        if (!quizCompleted) {
+            boolean tryUpdated = dbHelper.updateTotalTries(currentUserEmail, 1);
+            if (!tryUpdated) {
+                Toast.makeText(getContext(), "Failed to update tries count", Toast.LENGTH_SHORT).show();
+            }
+        }
+
         // Display results
         if (isCorrect1 && isCorrect2 && isCorrect3) {
             handleCorrectAnswers();
@@ -136,8 +168,29 @@ public class BasicsPracticeFragment extends Fragment {
         resultsText.setText(getString(R.string.all_answers_correct));
         allAnswersCorrect = true;
 
-        // Display a toast message when all answers are correct
-        Toast.makeText(getContext(), "Great job!", Toast.LENGTH_SHORT).show();
+        // Update database with correct answers if not already completed
+        if (!quizCompleted) {
+            // Mark quiz as completed to prevent multiple updates
+            quizCompleted = true;
+
+            // Update correct answers (tries are already updated in checkAnswers method)
+            dbHelper.updateCorrectAnswers(currentUserEmail, QUESTIONS_IN_QUIZ);
+
+            // Get updated statistics
+            int totalCorrectAnswers = dbHelper.getCorrectAnswers(currentUserEmail);
+            int totalTries = dbHelper.getTotalTries(currentUserEmail);
+
+            // Show a brief toast first
+            Toast.makeText(getContext(), "Great job!", Toast.LENGTH_SHORT).show();
+
+            // Show statistics in an AlertDialog after a short delay
+            new android.os.Handler().postDelayed(() -> {
+                showStatisticsDialog(totalCorrectAnswers, totalTries);
+            }, 1000);
+        } else {
+            // Just show the basic toast if already completed
+            Toast.makeText(getContext(), "Great job!", Toast.LENGTH_SHORT).show();
+        }
 
         // Stop the timer if all answers are correct
         if (countDownTimer != null) {
@@ -158,11 +211,35 @@ public class BasicsPracticeFragment extends Fragment {
     }
 
     /**
+     * Shows an AlertDialog with the user's statistics.
+     *
+     * @param totalCorrectAnswers Total number of correct answers across all quizzes
+     * @param totalTries Total number of quiz attempts
+     */
+    private void showStatisticsDialog(int totalCorrectAnswers, int totalTries) {
+        if (getContext() == null) return;
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
+        builder.setTitle("Your Statistics");
+        builder.setMessage("Total Correct Answers: " + totalCorrectAnswers + "\n\n" +
+                "Total Tries: " + totalTries);
+        builder.setPositiveButton("OK", (dialog, which) -> dialog.dismiss());
+        builder.setCancelable(true);
+
+        // Create and show the AlertDialog
+        AlertDialog dialog = builder.create();
+        dialog.show();
+    }
+
+    /**
      * Handles the case when some answers are incorrect.
      */
     private void handleIncorrectAnswers() {
         resultsText.setText(getString(R.string.some_answers_incorrect));
         incorrectAttempts++; // Increment incorrect attempts
+
+        // Show toast for incorrect attempt
+        Toast.makeText(getContext(), "Some answers are incorrect. Try again!", Toast.LENGTH_SHORT).show();
 
         // Show the "Show Solution" button if there are 3 incorrect attempts and solutions haven't been shown
         if (incorrectAttempts >= 3 && !solutionsShown) {
