@@ -32,7 +32,7 @@ public class HomePage extends AppCompatActivity {
     // Request code for exact alarm permission
     private static final int EXACT_ALARM_PERMISSION_REQUEST_CODE = 124;
     // Shared preferences constants
-    public static final String PREFS_NAME = "AppPrefs";
+    public static final String PREFS_NAME = "savedLastActivityPrefs";
     public static final String LAST_ACTIVITY = "lastActivity";
 
     private HomePageBinding binding;
