@@ -131,11 +131,10 @@ public class HelperDB extends SQLiteOpenHelper {
     /**
      * Updates the correct answers count for a specific user by adding the specified amount.
      *
-     * @param email The email address of the user.
+     * @param email               The email address of the user.
      * @param correctAnswersToAdd The number of correct answers to add.
-     * @return True if the update was successful, false otherwise.
      */
-    public boolean updateCorrectAnswers(String email, int correctAnswersToAdd) {
+    public void updateCorrectAnswers(String email, int correctAnswersToAdd) {
         SQLiteDatabase db = this.getWritableDatabase();
 
         // First, ensure the user exists
@@ -143,30 +142,20 @@ public class HelperDB extends SQLiteOpenHelper {
             // If the user doesn't exist, create them
             insertUser("User", email, "", "");
         }
-
-        // Get current count
-        int currentCorrectAnswers = getCorrectAnswers(email);
 
         // Update with direct SQL to avoid concurrency issues
         String updateQuery = "UPDATE " + USERS_TABLE + " SET " + CORRECT_ANSWERS + " = " +
                 CORRECT_ANSWERS + " + ? WHERE " + USER_EMAIL + " = ?";
         db.execSQL(updateQuery, new Object[]{correctAnswersToAdd, email});
-
-        // Verify update
-        int newCount = getCorrectAnswers(email);
-
-        // Check if the update was successful
-        return newCount > currentCorrectAnswers;
     }
 
     /**
      * Updates the total tries count for a specific user by adding the specified amount.
      *
-     * @param email The email address of the user.
+     * @param email      The email address of the user.
      * @param triesToAdd The number of tries to add.
-     * @return True if the update was successful, false otherwise.
      */
-    public boolean updateTotalTries(String email, int triesToAdd) {
+    public void updateTotalTries(String email, int triesToAdd) {
         SQLiteDatabase db = this.getWritableDatabase();
 
         // First, ensure the user exists
@@ -175,19 +164,10 @@ public class HelperDB extends SQLiteOpenHelper {
             insertUser("User", email, "", "");
         }
 
-        // Get current count
-        int currentTries = getTotalTries(email);
-
         // Update with direct SQL to avoid concurrency issues
         String updateQuery = "UPDATE " + USERS_TABLE + " SET " + TOTAL_TRIES + " = " +
                 TOTAL_TRIES + " + ? WHERE " + USER_EMAIL + " = ?";
         db.execSQL(updateQuery, new Object[]{triesToAdd, email});
-
-        // Verify update
-        int newCount = getTotalTries(email);
-
-        // Check if the update was successful
-        return newCount > currentTries;
     }
 
     /**

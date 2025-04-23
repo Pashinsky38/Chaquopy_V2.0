@@ -147,10 +147,7 @@ public class BasicsPracticeFragment extends Fragment {
 
         // Always increment tries in database if not already completed
         if (!quizCompleted) {
-            boolean tryUpdated = dbHelper.updateTotalTries(currentUserEmail, 1);
-            if (!tryUpdated) {
-                Toast.makeText(getContext(), "Failed to update tries count", Toast.LENGTH_SHORT).show();
-            }
+            dbHelper.updateTotalTries(currentUserEmail, 1);
         }
 
         // Display results
