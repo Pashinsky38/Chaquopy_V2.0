@@ -1,0 +1,660 @@
+@startuml
+class libby.pashinsky.chaquopy.Introduction {
+- ActivityIntroductionBinding binding
+# void onCreate(Bundle)
+- void setupUI()
+- void setupButtonListeners()
+- void setupTextToSpeechButtonListener()
+- void setupNextButtonListener()
+- void navigateToBasicsFragment()
++ boolean onCreateOptionsMenu(Menu)
++ boolean onOptionsItemSelected(MenuItem)
+# void onResume()
+}
+
+
+class libby.pashinsky.chaquopy.LoginFragment {
+- FragmentLoginBinding binding
+- HelperDB dbHelper
++ View onCreateView(LayoutInflater,ViewGroup,Bundle)
++ void onViewCreated(View,Bundle)
+- void setUpButtonListeners()
+- void handleLogin()
+- boolean isUserRegistered(String,String)
+- void navigateToIntroduction()
+- void navigateToRegisterFragment()
+- void navigateToHomePage()
+- void showToast(String)
+}
+
+
+class libby.pashinsky.chaquopy.ConditionalsStatements {
+- ActivityConditionalsStatementsBinding binding
+# void onCreate(Bundle)
+- void setupUI()
+- void initializePython()
+- void setupButtonListeners()
+- void setupTextToSpeechButtonListener()
+- void setupRunCodeButtonListener()
+- void setupGoToPracticeButtonListener()
+- void runPythonCode()
+- void navigateToConditionalsStatementsPractice()
+# void onDestroy()
++ boolean onCreateOptionsMenu(Menu)
++ boolean onOptionsItemSelected(MenuItem)
+# void onResume()
+}
+
+
+class libby.pashinsky.chaquopy.Loops {
+- ActivityLoopsBinding binding
+# void onCreate(Bundle)
+- void setupUI()
+- void initializePython()
+- void setupButtonListeners()
+- void setupTextToSpeechButtonListener()
+- void setupRunCodeButtonListener()
+- void setupGoToPracticeButtonListener()
+- void runPythonCode()
+- void navigateToLoopsPractice()
+# void onDestroy()
++ boolean onCreateOptionsMenu(Menu)
++ boolean onOptionsItemSelected(MenuItem)
+# void onResume()
+}
+
+
+class libby.pashinsky.chaquopy.databinding.HomePageBinding {
+- FrameLayout rootView
++ TextView LearningPython
++ ImageView PythonIcon
++ Button RegisterButton
++ TextView WithLibbyPashinsky
++ FrameLayout fragmentLogin
++ FrameLayout fragmentRegister
++ FrameLayout getRoot()
++ {static} HomePageBinding inflate(LayoutInflater)
++ {static} HomePageBinding inflate(LayoutInflater,ViewGroup,boolean)
++ {static} HomePageBinding bind(View)
+}
+
+
+class libby.pashinsky.chaquopy.databinding.ActivityFunctionsBinding {
+- FrameLayout rootView
++ TextView challengeTextView
++ EditText codeEditor
++ FrameLayout fragmentFunctionsPractice
++ TextView functionDefinitionExample
++ TextView functionDefinitionExplanation
++ TextView functionDefinitionTitle
++ TextView functionScopeExample
++ TextView functionScopeExplanation
++ TextView functionScopeTitle
++ TextView functionsExplanation
++ TextView functionsTitle
++ Button goToFunctionsPracticeButton
++ TextView outputText
++ TextView parametersExample
++ TextView parametersExplanation
++ TextView parametersTitle
++ TextView returnValuesExample
++ TextView returnValuesExplanation
++ TextView returnValuesTitle
++ Button runCodeButton
++ ScrollView scrollView
++ Button textToSpeechButton
++ FrameLayout getRoot()
++ {static} ActivityFunctionsBinding inflate(LayoutInflater)
++ {static} ActivityFunctionsBinding inflate(LayoutInflater,ViewGroup,boolean)
++ {static} ActivityFunctionsBinding bind(View)
+}
+
+
+class libby.pashinsky.chaquopy.Functions {
+- ActivityFunctionsBinding binding
+# void onCreate(Bundle)
+- void setupUI()
+- void initializePython()
+- void setupButtonListeners()
+- void setupTextToSpeechButtonListener()
+- void setupRunCodeButtonListener()
+- void setupGoToPracticeButtonListener()
+- void runPythonCode()
+- void navigateToFunctionsPractice()
+# void onDestroy()
++ boolean onCreateOptionsMenu(Menu)
++ boolean onOptionsItemSelected(MenuItem)
+# void onResume()
+}
+
+
+class libby.pashinsky.chaquopy.BasicsFragment {
+- FragmentBasicsBinding binding
++ View onCreateView(LayoutInflater,ViewGroup,Bundle)
++ void onViewCreated(View,Bundle)
+- void initializePython()
+- void setupButtonListeners()
+- void runPythonCode()
+- void navigateToVariablesFragment()
+}
+
+
+class libby.pashinsky.chaquopy.databinding.FragmentRegisterBinding {
+- FrameLayout rootView
++ EditText newEmail
++ EditText newName
++ EditText newPassword
++ EditText newPhoneNumber
++ EditText newReEnterPassword
++ Button newSignUpButton
++ TextView registerTitle
++ FrameLayout getRoot()
++ {static} FragmentRegisterBinding inflate(LayoutInflater)
++ {static} FragmentRegisterBinding inflate(LayoutInflater,ViewGroup,boolean)
++ {static} FragmentRegisterBinding bind(View)
+}
+
+
+class libby.pashinsky.chaquopy.LoopsPractice {
+- FragmentLoopsPracticeBinding binding
+- boolean isQuestion1Correct
+- boolean isQuestion2Correct
+- boolean isQuestion3Correct
+- CountDownTimer timer
+- int incorrectAttempts
+- {static} int MAX_INCORRECT_ATTEMPTS
+- {static} long TIMER_DURATION
+- {static} int QUESTIONS_IN_QUIZ
+- HelperDB dbHelper
+- String currentUserEmail
+- boolean quizCompleted
++ View onCreateView(LayoutInflater,ViewGroup,Bundle)
++ void onViewCreated(View,Bundle)
+- void initializePython()
+- void setupDatabase()
+- void hideInitialElements()
+- void setupButtonListeners()
+- void startTimer()
+- void cancelTimer()
+- void runPythonCode(int)
+- void handleAllQuestionsCorrect()
+- void showStatisticsDialog(int,int)
+- boolean checkLoopsUsage(int,String)
+- boolean checkAnswer(int,String)
+- void showSolutions()
+- void goToFunctions()
++ void onDestroy()
+}
+
+
+class libby.pashinsky.chaquopy.databinding.FragmentVariablesBinding {
+- FrameLayout rootView
++ EditText codeEditorVariables
++ Button goToPracticeButton
++ TextView operatorsExample
++ TextView operatorsExplanation
++ TextView operatorsInUseExample
++ TextView outputTextVariables
++ Button runCodeButtonVariables
++ ScrollView scrollViewVariables
++ Button textToSpeechButtonVariables
++ TextView variablesChallenge
++ TextView variablesExample
++ TextView variablesExplanation
++ TextView variablesRules
++ TextView variablesRulesExample
++ TextView variablesTitle
++ FrameLayout getRoot()
++ {static} FragmentVariablesBinding inflate(LayoutInflater)
++ {static} FragmentVariablesBinding inflate(LayoutInflater,ViewGroup,boolean)
++ {static} FragmentVariablesBinding bind(View)
+}
+
+
+class libby.pashinsky.chaquopy.databinding.ActivityLoopsBinding {
+- FrameLayout rootView
++ TextView challengeTextView
++ EditText codeEditor
++ TextView forLoopExample1
++ TextView forLoopExample2
++ TextView forLoopExplanation
++ TextView forLoopTitle
++ FrameLayout fragmentLoopsPractice
++ Button goToLoopsPracticeButton
++ TextView loopControlExample
++ TextView loopControlExplanation
++ TextView loopControlTitle
++ TextView loopsExplanation
++ TextView loopsTitle
++ TextView outputText
++ Button runCodeButton
++ ScrollView scrollView
++ Button textToSpeechButton
++ TextView whileLoopExample1
++ TextView whileLoopExplanation
++ TextView whileLoopTitle
++ FrameLayout getRoot()
++ {static} ActivityLoopsBinding inflate(LayoutInflater)
++ {static} ActivityLoopsBinding inflate(LayoutInflater,ViewGroup,boolean)
++ {static} ActivityLoopsBinding bind(View)
+}
+
+
+class libby.pashinsky.chaquopy.RegisterFragment {
+- FragmentRegisterBinding binding
++ View onCreateView(LayoutInflater,ViewGroup,Bundle)
++ void onViewCreated(View,Bundle)
+- void setUpButtonListeners()
+- void handleSignUp()
+- boolean validateInput(String,String,String,String,String)
+- void registerUser(String,String,String,String)
+- void showToast(String)
+- void navigateToIntroductionActivity()
+}
+
+
+class michal.shefer.chaquipy.ExampleInstrumentedTest {
++ void useAppContext()
+}
+
+class libby.pashinsky.chaquopy.databinding.FragmentLoginBinding {
+- FrameLayout rootView
++ EditText EnterEmail
++ EditText EnterPassword
++ Button buttonLogin
++ Button buttonSignUp
++ Button gotoHomePageButton
++ FrameLayout getRoot()
++ {static} FragmentLoginBinding inflate(LayoutInflater)
++ {static} FragmentLoginBinding inflate(LayoutInflater,ViewGroup,boolean)
++ {static} FragmentLoginBinding bind(View)
+}
+
+
+class libby.pashinsky.chaquopy.FunctionsPractice {
+- FragmentFunctionsPracticeBinding binding
+- boolean isQuestion1Correct
+- boolean isQuestion2Correct
+- CountDownTimer timer
+- int incorrectAttempts
+- {static} int MAX_INCORRECT_ATTEMPTS
+- {static} long TIMER_DURATION
+- {static} int QUESTIONS_IN_QUIZ
+- HelperDB dbHelper
+- String currentUserEmail
+- boolean quizCompleted
++ View onCreateView(LayoutInflater,ViewGroup,Bundle)
++ void onViewCreated(View,Bundle)
+- void initializePython()
+- void setupDatabase()
+- void setupUI()
+- void setupButtonListeners()
+- void startTimer()
+- void cancelTimer()
+- void runPythonCode(int)
+- void handleAllQuestionsCorrect()
+- void showStatisticsDialog(int,int)
+- boolean checkFunctionsUsage(int,String)
+- boolean checkAnswer(int,String)
+- void showSolutions()
++ void onDestroy()
+}
+
+
+class libby.pashinsky.chaquopy.databinding.FragmentBasicsBinding {
+- FrameLayout rootView
++ TextView StartingWithBasics
++ TextView challengeTextView
++ EditText codeEditor
++ TextView codeExample
++ TextView codeExample2
++ TextView explanation
++ TextView newlineAndConcatenation
++ Button nextButton
++ TextView outputText
++ Button runCodeButton
++ ScrollView scrollView
++ FrameLayout getRoot()
++ {static} FragmentBasicsBinding inflate(LayoutInflater)
++ {static} FragmentBasicsBinding inflate(LayoutInflater,ViewGroup,boolean)
++ {static} FragmentBasicsBinding bind(View)
+}
+
+
+class libby.pashinsky.chaquopy.databinding.FragmentConditionalsStatementsPracticeBinding {
+- FrameLayout rootView
++ EditText codeEditor1
++ EditText codeEditor2
++ Button goToLoopsButton
++ TextView outputText1
++ TextView outputText2
++ TextView practiceTitle
++ TextView question1
++ TextView question2
++ Button runCodeButton1
++ Button runCodeButton2
++ ScrollView scrollView
++ Button showSolutionButton
++ TextView solutionText1
++ TextView solutionText2
++ FrameLayout getRoot()
++ {static} FragmentConditionalsStatementsPracticeBinding inflate(LayoutInflater)
++ {static} FragmentConditionalsStatementsPracticeBinding inflate(LayoutInflater,ViewGroup,boolean)
++ {static} FragmentConditionalsStatementsPracticeBinding bind(View)
+}
+
+
+class libby.pashinsky.chaquopy.databinding.FragmentLoopsPracticeBinding {
+- FrameLayout rootView
++ EditText codeEditor1
++ EditText codeEditor2
++ EditText codeEditor3
++ Button goToFunctionsButton
++ TextView outputText1
++ TextView outputText2
++ TextView outputText3
++ TextView practiceTitle
++ TextView question1
++ TextView question2
++ TextView question3
++ Button runCodeButton1
++ Button runCodeButton2
++ Button runCodeButton3
++ ScrollView scrollView
++ Button showSolutionButton
++ TextView solutionText1
++ TextView solutionText2
++ TextView solutionText3
++ FrameLayout getRoot()
++ {static} FragmentLoopsPracticeBinding inflate(LayoutInflater)
++ {static} FragmentLoopsPracticeBinding inflate(LayoutInflater,ViewGroup,boolean)
++ {static} FragmentLoopsPracticeBinding bind(View)
+}
+
+
+class libby.pashinsky.chaquopy.databinding.FragmentBasicsPracticeBinding {
+- FrameLayout rootView
++ Button checkAnswersButton
++ Button goToConditionalStatementsButton
++ TextView instructionText
++ TextView practiceTitle
++ EditText question1Answer
++ TextView question1Code
++ EditText question2Answer
++ TextView question2Code
++ EditText question3Answer
++ TextView question3Code
++ TextView resultsText
++ Button showSolutionButton
++ FrameLayout getRoot()
++ {static} FragmentBasicsPracticeBinding inflate(LayoutInflater)
++ {static} FragmentBasicsPracticeBinding inflate(LayoutInflater,ViewGroup,boolean)
++ {static} FragmentBasicsPracticeBinding bind(View)
+}
+
+
+class libby.pashinsky.chaquopy.ConditionalsStatementsPractice {
+- FragmentConditionalsStatementsPracticeBinding binding
+- boolean isQuestion1Correct
+- boolean isQuestion2Correct
+- CountDownTimer timer
+- int incorrectAttempts
+- {static} int MAX_INCORRECT_ATTEMPTS
+- {static} long TIMER_DURATION
+- {static} int QUESTIONS_IN_QUIZ
+- HelperDB dbHelper
+- String currentUserEmail
+- boolean quizCompleted
++ View onCreateView(LayoutInflater,ViewGroup,Bundle)
++ void onViewCreated(View,Bundle)
+- void initializePython()
+- void setupDatabase()
+- void setupInitialUIState()
+- void setupButtonListeners()
+- void startTimer()
+- void cancelTimer()
+- void runPythonCode(int)
+- void handleAllQuestionsCorrect()
+- void showStatisticsDialog(int,int)
+- boolean checkConditionalsUsage(int,String)
+- boolean checkAnswer(int,String)
+- void showSolutions()
+- void goToLoops()
++ void onDestroy()
+}
+
+
+class libby.pashinsky.chaquopy.UserDetails {
+- String name
+- String email
+- String password
+- String phoneNumber
++ String toString()
++ String getName()
++ void setName(String)
++ String getEmail()
++ void setEmail(String)
++ String getPassword()
++ void setPassword(String)
++ String getPhoneNumber()
++ void setPhoneNumber(String)
+}
+
+
+class libby.pashinsky.chaquopy.NotificationReceiver {
+- {static} String CHANNEL_ID
+- {static} String CHANNEL_NAME
+- {static} int NOTIFICATION_ID
++ void onReceive(Context,Intent)
+- void scheduleAlarmForNextDay(Context)
+- void createNotificationChannel(Context)
+}
+
+
+class libby.pashinsky.chaquopy.databinding.ActivityConditionalsStatementsBinding {
+- FrameLayout rootView
++ TextView challengeTextView
++ EditText codeEditor
++ TextView conditionalStatementExample5
++ TextView conditionalStatementsExplanation
++ TextView conditionalStatementsTitle
++ FrameLayout fragmentConditionalsPractice
++ Button goToConditionalsPracticeButton
++ TextView logicalOperatorsExample
++ TextView logicalOperatorsExplanation
++ FrameLayout main
++ TextView operatorsComparisonExample1
++ TextView operatorsExplanation1
++ TextView outputText
++ Button runCodeButton
++ ScrollView scrollView
++ Button textToSpeechButton
++ FrameLayout getRoot()
++ {static} ActivityConditionalsStatementsBinding inflate(LayoutInflater)
++ {static} ActivityConditionalsStatementsBinding inflate(LayoutInflater,ViewGroup,boolean)
++ {static} ActivityConditionalsStatementsBinding bind(View)
+}
+
+
+class libby.pashinsky.chaquopy.databinding.FragmentFunctionsPracticeBinding {
+- FrameLayout rootView
++ EditText codeEditor1
++ EditText codeEditor2
++ TextView outputText1
++ TextView outputText2
++ TextView practiceTitle
++ TextView question1
++ TextView question2
++ Button runCodeButton1
++ Button runCodeButton2
++ ScrollView scrollView
++ Button showSolutionButton
++ TextView solutionText1
++ TextView solutionText2
++ FrameLayout getRoot()
++ {static} FragmentFunctionsPracticeBinding inflate(LayoutInflater)
++ {static} FragmentFunctionsPracticeBinding inflate(LayoutInflater,ViewGroup,boolean)
++ {static} FragmentFunctionsPracticeBinding bind(View)
+}
+
+
+class libby.pashinsky.chaquopy.HomePage {
+- {static} int NOTIFICATION_PERMISSION_REQUEST_CODE
+- {static} int EXACT_ALARM_PERMISSION_REQUEST_CODE
++ {static} String PREFS_NAME
++ {static} String LAST_ACTIVITY
+- HomePageBinding binding
+# void onCreate(Bundle)
+- void setupUI()
+- void checkNotificationPermissions()
+- void checkAndRedirectToLastActivity()
++ {static} void saveLastActivity(Context,String)
+- void saveLastActivity(String)
+- void navigateToRegisterFragment()
+- void checkAndScheduleAlarm()
+- void scheduleAlarm()
++ void onRequestPermissionsResult(int,String[],int[])
+# void onActivityResult(int,int,Intent)
+}
+
+
+class michal.shefer.chaquipy.ExampleUnitTest {
++ void addition_isCorrect()
+}
+
+class libby.pashinsky.chaquopy.databinding.ActivityIntroductionBinding {
+- FrameLayout rootView
++ FrameLayout fragmentBasics
++ FrameLayout fragmentBasicsPractice
++ FrameLayout fragmentVariables
++ FrameLayout main
++ Button nextButton
++ TextView textView
++ TextView textView2
++ Button ttsButton
++ FrameLayout getRoot()
++ {static} ActivityIntroductionBinding inflate(LayoutInflater)
++ {static} ActivityIntroductionBinding inflate(LayoutInflater,ViewGroup,boolean)
++ {static} ActivityIntroductionBinding bind(View)
+}
+
+
+class libby.pashinsky.chaquopy.TextToSpeechService {
+- TextToSpeech tts
+- boolean isInitialized
+- Queue<String> speechQueue
++ void onCreate()
++ int onStartCommand(Intent,int,int)
++ IBinder onBind(Intent)
++ void onInit(int)
+- void speak(String)
+- void processSpeechQueue()
+- void stopSpeaking()
++ void onDestroy()
++ {static} void startService(Context,String)
++ {static} void stopSpeaking(Context)
+}
+
+
+class libby.pashinsky.chaquopy.VariablesFragment {
+- FragmentVariablesBinding binding
++ View onCreateView(LayoutInflater,ViewGroup,Bundle)
++ void onViewCreated(View,Bundle)
+- void initializePython()
+- void setupButtonListeners()
++ void navigateToBasicsPracticeFragment()
+- void runPythonCode()
++ void onDestroy()
+}
+
+
+class libby.pashinsky.chaquopy.BasicsPracticeFragment {
+- {static} long TIMER_DURATION
+- {static} int QUESTIONS_IN_QUIZ
+- FragmentBasicsPracticeBinding binding
+- CountDownTimer countDownTimer
+- Button showSolutionButton
+- boolean allAnswersCorrect
+- TextView resultsText
+- boolean solutionsShown
+- EditText question1Answer
+- EditText question2Answer
+- EditText question3Answer
+- int incorrectAttempts
+- Button goToConditionalStatementsButton
+- HelperDB dbHelper
+- String currentUserEmail
+- boolean quizCompleted
++ View onCreateView(LayoutInflater,ViewGroup,Bundle)
++ void onViewCreated(View,Bundle)
+- void initializeViews()
+- void setupDatabase()
+- void setupButtonListeners()
+- void checkAnswers()
+- void handleCorrectAnswers()
+- void showStatisticsDialog(int,int)
+- void handleIncorrectAnswers()
+- void showSolutions()
+- void navigateToConditionalStatements()
+- void startCountdownTimer()
+- void disableEditTexts()
++ void onDestroyView()
+}
+
+
+class libby.pashinsky.chaquopy.HelperDB {
+- {static} String DATABASE_NAME
+- {static} int DATABASE_VERSION
++ {static} String USERS_TABLE
++ {static} String USER_NAME
++ {static} String USER_EMAIL
++ {static} String USER_PWD
++ {static} String USER_PHONE
++ {static} String CORRECT_ANSWERS
++ {static} String TOTAL_TRIES
++ void onCreate(SQLiteDatabase)
++ void onUpgrade(SQLiteDatabase,int,int)
++ boolean insertUser(String,String,String,String)
++ String getPasswordByEmail(String)
++ void updateCorrectAnswers(String,int)
++ void updateTotalTries(String,int)
++ int getCorrectAnswers(String)
++ int getTotalTries(String)
++ boolean userExists(String)
++ String getFirstUserEmail()
+}
+
+
+
+
+androidx.appcompat.app.AppCompatActivity <|-- libby.pashinsky.chaquopy.Introduction
+androidx.fragment.app.Fragment <|-- libby.pashinsky.chaquopy.LoginFragment
+androidx.appcompat.app.AppCompatActivity <|-- libby.pashinsky.chaquopy.ConditionalsStatements
+androidx.appcompat.app.AppCompatActivity <|-- libby.pashinsky.chaquopy.Loops
+androidx.viewbinding.ViewBinding <|.. libby.pashinsky.chaquopy.databinding.HomePageBinding
+androidx.viewbinding.ViewBinding <|.. libby.pashinsky.chaquopy.databinding.ActivityFunctionsBinding
+androidx.appcompat.app.AppCompatActivity <|-- libby.pashinsky.chaquopy.Functions
+androidx.fragment.app.Fragment <|-- libby.pashinsky.chaquopy.BasicsFragment
+androidx.viewbinding.ViewBinding <|.. libby.pashinsky.chaquopy.databinding.FragmentRegisterBinding
+androidx.fragment.app.Fragment <|-- libby.pashinsky.chaquopy.LoopsPractice
+androidx.viewbinding.ViewBinding <|.. libby.pashinsky.chaquopy.databinding.FragmentVariablesBinding
+androidx.viewbinding.ViewBinding <|.. libby.pashinsky.chaquopy.databinding.ActivityLoopsBinding
+androidx.fragment.app.Fragment <|-- libby.pashinsky.chaquopy.RegisterFragment
+androidx.viewbinding.ViewBinding <|.. libby.pashinsky.chaquopy.databinding.FragmentLoginBinding
+androidx.fragment.app.Fragment <|-- libby.pashinsky.chaquopy.FunctionsPractice
+androidx.viewbinding.ViewBinding <|.. libby.pashinsky.chaquopy.databinding.FragmentBasicsBinding
+androidx.viewbinding.ViewBinding <|.. libby.pashinsky.chaquopy.databinding.FragmentConditionalsStatementsPracticeBinding
+androidx.viewbinding.ViewBinding <|.. libby.pashinsky.chaquopy.databinding.FragmentLoopsPracticeBinding
+androidx.viewbinding.ViewBinding <|.. libby.pashinsky.chaquopy.databinding.FragmentBasicsPracticeBinding
+androidx.fragment.app.Fragment <|-- libby.pashinsky.chaquopy.ConditionalsStatementsPractice
+android.content.BroadcastReceiver <|-- libby.pashinsky.chaquopy.NotificationReceiver
+androidx.viewbinding.ViewBinding <|.. libby.pashinsky.chaquopy.databinding.ActivityConditionalsStatementsBinding
+androidx.viewbinding.ViewBinding <|.. libby.pashinsky.chaquopy.databinding.FragmentFunctionsPracticeBinding
+androidx.appcompat.app.AppCompatActivity <|-- libby.pashinsky.chaquopy.HomePage
+androidx.viewbinding.ViewBinding <|.. libby.pashinsky.chaquopy.databinding.ActivityIntroductionBinding
+libby.pashinsky.chaquopy.OnInitListener <|.. libby.pashinsky.chaquopy.TextToSpeechService
+android.app.Service <|-- libby.pashinsky.chaquopy.TextToSpeechService
+androidx.fragment.app.Fragment <|-- libby.pashinsky.chaquopy.VariablesFragment
+androidx.fragment.app.Fragment <|-- libby.pashinsky.chaquopy.BasicsPracticeFragment
+android.database.sqlite.SQLiteOpenHelper <|-- libby.pashinsky.chaquopy.HelperDB
+@enduml
